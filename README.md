@@ -1,15 +1,17 @@
 # lab4_2024
-## Git username
+## Instrucciones
 
-## git config --global user.name "nombre"
+Git username
 
-## git config --global user.name "email@email.com"
+git config --global user.name "nombre"
 
-## Cargar el repositorio en CODE
-## Entrar en consola, ubicarse donde quieren guardar la carpeta del proyecto
+git config --global user.name "email@email.com"
 
-## git clone -b main ruta... proyecto.git
+Cargar el repositorio en CODE
+Entrar en consola, ubicarse donde quieren guardar la carpeta del proyecto
 
-## Realizar Pull, trae. 
+git clone -b main ruta... proyecto.git
 
-## Enviar Source control, nombre del cambio y commit x2
+Realizar Pull, trae. 
+
+Enviar Source control, nombre del cambio y commit x2
