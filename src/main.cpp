@@ -14,4 +14,5 @@ int main()
     p1.mostrarInformacion();
     return 0;
 }
-// Fue el Gaby
+// Fue el Gaby 
+// yo adolfo
