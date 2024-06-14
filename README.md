@@ -10,7 +10,7 @@ git config --global user.name "email@email.com"
 Cargar el repositorio en CODE
 Entrar en consola, ubicarse donde quieren guardar la carpeta del proyecto
 
-git clone -b main ruta... proyecto.git
+git clone -b https://github.com/adolfosweb/lab4_2024.git
 
 Realizar Pull, trae. 
 
