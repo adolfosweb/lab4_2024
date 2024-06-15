@@ -1,16 +1,12 @@
 #include <iostream>
-#include <string>
-#include "logica/persona.h"
-
+#include "Presentacion/Menu.h"
 
 using namespace std;
 
-int main()
-{
-    cout << "Hello world!" << endl;
-    string nombre = "Adolfo3";
-    cout << nombre;
-    Persona p1(1,nombre);
-    p1.mostrarInformacion();
-    return 0;
+int main() {
+	Menu menu;
+	menu.mostrarMenu();
+
+	cout<<"hola";
+	return 0;
 }

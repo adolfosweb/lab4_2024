@@ -11,7 +11,10 @@
                 "-std=c++11", // Opcional: ajusta según tu versión de C++
                 "-I${workspaceFolder}/src/", // Incluir directorio de cabeceras si es necesario
                 "${workspaceFolder}/src/*.cpp", // Patrón de archivos fuente
-                "${workspaceFolder}/src/logica/*.cpp", // Patrón de archivos fuente
+                "${workspaceFolder}/src/presentacion/*.cpp",
+                //"${workspaceFolder}/src/logica/Controller/*.cpp", // Patrón de archivos fuente
+               // "${workspaceFolder}/src/logica/Dominio/*.cpp",
+               // "${workspaceFolder}/src/logica/Dto/*.cpp",
                 "-o",
                 "${workspaceFolder}/bin/main" // Ruta y nombre del archivo de salida ejecutable
             ],
