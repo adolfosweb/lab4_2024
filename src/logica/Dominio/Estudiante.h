@@ -6,7 +6,7 @@ private:
     // dtFecha fechaNacimiento
 public:
     Estudiante();
-     Estudiante(/* args */);
+    // Estudiante();
     ~Estudiante();
 };
 

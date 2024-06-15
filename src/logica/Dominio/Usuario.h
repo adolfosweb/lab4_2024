@@ -14,11 +14,11 @@ public:
 	Usuario();
 	Usuario(string nick, string pass, string nom, string descrip);
 	virtual ~Usuario();
-	virtual string getNombre();
-	virtual string getNick();
-    virtual string getPass();
-    virtual string getNom();
-    virtual string getDescrip();
+	
+	 string getNick();
+     string getPass();
+     string getNom();
+     string getDescrip();
 };
 
 #endif /* LOGICA_USUARIO_H_ */
