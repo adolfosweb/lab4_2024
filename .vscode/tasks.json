@@ -3,7 +3,7 @@
         {
             //"type": "cppbuild",
             "label": "C/C++: g++ build active file",
-            "type": "shell",
+            "type": "cppbuild",
             "command": "/usr/bin/g++",
             "args": [
                 "-fdiagnostics-color=always",

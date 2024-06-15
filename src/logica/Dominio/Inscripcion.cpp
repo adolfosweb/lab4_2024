@@ -8,5 +8,5 @@ Inscripcion::~Inscripcion(){
 }
 
 bool Inscripcion::getAprobado(){
-    this->aprobado;
+    return this->aprobado;
 }
