@@ -43,7 +43,7 @@ int Persona::getId(){
 
 
 void Persona::mostrarInformacion(){
-	string info = "Información del automovil: ";
+	string info = "Información de la persona: ";
 	info = info + "id " + to_string(this->id) +	" nombre: " + this->nombre;
 	cout << info << endl;
 

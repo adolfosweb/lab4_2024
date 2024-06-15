@@ -1,15 +1,19 @@
 {
     "tasks": [
         {
-            "type": "cppbuild",
+            //"type": "cppbuild",
             "label": "C/C++: g++ build active file",
+            "type": "shell",
             "command": "/usr/bin/g++",
             "args": [
                 "-fdiagnostics-color=always",
-                "-g",
-                "${file}",
+                "-g", // Habilitar información de depuración
+                "-std=c++11", // Opcional: ajusta según tu versión de C++
+                "-I${workspaceFolder}/src/", // Incluir directorio de cabeceras si es necesario
+                "${workspaceFolder}/src/*.cpp", // Patrón de archivos fuente
+                "${workspaceFolder}/src/logica/*.cpp", // Patrón de archivos fuente
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "${workspaceFolder}/bin/main" // Ruta y nombre del archivo de salida ejecutable
             ],
             "options": {
                 "cwd": "${fileDirname}"
