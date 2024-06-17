@@ -6,7 +6,7 @@
  */
 
 #include "Menu.h"
-//#include "AltaUsuario.h"
+#include "AltaUsuario.h"
 //#include "RealizarEjercicio.h"
 #include <iostream>
 
@@ -32,8 +32,8 @@ void Menu::mostrarMenu() {
 		cin >> op;
 		switch (op) {
 			case 1: {
-				//AltaUsuario altaUsuario;
-				//altaUsuario.altaUsuario();
+				AltaUsuario altaUsuario;
+				altaUsuario.altaUsuario();
 			}
 			break;
 		case 2:

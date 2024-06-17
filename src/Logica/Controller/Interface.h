@@ -1,0 +1,17 @@
+#ifndef LOGICA_CONTROLLER_INTERFACE_H_
+#define LOGICA_CONTROLLER_INTERFACE_H_
+#include <iostream>
+#include <set>
+#include "../dto/DTOUsuario.h"
+
+// Esta es una iterface del Sistema.
+
+class Interface {
+public:
+	virtual bool verificarNick(string nick)=0;
+	virtual void agregarUsuario(DTOUsuario* usuario)=0;
+    virtual set<string> listIdiomas()=0;
+
+};
+
+#endif /* LOGICA_CONTROLLER_INTERFACE_H_ */

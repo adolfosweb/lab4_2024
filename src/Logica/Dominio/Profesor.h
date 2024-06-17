@@ -4,15 +4,18 @@
 #include <iostream>
 #include "Usuario.h"
 using namespace std;
+#include <set>
+#include "Idioma.h"
 
 class Profesor :public Usuario{
-    private:
+ private:
         string instituto;
-       // list<idioma> idioma;
-    public:
+        set<Idioma*> idioma;
+public:
+
     Profesor();
     Profesor(string nick, string pass, string nom,	string descrip, string instituto);
 	virtual ~Profesor();
-	//void agregarIdioma(Idioma* idioma);
+	void agregarIdioma(Idioma* idioma);
 };
 #endif /*LOGICA_PROFESOR_H_*/
