@@ -5,6 +5,7 @@
 #include "../Dominio/Estudiante.h"
 #include "../Dominio/Profesor.h"
 #include "../Dominio/Usuario.h"
+#include "../Dominio/Idioma.h"
 #include <set>
 
 Controller::Controller() {
@@ -78,4 +79,25 @@ void Controller::listadoUsuarios() {
 		cout << (*it)->getNick() << endl;
 	}
 	//return result;
+}
+
+
+void Controller::altaIdioma(string idioma){
+
+	bool result = false;
+	set<Idioma*>::iterator it;
+	for (it = this->sistema->idiomas.begin(); it != this->sistema->idiomas.end(); it++) {
+		if (idioma == (*it)->getIdioma()) {
+			result = true;
+			break;
+		}
+	}
+
+	if(result){
+		Idioma(idioma);
+		cout<<"Se a Agregado el Idioma"<<endl;
+	}else{
+		cout<<"El Idioma ya existia en sistema"<<endl;
+	}
+
 }

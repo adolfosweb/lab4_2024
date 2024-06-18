@@ -7,8 +7,10 @@
 
 #include "Menu.h"
 #include "AltaUsuario.h"
-#include "ListarUsuarios.h"
 //#include "RealizarEjercicio.h"
+#include "ListarUsuarios.h"
+#include "AltaIdioma.h"
+
 #include <iostream>
 
 using namespace std;
@@ -28,6 +30,7 @@ void Menu::mostrarMenu() {
 		cout <<"1) Alta Usuario" << endl;
 		cout <<"2) Realizar Ejercicio " << endl;
 		cout <<"3) Listar Usuarios" << endl;
+		cout <<"4) Alta Idioma" << endl;
 		cout <<"0) Salir " << endl;
 		cout <<"Ingrese una opcion: " << endl;
 
@@ -50,6 +53,12 @@ void Menu::mostrarMenu() {
 				ListarUsuarios ListarUsuarios;
 				ListarUsuarios.listadoUsuarios();
 			}
+			break;
+		case 4: {
+                cout << "Agregar Idioma" << endl;
+                AltaIdioma altaIdioma;  // Declarar e instanciar correctamente
+                altaIdioma.altaIdioma();  // Llamar al método altaIdioma()
+            }
 			break;
 		case 0:
 			break;

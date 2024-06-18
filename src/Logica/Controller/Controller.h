@@ -20,6 +20,11 @@ public:
 	set<string> listIdiomas();
 	void agregarUsuario(DTOUsuario* usuario);
 	void listadoUsuarios();
+
+
+	//Caso de uso Alta idioma
+
+	 void altaIdioma(string idioma);
 };
 
 #endif /* NEGOCIO_CONTROLLER_IUSUARIOCONTROLLER_H_ */
