@@ -65,3 +65,17 @@ void Controller::agregarUsuario(DTOUsuario* usuario) {
 	this->sistema->usuarios.insert(nuevoUsuario);
 }
 
+
+void Controller::listadoUsuarios() {
+	//recorro los usuarios del sistema y los cargo en un SET.
+	//bool result = false;
+
+	set<Usuario*>::iterator it;
+	int num = 0;
+	for (it = this->sistema->usuarios.begin(); it != this->sistema->usuarios.end(); it++) {
+		num = num + 1;
+		cout << num;
+		cout << (*it)->getNick() << endl;
+	}
+	//return result;
+}

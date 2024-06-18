@@ -11,7 +11,7 @@ public:
 	virtual bool verificarNick(string nick)=0;
 	virtual void agregarUsuario(DTOUsuario* usuario)=0;
     virtual set<string> listIdiomas()=0;
-
+	virtual void listadoUsuarios()=0;
 };
 
 #endif /* LOGICA_CONTROLLER_INTERFACE_H_ */

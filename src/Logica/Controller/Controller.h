@@ -19,7 +19,7 @@ public:
 	bool verificarNick(string nick);
 	set<string> listIdiomas();
 	void agregarUsuario(DTOUsuario* usuario);
-	
+	void listadoUsuarios();
 };
 
 #endif /* NEGOCIO_CONTROLLER_IUSUARIOCONTROLLER_H_ */

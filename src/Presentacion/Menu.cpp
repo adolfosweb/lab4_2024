@@ -7,6 +7,7 @@
 
 #include "Menu.h"
 #include "AltaUsuario.h"
+#include "ListarUsuarios.h"
 //#include "RealizarEjercicio.h"
 #include <iostream>
 
@@ -26,7 +27,8 @@ void Menu::mostrarMenu() {
 		cout << "*** Menu principal ***" << endl;
 		cout <<"1) Alta Usuario" << endl;
 		cout <<"2) Realizar Ejercicio " << endl;
-		cout <<"3) Salir " << endl;
+		cout <<"3) Listar Usuarios" << endl;
+		cout <<"0) Salir " << endl;
 		cout <<"Ingrese una opcion: " << endl;
 
 		cin >> op;
@@ -43,12 +45,19 @@ void Menu::mostrarMenu() {
 			}
 			break;
 		case 3:
+			{
+				cout << "Listar Usuarios" << endl;
+				ListarUsuarios ListarUsuarios;
+				ListarUsuarios.listadoUsuarios();
+			}
+			break;
+		case 0:
 			break;
 		default:
 			cout << "Opcion desconocida" << endl;
 		}
 
-	} while (op != 3);
+	} while (op != 0);
 
 cout << "Fin del programa" << endl;
 }
