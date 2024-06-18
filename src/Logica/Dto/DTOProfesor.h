@@ -21,8 +21,9 @@ private:
 
 public:
 
-	DTOProfesor(string nick, string pass, string nom,string descrip, string instituto, set<string> idiomas);
+	
 	DTOProfesor();
+	DTOProfesor(string nick, string pass, string nom,string descrip, string instituto, set<string> idiomas);
 	virtual ~DTOProfesor();
 
 	string getInstituto();

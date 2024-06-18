@@ -43,7 +43,7 @@ void AltaUsuario::altaUsuario() {
 		this->iusuario->agregarUsuario(nuevoUsuario);
 
 		cout << "Fin ingreso de usuario " << endl;
-
+		
 	} else  {
 		cout << "Ya existe el usuario. Imposible continuar..." << endl;
 	}
@@ -141,5 +141,6 @@ set<string> AltaUsuario::seleccionarIdiomas() {
 		}
 
 	} while (quiereIngresarIdiomas);
+
 	return idiomasSeleccionados;
 }

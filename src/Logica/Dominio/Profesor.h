@@ -16,6 +16,7 @@ public:
     Profesor();
     Profesor(string nick, string pass, string nom,	string descrip, string instituto);
 	virtual ~Profesor();
+    void mostrarInfo();
 	void agregarIdioma(Idioma* idioma);
 };
 #endif /*LOGICA_PROFESOR_H_*/

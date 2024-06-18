@@ -10,3 +10,16 @@ Profesor::~Profesor(){
 void Profesor::agregarIdioma(Idioma* idioma) {
 	this->idioma.insert(idioma);
 }
+
+/*void Profesor::mostrarInfo(){
+	cout<<this->getNick()<<endl;
+	cout<<this->getPass()<<endl;
+	cout<<this->getNom()<<endl;
+	cout<<this->getDescrip()<<endl;
+	
+
+	cout << "Idiomas: " << endl;
+    for (const auto& idioma : idioma) {
+        cout << "- " << idioma->getIdioma() << endl; // Asumiendo que Idioma tiene un método getNombre()
+    }
+}*/

@@ -53,7 +53,8 @@ void Controller::agregarUsuario(DTOUsuario* usuario) {
 
 		//recorro la lista de idiomas del DTO enviado
 		set<string>::iterator it;
-		for (it = dtoProf->getIdiomas().begin(); it != dtoProf->getIdiomas().end(); it++) {
+		set<string> ListaIdiomaDTO= dtoProf->getIdiomas();
+		for (it = ListaIdiomaDTO.begin(); it != ListaIdiomaDTO.end(); it++) {
 			Idioma* idioma = this->sistema->buscarIdioma((*it));
 
 			(dynamic_cast<Profesor*>(nuevoUsuario))->agregarIdioma((idioma));
