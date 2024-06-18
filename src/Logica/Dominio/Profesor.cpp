@@ -1,10 +1,25 @@
 #include "Profesor.h"
-Profesor::Profesor(){
+Profesor::Profesor(){}
 
-}
-Profesor::Profesor(string nick, string pass, string nom,	string descrip, string instituto){
+Profesor::Profesor(string nick, string pass, string nom,string descrip, string instituto) 
+: Usuario(nick, pass, nom, descrip), instituto(instituto){}
 
-}
 Profesor::~Profesor(){
     
 }
+void Profesor::agregarIdioma(Idioma* idioma) {
+	this->idioma.insert(idioma);
+}
+
+/*void Profesor::mostrarInfo(){
+	cout<<this->getNick()<<endl;
+	cout<<this->getPass()<<endl;
+	cout<<this->getNom()<<endl;
+	cout<<this->getDescrip()<<endl;
+	
+
+	cout << "Idiomas: " << endl;
+    for (const auto& idioma : idioma) {
+        cout << "- " << idioma->getIdioma() << endl; // Asumiendo que Idioma tiene un método getNombre()
+    }
+}*/

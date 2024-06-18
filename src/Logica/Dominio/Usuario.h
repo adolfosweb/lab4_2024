@@ -14,7 +14,6 @@ public:
 	Usuario();
 	Usuario(string nick, string pass, string nom, string descrip);
 	virtual ~Usuario();
-	
 	 string getNick();
      string getPass();
      string getNom();

@@ -1,33 +1,25 @@
-/*
- * Controller.h
- */
-
-#ifndef CONTROLLER_SISTEMA_CPP_
-#define CONTROLLER_SISTEMA_CPP_
+#ifndef NEGOCIO_CONTROLLER_IUSUARIOCONTROLLER_H_
+#define NEGOCIO_CONTROLLER_IUSUARIOCONTROLLER_H_
+#include <iostream>
 #include <set>
-#include "../Dominio/Usuario.h"
-#include "../Dominio/Estudiante.h"
-#include "../Dominio/Profesor.h"
-#include "../Dominio/Idioma.h"
+#include "../Dto/DTOUsuario.h"
+#include "Interface.h"
+#include "Sistema.h"
 
 using namespace std;
 
-//Esto es un singleton (ver patron de diseño)
-
-class Controller {
+class Controller:public Interface {
 private:
-	Controller(); //declaro el constructor como privado
-	static Controller* miController;	//puntero a la unica intancia de Controller
-	void inicializarDatos();
+	Sistema* sistema; //cada controlador de la aplicación tiene una instancia de la clase sistema
+	//solo existe una instancia de la clase sistema en toda la aplicacion
+
 public:
-	//Esta es una clase utilitaria por lo que no tiene sentido encapsular su estado
-	//(no utilizo getters y setters)
+	Controller();
 
-	set<Usuario*> usuarios;
-	set<Idioma*> idiomas;
-
-	static Controller* getInstance(); //metodo de clase que devuele siempre la misma instancia
-	virtual ~Controller();
+	bool verificarNick(string nick);
+	set<string> listIdiomas();
+	void agregarUsuario(DTOUsuario* usuario);
+	
 };
 
-#endif /* CONTROLLER_SISTEMA_CPP_ */
+#endif /* NEGOCIO_CONTROLLER_IUSUARIOCONTROLLER_H_ */

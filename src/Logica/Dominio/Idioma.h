@@ -5,14 +5,12 @@
 
 using namespace std;
 
-class Idioma
-{
+class Idioma{
 private:
     string idioma;
 public:
     Idioma();
      Idioma(string idioma);
-
     ~Idioma();
 
     string getIdioma();
