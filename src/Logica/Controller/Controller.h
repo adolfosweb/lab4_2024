@@ -2,7 +2,7 @@
 #define NEGOCIO_CONTROLLER_IUSUARIOCONTROLLER_H_
 #include <iostream>
 #include <set>
-#include "../dto/DTOUsuario.h"
+#include "../Dto/DTOUsuario.h"
 #include "Interface.h"
 #include "Sistema.h"
 

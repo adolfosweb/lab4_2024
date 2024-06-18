@@ -1,7 +1,7 @@
 #ifndef NEGOCIO_ESTUDIANTES_H_
 #define NEGOCIO_ESTUDIANTES_H_
 #include "Usuario.h"
-#include "../dto/DTOFecha.h"
+#include "../Dto/DTOFecha.h"
 using namespace std;
 class Estudiante : public Usuario{
 private:

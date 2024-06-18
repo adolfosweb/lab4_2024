@@ -1,10 +1,10 @@
 #include "AltaUsuario.h"
 #include <iostream>
 #include <set>
-#include "../Logica/controller/Controller.h"
-#include "../Logica/dto/DTOEstudiante.h"
-#include "../Logica/dto/DTOProfesor.h"
-#include "../Logica/dto/DTOFecha.h"
+#include "../Logica/Controller/Controller.h"
+#include "../Logica/Dto/DTOEstudiante.h"
+#include "../Logica/Dto/DTOProfesor.h"
+#include "../Logica/Dto/DTOFecha.h"
 
 using namespace std;
 

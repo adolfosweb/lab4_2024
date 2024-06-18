@@ -2,7 +2,7 @@
 #define LOGICA_CONTROLLER_INTERFACE_H_
 #include <iostream>
 #include <set>
-#include "../dto/DTOUsuario.h"
+#include "../Dto/DTOUsuario.h"
 
 // Esta es una iterface del Sistema.
 

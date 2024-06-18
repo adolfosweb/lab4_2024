@@ -9,7 +9,7 @@
 #define NEGOCIO_DTO_DTOESTUDIANTE_H_
 
 #include "DTOUsuario.h"
-#include "../dto/DTOFecha.h"
+#include "../Dto/DTOFecha.h"
 #include <iostream>
 
 using namespace std;

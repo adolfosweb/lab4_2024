@@ -1,10 +1,10 @@
 #include "Controller.h"
-#include "../dto/DTOEstudiante.h"
-#include "../dto/DTOUsuario.h"
-#include "../dto/DTOProfesor.h"
-#include "../dominio/Estudiante.h"
-#include "../dominio/Profesor.h"
-#include "../dominio/Usuario.h"
+#include "../Dto/DTOEstudiante.h"
+#include "../Dto/DTOUsuario.h"
+#include "../Dto/DTOProfesor.h"
+#include "../Dominio/Estudiante.h"
+#include "../Dominio/Profesor.h"
+#include "../Dominio/Usuario.h"
 #include <set>
 
 Controller::Controller() {
