@@ -56,8 +56,8 @@ void Menu::mostrarMenu() {
 			break;
 		case 4: {
                 cout << "Agregar Idioma" << endl;
-                AltaIdioma altaIdioma;  // Declarar e instanciar correctamente
-                altaIdioma.altaIdioma();  // Llamar al método altaIdioma()
+              	AltaIdioma altaIdioma; 
+                altaIdioma.altaIidoma();
             }
 			break;
 		case 0:

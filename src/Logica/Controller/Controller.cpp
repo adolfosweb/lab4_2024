@@ -84,17 +84,21 @@ void Controller::listadoUsuarios() {
 
 void Controller::altaIdioma(string idioma){
 
-	bool result = false;
+	bool result = true;
 	set<Idioma*>::iterator it;
 	for (it = this->sistema->idiomas.begin(); it != this->sistema->idiomas.end(); it++) {
+		
 		if (idioma == (*it)->getIdioma()) {
-			result = true;
+			result = false;
+			
 			break;
 		}
 	}
-
+ 
 	if(result){
-		Idioma(idioma);
+		Idioma *I = new Idioma(idioma);
+
+		this->sistema->idiomas.insert(I);
 		cout<<"Se a Agregado el Idioma"<<endl;
 	}else{
 		cout<<"El Idioma ya existia en sistema"<<endl;
