@@ -1,5 +1,12 @@
 # lab4_2024
-## Instrucciones
+
+## Instrucciones de CODE
+En Linux, simplemente instalar normal.
+En Windows deberemos usar WLS
+https://github.com/adolfosweb/lab4_2024
+
+
+## Instrucciones de Git
 
 Git username
 
