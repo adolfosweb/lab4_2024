@@ -10,6 +10,8 @@ public:
 	Menu();
 	virtual ~Menu();
 	void mostrarMenu();
+	void mostrarMenuUsarios();
+	void mostrarMenuIdioma();
 };
 
 #endif /* MENU_H_ */
