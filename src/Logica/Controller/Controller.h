@@ -3,6 +3,7 @@
 #include <iostream>
 #include <set>
 #include "../Dto/DTOUsuario.h"
+#include "../Dto/DTOIdioma.h"
 #include "Interface.h"
 #include "Sistema.h"
 
@@ -23,8 +24,10 @@ public:
 
 
 	//Caso de uso Alta idioma
-
 	 void altaIdioma(string idioma);
+
+	//CU 4 Consultar Curso
+	 set<string> consultarIdioma();
 };
 
 #endif /* NEGOCIO_CONTROLLER_IUSUARIOCONTROLLER_H_ */

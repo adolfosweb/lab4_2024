@@ -12,6 +12,7 @@ public:
     DTOIdioma(string Idioma);
     ~DTOIdioma();
     string getIdioma();
+   
 };
 
 

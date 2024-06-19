@@ -105,3 +105,19 @@ void Controller::altaIdioma(string idioma){
 	}
 
 }
+
+
+set<string> Controller::consultarIdioma(){
+
+	set<string> result; // strings que devuelvo a la capa de presentacion
+
+	set<Idioma*>::iterator it;
+
+	for (it = this->sistema->idiomas.begin(); it != this->sistema->idiomas.end(); it++) {
+		string aux=(*it)->getIdioma();
+		result.insert(aux);
+		}
+	return result;
+
+	
+}

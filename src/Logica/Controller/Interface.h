@@ -3,6 +3,7 @@
 #include <iostream>
 #include <set>
 #include "../Dto/DTOUsuario.h"
+#include "../Dto/DTOIdioma.h"
 
 // Esta es una iterface del Sistema.
 
@@ -16,8 +17,11 @@ public:
 
 
 	//Caso de uso Alta idioma
-	
 	virtual void altaIdioma(string idioma)=0;
+
+	//CU 4 Concultar Idioma
+	virtual set<string> consultarIdioma()=0;
+
 };
 
 #endif /* LOGICA_CONTROLLER_INTERFACE_H_ */
