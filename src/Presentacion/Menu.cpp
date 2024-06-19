@@ -6,10 +6,7 @@
  */
 
 #include "Menu.h"
-#include "AltaUsuario.h"
-//#include "RealizarEjercicio.h"
-#include "ListarUsuarios.h"
-#include "AltaIdioma.h"
+#include "OpcionesUsuarios.h"
 
 #include <iostream>
 
@@ -27,38 +24,23 @@ void Menu::mostrarMenu() {
 	int op = 0;
 	do {
 		cout << "*** Menu principal ***" << endl;
-		cout <<"1) Alta Usuario" << endl;
-		cout <<"2) Realizar Ejercicio " << endl;
-		cout <<"3) Listar Usuarios" << endl;
-		cout <<"4) Alta Idioma" << endl;
+		cout <<"1) Menu Opciones para Usuarios" << endl;
+		cout <<"3) Menu Opciones para Idiomas" << endl;
 		cout <<"0) Salir " << endl;
 		cout <<"Ingrese una opcion: " << endl;
 
 		cin >> op;
 		switch (op) {
 			case 1: {
-				AltaUsuario altaUsuario;
-				altaUsuario.altaUsuario();
+				std::system("clear");
+				OpcionesUsuarios opcionesUsuarios;
+				opcionesUsuarios.mostrarMenuUsarios();
 			}
 			break;
 		case 2:
 			{
-			//RealizarEjercicio realizarEjercicio;
-			//realizarEjercicio.realizarEjercicio();
+			std::system("clear");
 			}
-			break;
-		case 3:
-			{
-				cout << "Listar Usuarios" << endl;
-				ListarUsuarios ListarUsuarios;
-				ListarUsuarios.listadoUsuarios();
-			}
-			break;
-		case 4: {
-                cout << "Agregar Idioma" << endl;
-              	AltaIdioma altaIdioma; 
-                altaIdioma.altaIidoma();
-            }
 			break;
 		case 0:
 			break;
