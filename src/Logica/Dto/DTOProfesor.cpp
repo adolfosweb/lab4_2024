@@ -18,6 +18,8 @@ DTOProfesor::DTOProfesor(string nick, string pass,string nom,string descrip, str
 	this->idiomas=idiomas;
 }
 
+
+
 DTOProfesor::~DTOProfesor() {
 	// TODO Auto-generated destructor stub
 }

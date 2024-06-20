@@ -125,7 +125,7 @@ DTOEstudiante Controller::infoEstudiante(string nick){
 		if (nick == (*it)->getNick()) {
 			Estudiante* est = dynamic_cast<Estudiante*>(*it);
 			if (est != nullptr) {  // Asegurarse de que la conversión es exitosa
-				cout << "El estudiante es: " << est->getNick();
+				//cout << "El estudiante es: " << est->getNick();
 				elEstudiante = DTOEstudiante(est->getNick(), "***", est->getNom(), est->getDescrip(), est->getPaisResidencia(), est->getFecha());
 			}
 			break;  // Salir del bucle una vez que se encuentra el estudiante
@@ -134,13 +134,25 @@ DTOEstudiante Controller::infoEstudiante(string nick){
 	return elEstudiante;
 }
 
+DTOProfesor Controller::infoProfesor(string nick){
+	// dtoProfesor consultaDatos(nickName)
+	DTOProfesor elProfesor;
 
-
-
-
-
-// dtoProfesor consultarDatos(nickName)
-
+	//busco el Profesor
+	set<Usuario*>::iterator it;
+	for (it = this->sistema->usuarios.begin(); it != this->sistema->usuarios.end(); it++) {
+		if (nick == (*it)->getNick()) {
+			Profesor* est = dynamic_cast<Profesor*>(*it);
+			if (est != nullptr) {  // Asegurarse de que la conversión es exitosa
+				//cout << "El Profesor es: " << est->getNick();
+				//DTOProfesor(string nick, string pass, string nom,string descrip, string instituto, set<string> idiomas);
+				elProfesor = DTOProfesor(est->getNick(), "***", est->getNom(), est->getDescrip(), est->getInstituto(), est->getIdiomas());
+			}
+			break;  // Salir del bucle una vez que se encuentra el Profesor
+		}
+	}
+	return elProfesor;
+}
 
 //CU2 FIN
 

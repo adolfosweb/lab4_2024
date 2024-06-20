@@ -165,17 +165,22 @@ void Pusuarios::infoUsuario() {
     //verifico si es estudiante, presento estudiante
     bool result =  this->iPusuario->esEstudiante(elUsuario);
     if (result == true){
-    cout << "Datos del estudiante" << endl;
-    DTOEstudiante elEstudiante = this->iPusuario->infoEstudiante(elUsuario);
-    cout << "Nick: " << elEstudiante.getNick() << endl;
-    cout << "Nombre: " << elEstudiante.getNom() << endl;
-    cout << "Pais Recidencia1: " << elEstudiante.getPaisResidencia() << endl;
-    cout << "Fecha Nac: " << elEstudiante.getFecha().anio << endl;
+        cout << "Datos del estudiante" << endl;
+        DTOEstudiante elEstudiante = this->iPusuario->infoEstudiante(elUsuario);
+        cout << "Nick: " << elEstudiante.getNick() << endl;
+        cout << "Nombre: " << elEstudiante.getNom() << endl;
+        cout << "Pais Recidencia1: " << elEstudiante.getPaisResidencia() << endl;
+        cout << "Fecha Nac: " << elEstudiante.getFecha().anio << endl;
     }
     //si no es estudiante, presento profesor
     else{
-        cout << "Es profe" << endl;
+        cout << "Datos del Profesor" << endl;
+        DTOProfesor elProfesor = this->iPusuario->infoProfesor(elUsuario);
+        cout << "Nick: " << elProfesor.getNick() << endl;
+        cout << "Nombre: " << elProfesor.getNom() << endl;
+
     }
+    
 
     
 	// es alumno ()

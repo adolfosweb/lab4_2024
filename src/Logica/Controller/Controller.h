@@ -4,6 +4,7 @@
 #include <set>
 #include "../Dto/DTOUsuario.h"
 #include "../Dto/DTOEstudiante.h"
+#include "../Dto/DTOProfesor.h"
 #include "../Dto/DTOIdioma.h"
 #include "Interface.h"
 #include "Sistema.h"
@@ -26,6 +27,7 @@ public:
 	set<string> listadoUsuarios();
 	bool esEstudiante(string nick);
 	DTOEstudiante infoEstudiante(string nick);
+	DTOProfesor infoProfesor(string nick);
 
 	//Caso de uso Alta idioma
 	 void altaIdioma(string idioma);
