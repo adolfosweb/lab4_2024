@@ -20,8 +20,9 @@ public:
 	bool verificarNick(string nick);
 	set<string> listIdiomas();
 	void agregarUsuario(DTOUsuario* usuario);
-	void listadoUsuarios();
-
+	
+	//CU2 - Consulta de Usuario
+	set<string> listadoUsuarios();
 
 	//Caso de uso Alta idioma
 	 void altaIdioma(string idioma);

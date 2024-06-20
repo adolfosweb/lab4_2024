@@ -67,19 +67,39 @@ void Controller::agregarUsuario(DTOUsuario* usuario) {
 }
 
 
-void Controller::listadoUsuarios() {
+//CU2 Consulta de Usuario
+//>ListarUsuarios
+set<string>  Controller::listadoUsuarios() {
 	//recorro los usuarios del sistema y los cargo en un SET.
 	//bool result = false;
+
+	set<string> listaUsuarios;
 
 	set<Usuario*>::iterator it;
 	int num = 0;
 	for (it = this->sistema->usuarios.begin(); it != this->sistema->usuarios.end(); it++) {
 		num = num + 1;
-		cout << num;
-		cout << (*it)->getNick() << endl;
+		string nickUsuario;
+		nickUsuario += to_string(num);
+		nickUsuario += " - ";
+		nickUsuario += (*it)->getNick();
+		//cout << nickUsuario << endl;
+		listaUsuarios.insert(nickUsuario);
+		
 	}
-	//return result;
+	return listaUsuarios;
 }
+//Find listar usuario
+
+// bool esEstudiante(nickUsuario)
+
+// dtoEstudiante consultaDatos(nickName)
+
+// dtoProfesor consultarDatos(nickName)
+
+
+//CU2 FIN
+
 
 
 void Controller::altaIdioma(string idioma){

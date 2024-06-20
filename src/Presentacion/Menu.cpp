@@ -62,7 +62,7 @@ void Menu::mostrarMenuUsarios() {
 	do {
 		cout << "*** Menu Usuarios ***" << endl;
 		cout <<"1) Alta Usuario" << endl;
-		cout <<"2) Listar Usuarios " << endl;
+		cout <<"2) Consulta de Usuario " << endl;
         cout <<"3) Volver A Menu Pricipal " << endl;
 		cout <<"Ingrese una opcion: " << endl;
 
@@ -77,9 +77,9 @@ void Menu::mostrarMenuUsarios() {
 		case 2:
 			{
 				std::system("clear");
-				cout << "Listar Usuarios" << endl;
-				Pusuarios listaUsuarios;
-				listaUsuarios.listadoUsuarios();
+				cout << "Consulta de Usuario" << endl;
+				Pusuarios consultaUsuario;
+				consultaUsuario.infoUsuario();
 			}
 			break;
         case 3:

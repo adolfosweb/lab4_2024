@@ -135,7 +135,31 @@ set<string>  Pusuarios::seleccionarIdiomas(){
 	return idiomasSeleccionados;
 }
 
-void  Pusuarios::listadoUsuarios(){
-    cout << "Listado de Usuarios"<< endl;
-	this->iPusuario->listadoUsuarios();
+//void  Pusuarios::listadoUsuarios(){
+//    cout << "Listado de Usuarios"<< endl;
+//	this->iPusuario->listadoUsuarios();
+//}
+
+//CU2 - Consulta de Usuario
+void Pusuarios::infoUsuario() {
+
+	cout << "Listado de Usuarios"<< endl;
+
+	set<string> usuariosExistentes = this->iPusuario->listadoUsuarios();
+	set<string> usuarioSelecionado;
+
+	set<string>::iterator it;
+	for (it = usuariosExistentes.begin(); it != usuariosExistentes.end(); it++) {
+		cout << *it << endl;
+	}
+
+	cout << "Selecione un usuario" << endl;
+
+	// es alumno ()
+	// si es alumno 
+	//  dinamyc cast y lo presento como alumno
+	// else
+	//	dinamyc cast y presento como profe
+
 }
+//Fin  - CU2 Consulta de suaruio

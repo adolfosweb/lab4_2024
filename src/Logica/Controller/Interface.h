@@ -13,7 +13,8 @@ public:
 	virtual bool verificarNick(string nick)=0;
 	virtual void agregarUsuario(DTOUsuario* usuario)=0;
     virtual set<string> listIdiomas()=0;
-	virtual void listadoUsuarios()=0;
+	//CU 2 Consulta de usuario
+	virtual set<string> listadoUsuarios()=0;
 
 
 	//Caso de uso Alta idioma

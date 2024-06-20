@@ -21,7 +21,11 @@ public:
     
 	set<string> seleccionarIdiomas();
 
-    void listadoUsuarios();
+    //void listadoUsuarios();
+
+    //CU2 - Consulta de Usuario
+	void infoUsuario();
+
 };
 
 
