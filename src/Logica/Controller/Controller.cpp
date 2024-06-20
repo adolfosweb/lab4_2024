@@ -89,11 +89,55 @@ set<string>  Controller::listadoUsuarios() {
 	}
 	return listaUsuarios;
 }
-//Find listar usuario
 
-// bool esEstudiante(nickUsuario)
+bool Controller::esEstudiante(string nick){
+	// bool esEstudiante(nickUsuario)
+	//Busco el usuario
+	set<Usuario*>::iterator it;
+	for (it = this->sistema->usuarios.begin(); it != this->sistema->usuarios.end(); it++) {
+		if (nick == (*it)->getNick()) {
+			// chequeo algo para ver si es estudiante o profesor
+			//hago un casting para determinar el tipo de instancia
+			Estudiante* est = dynamic_cast<Estudiante*>(*it);
+			if (est != nullptr) {
+				//Si el puntero no esta vacio es un estudiante
+				cout << "Depurado: Es estudiante";
+				return true;
+				
+			}
+			else{
+				cout << "Depurado: Es profe";
+				return false;
+			}
+			break;
+		}
+	}
+	return false;
+}
 
-// dtoEstudiante consultaDatos(nickName)
+DTOEstudiante Controller::infoEstudiante(string nick){
+	// dtoEstudiante consultaDatos(nickName)
+	DTOEstudiante elEstudiante;
+
+	//busco el estudiante
+	set<Usuario*>::iterator it;
+	for (it = this->sistema->usuarios.begin(); it != this->sistema->usuarios.end(); it++) {
+		if (nick == (*it)->getNick()) {
+			Estudiante* est = dynamic_cast<Estudiante*>(*it);
+			if (est != nullptr) {  // Asegurarse de que la conversión es exitosa
+				cout << "El estudiante es: " << est->getNick();
+				elEstudiante = DTOEstudiante(est->getNick(), "***", est->getNom(), est->getDescrip(), est->getPaisResidencia(), est->getFecha());
+			}
+			break;  // Salir del bucle una vez que se encuentra el estudiante
+		}
+	}
+	return elEstudiante;
+}
+
+
+
+
+
 
 // dtoProfesor consultarDatos(nickName)
 

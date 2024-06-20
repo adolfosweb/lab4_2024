@@ -16,9 +16,8 @@ DTOEstudiante::DTOEstudiante() {
 }
 DTOEstudiante::DTOEstudiante(string nick, string pass, string nom, string descrip, string pais, DTOFecha fecha) 
 : DTOUsuario(nick, pass, nom, descrip) , paisResidencia(pais), fecha(fecha) {
-
-
 }
+
 DTOEstudiante::~DTOEstudiante() {
 	// TODO Auto-generated destructor stub
 }

@@ -152,9 +152,32 @@ void Pusuarios::infoUsuario() {
 	for (it = usuariosExistentes.begin(); it != usuariosExistentes.end(); it++) {
 		cout << *it << endl;
 	}
+    //controlo que sea un usuario que existe
+    string elUsuario;
+	bool existeUsuario = false;
+    while (existeUsuario == false)
+    {
+        cout << "Ingresa un usuario de la lista:" << endl;
+        cin >> elUsuario;
+        existeUsuario = this->iPusuario->verificarNick(elUsuario);
+    }
 
-	cout << "Selecione un usuario" << endl;
+    //verifico si es estudiante, presento estudiante
+    bool result =  this->iPusuario->esEstudiante(elUsuario);
+    if (result == true){
+    cout << "Datos del estudiante" << endl;
+    DTOEstudiante elEstudiante = this->iPusuario->infoEstudiante(elUsuario);
+    cout << "Nick: " << elEstudiante.getNick() << endl;
+    cout << "Nombre: " << elEstudiante.getNom() << endl;
+    cout << "Pais Recidencia1: " << elEstudiante.getPaisResidencia() << endl;
+    cout << "Fecha Nac: " << elEstudiante.getFecha().anio << endl;
+    }
+    //si no es estudiante, presento profesor
+    else{
+        cout << "Es profe" << endl;
+    }
 
+    
 	// es alumno ()
 	// si es alumno 
 	//  dinamyc cast y lo presento como alumno

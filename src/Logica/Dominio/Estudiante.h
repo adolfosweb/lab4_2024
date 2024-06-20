@@ -8,9 +8,13 @@ private:
      string paisResidencia;
      DTOFecha fechaNacimiento;
 public:
+    
+    
     Estudiante();
     Estudiante(string nick, string pass, string nom,string descrip, string pais, DTOFecha fecha);
     ~Estudiante();
+    string getPaisResidencia();
+    DTOFecha getFecha();
 };
 
 

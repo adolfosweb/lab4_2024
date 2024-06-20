@@ -3,6 +3,7 @@
 #include <iostream>
 #include <set>
 #include "../Dto/DTOUsuario.h"
+#include "../Dto/DTOEstudiante.h"
 #include "../Dto/DTOIdioma.h"
 #include "Interface.h"
 #include "Sistema.h"
@@ -23,6 +24,8 @@ public:
 	
 	//CU2 - Consulta de Usuario
 	set<string> listadoUsuarios();
+	bool esEstudiante(string nick);
+	DTOEstudiante infoEstudiante(string nick);
 
 	//Caso de uso Alta idioma
 	 void altaIdioma(string idioma);
