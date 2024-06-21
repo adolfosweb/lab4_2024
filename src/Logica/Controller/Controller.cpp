@@ -141,3 +141,11 @@ set<string> Controller::consultarIdioma(){
 
 	
 }
+
+void Controller :: agregarLeccion()
+{
+
+	
+
+
+}

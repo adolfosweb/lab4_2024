@@ -29,6 +29,9 @@ public:
 
 	//CU 4 Consultar Curso
 	 set<string> consultarIdioma();
+
+	//CU 6 Agregar Lección
+	void agregarLeccion();
 };
 
 #endif /* NEGOCIO_CONTROLLER_IUSUARIOCONTROLLER_H_ */

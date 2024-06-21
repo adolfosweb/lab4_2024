@@ -23,6 +23,9 @@ public:
 	//CU 4 Concultar Idioma
 	virtual set<string> consultarIdioma()=0;
 
+	//CU 6 Agregar Lección
+	virtual void agregarLeccion() = 0;
+
 };
 
 #endif /* LOGICA_CONTROLLER_INTERFACE_H_ */
