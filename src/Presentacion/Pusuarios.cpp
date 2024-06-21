@@ -17,11 +17,17 @@ void  Pusuarios::altaUsuario(){
 
 	bool existe = this->iPusuario->verificarNick(nick);
 	if (!existe) {
-		cout << "Es estudiante o profesor? (1 estudiante 2 profesor" << endl;
+		cout << "Es estudiante o profesor? (1 estudiante 2 profesor)" << endl;
 		int tipoUsuario;
 		DTOUsuario *nuevoUsuario;
 
+        // Validacion tipo usuario
 		cin >> tipoUsuario;
+        while (tipoUsuario != 1 && tipoUsuario != 2){
+            cout << "error, las opciones son 1 Estudiante o 2 Profesor";
+            cin >> tipoUsuario;
+        }
+
 		if (tipoUsuario == 1) {
 			nuevoUsuario = ingresarEstudiante(nick);
 
