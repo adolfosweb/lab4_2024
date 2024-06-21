@@ -2,10 +2,12 @@
 #include "../Dto/DTOEstudiante.h"
 #include "../Dto/DTOUsuario.h"
 #include "../Dto/DTOProfesor.h"
+#include "../Dto/DTOCurso.h"
 #include "../Dominio/Estudiante.h"
 #include "../Dominio/Profesor.h"
 #include "../Dominio/Usuario.h"
 #include "../Dominio/Idioma.h"
+#include "../Dominio/Curso.h"
 #include <set>
 
 Controller::Controller() {
@@ -142,10 +144,10 @@ set<string> Controller::consultarIdioma(){
 	
 }
 
-void Controller :: agregarLeccion()
+set<DTOCurso> Controller :: agregarLeccion()
 {
 
-	
+
 
 
 }

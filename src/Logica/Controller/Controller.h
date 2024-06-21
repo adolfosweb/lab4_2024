@@ -4,6 +4,7 @@
 #include <set>
 #include "../Dto/DTOUsuario.h"
 #include "../Dto/DTOIdioma.h"
+#include "../Dto/DTOCurso.h"
 #include "Interface.h"
 #include "Sistema.h"
 
@@ -31,7 +32,7 @@ public:
 	 set<string> consultarIdioma();
 
 	//CU 6 Agregar Lección
-	void agregarLeccion();
+	set<DTOCurso> agregarLeccion();
 };
 
 #endif /* NEGOCIO_CONTROLLER_IUSUARIOCONTROLLER_H_ */
