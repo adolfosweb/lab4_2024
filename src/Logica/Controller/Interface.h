@@ -22,6 +22,8 @@ public:
 
 	//CU 4 Concultar Idioma
 	virtual set<string> consultarIdioma()=0;
+	//CU 5 Alta Curso
+	virtual void altaCurso(string nombre,string descripcion)=0;
 
 };
 

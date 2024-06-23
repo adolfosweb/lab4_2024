@@ -29,6 +29,8 @@ public:
 
 	//CU 4 Consultar Curso
 	 set<string> consultarIdioma();
+	//CU 5 Alta Curso
+	void altaCurso(string nombre,string descripcion);
 };
 
 #endif /* NEGOCIO_CONTROLLER_IUSUARIOCONTROLLER_H_ */

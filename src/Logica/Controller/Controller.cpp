@@ -141,3 +141,26 @@ set<string> Controller::consultarIdioma(){
 
 	
 }
+void Controller::altaCurso(string nombre,string descripcion){
+
+	bool result = true;
+	set<Curso*>::iterator it;
+	for (it = this->sistema->cursos.begin(); it != this->sistema->cursos.end(); it++) {
+		
+		if (nombre == (*it)->getNombre()) {
+			result = false;
+			
+			break;
+		}
+	}
+ 
+	if(result){
+		Curso *C1 = new Curso(nombre,descripcion);
+		this->sistema->cursos.insert(C1);
+
+		cout<<"Se creo el Curso"<<endl;
+	}else{
+		cout<<"El Curso ya existia en sistema"<<endl;
+	}
+
+}

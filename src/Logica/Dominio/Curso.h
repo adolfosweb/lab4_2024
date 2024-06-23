@@ -12,7 +12,9 @@ private:
     //Edificultad dificultad;
 public:
     Curso(/* args */);
+    Curso(string nombre,string descripcion);
     ~Curso();
+    string getNombre();
 };
 
 
