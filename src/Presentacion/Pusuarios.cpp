@@ -176,7 +176,9 @@ void Pusuarios::infoUsuario() {
         cout << "Nick: " << elEstudiante.getNick() << endl;
         cout << "Nombre: " << elEstudiante.getNom() << endl;
         cout << "Pais Recidencia1: " << elEstudiante.getPaisResidencia() << endl;
-        cout << "Fecha Nac: " << elEstudiante.getFecha().anio << endl;
+        cout << "Fecha Nac: " << elEstudiante.getFecha().dia << "/" <<
+        elEstudiante.getFecha().mes << "/" <<
+        elEstudiante.getFecha().anio << endl;
     }
     //si no es estudiante, presento profesor
     else{
@@ -184,16 +186,23 @@ void Pusuarios::infoUsuario() {
         DTOProfesor elProfesor = this->iPusuario->infoProfesor(elUsuario);
         cout << "Nick: " << elProfesor.getNick() << endl;
         cout << "Nombre: " << elProfesor.getNom() << endl;
+        cout << "Instituto: " << elProfesor.getInstituto() << endl;
+        //cout << elProfesor->*getIdiomas() << endl;
+        
+        /*
+        set<string>::iterator it;
+	    for (it = elProfesor.getIdiomas().begin(); it != elProfesor.getIdiomas().end(); it++) {
+		    cout << "-" << *it << endl;
+	    } */
 
+        set<string> idiomas = elProfesor.getIdiomas();
+        if (idiomas.empty()) {
+            cout << "No hay idiomas registrados." << endl;
+        } else {
+            for (const auto& idioma : idiomas) {
+                cout << "-" << idioma << endl;
+            }
+        }
     }
-    
-
-    
-	// es alumno ()
-	// si es alumno 
-	//  dinamyc cast y lo presento como alumno
-	// else
-	//	dinamyc cast y presento como profe
-
 }
 //Fin  - CU2 Consulta de suaruio

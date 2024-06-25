@@ -101,12 +101,12 @@ bool Controller::esEstudiante(string nick){
 			Estudiante* est = dynamic_cast<Estudiante*>(*it);
 			if (est != nullptr) {
 				//Si el puntero no esta vacio es un estudiante
-				cout << "Depurado: Es estudiante";
+				//cout << "Depurado: Es estudiante";
 				return true;
 				
 			}
 			else{
-				cout << "Depurado: Es profe";
+				//cout << "Depurado: Es profe";
 				return false;
 			}
 			break;
