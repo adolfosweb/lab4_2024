@@ -9,6 +9,7 @@
 #include "../Dominio/Curso.h"
 #include <set>
 
+
 Controller::Controller() {
 	//obtendo la unica instancia del Sistema
 	this->sistema = Sistema::getInstance();
@@ -165,10 +166,12 @@ void Controller::altaCurso(string nombre,string descripcion){
 	}
 
 }
-set<DTOCurso> Controller :: ConsultaCursosNoHabilitados()
+map<int,DTOCurso> Controller :: ConsultaCursosNoHabilitados()
 {
 
-	set<DTOCurso> CursosNoHab;	//Se crea set vacío.
+	map<int,DTOCurso> CursosNoHab;	//Se crea map vacío.
+
+	int cont = 1;
 
 	for(auto ct = sistema->cursos.begin(); ct != sistema->cursos.end(); ct++ )
 	{
@@ -176,13 +179,29 @@ set<DTOCurso> Controller :: ConsultaCursosNoHabilitados()
 		if( ! (*ct)->estaHabilitado()) //Si no está habilitado...
 		{
 			//Se crea ese DataType con los valores indicados...
-			DTOCurso *Temp = new DTOCurso((*ct)->getNombre(),(*ct)->getDescripcion(), (*ct)->getIdioma(), (*ct)->getDificultad(),(*ct)->estaHabilitado());
-			//Ingreso en el set.
-			CursosNoHab.insert(*Temp);
+			DTOCurso Temp((*ct)->getNombre(),(*ct)->getDescripcion(), (*ct)->getIdioma(), (*ct)->getDificultad(),(*ct)->estaHabilitado());
+			//Ingreso al map...
+			CursosNoHab.insert({cont,Temp});
+			cont ++;
 		}
 
 	}
 
 	return CursosNoHab;
 
+}
+
+bool Controller :: IngresoLeccion(DTOCurso curso, DTOLeccion leccion)
+{
+
+	for(auto ct = sistema->cursos.begin(); ct != sistema->cursos.end(); ct++ )
+	{
+
+		if((*ct)->getNombre() == curso.getNombreCurso() && (*ct)->getDescripcion() == curso.getDescripcion()) //Busca curso...
+		{
+			(*ct)->setLeccion(leccion);
+			return true;
+		}
+	}
+	return false;
 }

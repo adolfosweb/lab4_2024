@@ -2,9 +2,11 @@
 #define NEGOCIO_CONTROLLER_IUSUARIOCONTROLLER_H_
 #include <iostream>
 #include <set>
+#include <map>
 #include "../Dto/DTOUsuario.h"
 #include "../Dto/DTOIdioma.h"
 #include "../Dto/DTOCurso.h"
+#include "../Dto/DTOLeccion.h"
 #include "Interface.h"
 #include "Sistema.h"
 
@@ -33,7 +35,8 @@ public:
 	//CU 5 Alta Curso
 	void altaCurso(string nombre,string descripcion);
 	//CU 6 Agregar Leccion
-	set<DTOCurso> ConsultaCursosNoHabilitados();
+	map<int,DTOCurso> ConsultaCursosNoHabilitados();
+	bool IngresoLeccion(DTOCurso curso,DTOLeccion leccion);
 };
 
 #endif /* NEGOCIO_CONTROLLER_IUSUARIOCONTROLLER_H_ */

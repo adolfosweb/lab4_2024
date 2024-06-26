@@ -36,3 +36,13 @@ DTOIdioma* Curso :: getIdioma()
     return idioma;
 
 }
+
+void Curso :: setLeccion(DTOLeccion leccion)
+{
+
+    Leccion *L = new Leccion (0,leccion.getTema(),leccion.getObjetivoAprendizaje());
+    
+    lecciones.insert(*L);   //Se ingresa un puntero a Lección.
+
+
+}

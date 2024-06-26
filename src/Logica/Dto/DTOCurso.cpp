@@ -23,3 +23,14 @@ string DTOCurso :: getNombreCurso()
 {
 	return nombre;
 }
+
+void DTOCurso :: MostrarDatos()
+{
+	cout << "Nombre: " << nombre << "\nDescripcion" << descripcion <<  "\nIdioma del curso: " << idioma->getIdioma() << "\nDificultad: " << dificultad << endl;
+	cout << "\n________________________________________________" << endl;
+}
+
+string DTOCurso :: getDescripcion()
+{
+	return descripcion;
+}

@@ -2,8 +2,10 @@
 #define LOGICA_CURSO_H_
 #include <iostream>
 #include "../Dto/DTOIdioma.h"
+#include "../Dto/DTOLeccion.h"
+#include "Leccion.h"
 using namespace std;
-//test
+
 enum ENUMDificultad
 {
     FACIL,MEDIO,DIFICIL
@@ -18,6 +20,8 @@ private:
     DTOIdioma *idioma;
     ENUMDificultad dificultad;
     bool habilitado;
+    set<Leccion*> lecciones;
+
 public:
     Curso(/* args */);
     Curso(string nombre,string descripcion, DTOIdioma *idioma, ENUMDificultad dificultad, bool habilitado);
@@ -27,6 +31,7 @@ public:
     DTOIdioma* getIdioma();
     ENUMDificultad getDificultad();
     bool estaHabilitado();
+    void setLeccion(DTOLeccion leccion);
 };
 
 
