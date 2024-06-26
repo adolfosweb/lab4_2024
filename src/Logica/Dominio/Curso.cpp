@@ -1,6 +1,8 @@
 #include "Curso.h"
 #include "DTOIdioma.h"
 #include <string>
+
+//HOLA
 Curso::Curso()
 {
 }
