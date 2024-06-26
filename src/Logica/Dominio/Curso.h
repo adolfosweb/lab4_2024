@@ -10,11 +10,13 @@ private:
     string descripcion;
     //dtidioma idioma;
     //Edificultad dificultad;
+    bool habilitado;
 public:
     Curso(/* args */);
     Curso(string nombre,string descripcion);
     ~Curso();
     string getNombre();
+    bool estaHabilitado();
 };
 
 

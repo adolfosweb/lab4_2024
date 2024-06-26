@@ -12,6 +12,7 @@
 //#include "AltaIdioma.h"
 #include "Pusuarios.h"
 #include "Pidioma.h"
+#include "Pcurso.h"
 #include <iostream>
 
 using namespace std;
@@ -30,6 +31,7 @@ void Menu::mostrarMenu() {
 		cout << "*** Menu principal ***" << endl;
 		cout <<"1) Opciones de Usuarios" << endl;
 		cout <<"2) Menu de Opciones de idiomas" << endl;
+		cout <<"3) Menu de Opciones de Curso" << endl;
 		cout <<"0) Salir " << endl;
 		cout <<"Ingrese una opcion: " << endl;
 		cin >> op;
@@ -45,6 +47,11 @@ void Menu::mostrarMenu() {
 				mostrarMenuIdioma();
 			}
 			break;
+		case 3:
+			{
+				std::system("clear");
+				mostrarMenuCursos();
+			}
 		case 0:
 			break;
 		default:
@@ -98,7 +105,8 @@ void Menu::mostrarMenuUsarios() {
 }
 
 				/*MENU DE OPCIONES QUE INVOLUCRAN A IDIOMA*/
-void Menu::mostrarMenuIdioma(){
+void Menu::mostrarMenuIdioma()
+{
 
     int op = 0;
 	do {
@@ -128,6 +136,72 @@ void Menu::mostrarMenuIdioma(){
 			{
 				std::system("clear");
             	return ;
+			}
+			break;
+		case 0:
+			break;
+		default:
+			cout << "Opcion desconocida" << endl;
+		}
+
+	} while (op != 0);
+   }
+void Menu::mostrarMenuCursos()
+   {
+	    int op = 0;
+	do {
+		cout << "*** Menu de Curso ***" << endl;
+		cout <<"1) Alta Curso" << endl;
+		cout <<"2) Agregar Leccion " << endl;
+        cout <<"3) Agregar Ejercicio " << endl;
+		cout <<"4) Habilitar Curso " << endl;
+		cout <<"5) Eliminar Curso " << endl;
+		cout <<"6) Consultar Curso " << endl;
+		cout <<"7) Volver A Menu Pricipal "<< endl;
+		cout <<"Ingrese una opcion: " << endl;
+
+		cin >> op;
+		switch (op) {
+		case 1: {
+				std::system("clear");
+				cout << "Agregar Curso" << endl;
+				PCurso datocurso;
+				datocurso.altaCurso();
+			}
+			break;
+		case 2:
+			{
+				std::system("clear");
+			}
+			break;
+        case 3:
+			{
+				std::system("clear");
+            
+			}
+			break;
+		case 4:
+			{
+				std::system("clear");
+            
+			}
+			break;
+		case 5:
+			{
+				std::system("clear");
+            	
+			}
+			break;
+		case 6:
+			{
+				std::system("clear");
+            
+			}
+			break;
+		case 7:
+			{
+				std::system("clear");
+            	return;
 			}
 			break;
 		case 0:

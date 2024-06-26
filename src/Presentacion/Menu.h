@@ -12,6 +12,7 @@ public:
 	void mostrarMenu();
 	void mostrarMenuUsarios();
 	void mostrarMenuIdioma();
+	void mostrarMenuCursos();
 };
 
 #endif /* MENU_H_ */

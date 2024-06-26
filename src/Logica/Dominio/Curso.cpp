@@ -1,5 +1,8 @@
 #include "Curso.h"
-
+#include <string>
+Curso::Curso()
+{
+}
 Curso::Curso(string nombre,string descripcion)
 {
     this->nombre=nombre;
@@ -9,4 +12,17 @@ Curso::Curso(string nombre,string descripcion)
 }
 Curso::~Curso()
 {
+}
+string Curso::getNombre()
+{
+    return this->nombre;
+}
+bool Curso :: estaHabilitado()
+{
+    if(habilitado == true)
+    {
+        return true;
+    }
+
+    return false;
 }

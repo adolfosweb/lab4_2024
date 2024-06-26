@@ -6,6 +6,7 @@
 #include "../Dominio/Profesor.h"
 #include "../Dominio/Usuario.h"
 #include "../Dominio/Idioma.h"
+#include "../Dominio/Curso.h"
 #include <set>
 
 Controller::Controller() {
@@ -164,3 +165,7 @@ void Controller::altaCurso(string nombre,string descripcion){
 	}
 
 }
+//set<DTOCurso> Controller :: agregarLeccion()
+//{
+
+//}
