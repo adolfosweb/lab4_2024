@@ -17,11 +17,17 @@ void  Pusuarios::altaUsuario(){
 
 	bool existe = this->iPusuario->verificarNick(nick);
 	if (!existe) {
-		cout << "Es estudiante o profesor? (1 estudiante 2 profesor" << endl;
+		cout << "Es estudiante o profesor? (1 estudiante 2 profesor)" << endl;
 		int tipoUsuario;
 		DTOUsuario *nuevoUsuario;
 
+        // Validacion tipo usuario
 		cin >> tipoUsuario;
+        while (tipoUsuario != 1 && tipoUsuario != 2){
+            cout << "error, las opciones son 1 Estudiante o 2 Profesor";
+            cin >> tipoUsuario;
+        }
+
 		if (tipoUsuario == 1) {
 			nuevoUsuario = ingresarEstudiante(nick);
 
@@ -152,14 +158,51 @@ void Pusuarios::infoUsuario() {
 	for (it = usuariosExistentes.begin(); it != usuariosExistentes.end(); it++) {
 		cout << *it << endl;
 	}
+    //controlo que sea un usuario que existe
+    string elUsuario;
+	bool existeUsuario = false;
+    while (existeUsuario == false)
+    {
+        cout << "Ingresa un usuario de la lista:" << endl;
+        cin >> elUsuario;
+        existeUsuario = this->iPusuario->verificarNick(elUsuario);
+    }
 
-	cout << "Selecione un usuario" << endl;
+    //verifico si es estudiante, presento estudiante
+    bool result =  this->iPusuario->esEstudiante(elUsuario);
+    if (result == true){
+        cout << "Datos del estudiante" << endl;
+        DTOEstudiante elEstudiante = this->iPusuario->infoEstudiante(elUsuario);
+        cout << "Nick: " << elEstudiante.getNick() << endl;
+        cout << "Nombre: " << elEstudiante.getNom() << endl;
+        cout << "Pais Recidencia1: " << elEstudiante.getPaisResidencia() << endl;
+        cout << "Fecha Nac: " << elEstudiante.getFecha().dia << "/" <<
+        elEstudiante.getFecha().mes << "/" <<
+        elEstudiante.getFecha().anio << endl;
+    }
+    //si no es estudiante, presento profesor
+    else{
+        cout << "Datos del Profesor" << endl;
+        DTOProfesor elProfesor = this->iPusuario->infoProfesor(elUsuario);
+        cout << "Nick: " << elProfesor.getNick() << endl;
+        cout << "Nombre: " << elProfesor.getNom() << endl;
+        cout << "Instituto: " << elProfesor.getInstituto() << endl;
+        //cout << elProfesor->*getIdiomas() << endl;
+        
+        /*
+        set<string>::iterator it;
+	    for (it = elProfesor.getIdiomas().begin(); it != elProfesor.getIdiomas().end(); it++) {
+		    cout << "-" << *it << endl;
+	    } */
 
-	// es alumno ()
-	// si es alumno 
-	//  dinamyc cast y lo presento como alumno
-	// else
-	//	dinamyc cast y presento como profe
-
+        set<string> idiomas = elProfesor.getIdiomas();
+        if (idiomas.empty()) {
+            cout << "No hay idiomas registrados." << endl;
+        } else {
+            for (const auto& idioma : idiomas) {
+                cout << "-" << idioma << endl;
+            }
+        }
+    }
 }
 //Fin  - CU2 Consulta de suaruio

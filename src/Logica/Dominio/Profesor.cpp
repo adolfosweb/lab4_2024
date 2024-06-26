@@ -11,6 +11,21 @@ void Profesor::agregarIdioma(Idioma* idioma) {
 	this->idioma.insert(idioma);
 }
 
+string Profesor::getInstituto(){
+	return this->instituto;
+}
+
+
+set<string> Profesor::getIdiomas(){
+	set<string> idiomas;
+	for (set<Idioma*>::iterator it = this->idioma.begin(); it != idioma.end(); ++it) {
+		 idiomas.insert((*it)->getIdioma());
+		 
+	}
+	return idiomas;
+};
+
+
 /*void Profesor::mostrarInfo(){
 	cout<<this->getNick()<<endl;
 	cout<<this->getPass()<<endl;

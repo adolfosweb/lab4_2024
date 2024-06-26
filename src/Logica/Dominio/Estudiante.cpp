@@ -14,3 +14,10 @@ Estudiante::Estudiante(string nick, string pass, string nom,string descrip, stri
 
 Estudiante::~Estudiante(){
 }
+
+string Estudiante::getPaisResidencia(){
+	return this->paisResidencia;
+}
+DTOFecha Estudiante:: getFecha(){
+    return this->fechaNacimiento;
+}

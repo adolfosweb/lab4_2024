@@ -3,6 +3,8 @@
 #include <iostream>
 #include <set>
 #include "../Dto/DTOUsuario.h"
+#include "../Dto/DTOEstudiante.h"
+#include "../Dto/DTOProfesor.h"
 #include "../Dto/DTOIdioma.h"
 
 // Esta es una iterface del Sistema.
@@ -15,13 +17,17 @@ public:
     virtual set<string> listIdiomas()=0;
 	//CU 2 Consulta de usuario
 	virtual set<string> listadoUsuarios()=0;
-
+	virtual bool esEstudiante(string nick)=0;
+	virtual DTOEstudiante infoEstudiante(string nick)=0;
+	virtual DTOProfesor infoProfesor(string nick)=0;
+	//Fin CU2
 
 	//Caso de uso Alta idioma
 	virtual void altaIdioma(string idioma)=0;
 
 	//CU 4 Concultar Idioma
 	virtual set<string> consultarIdioma()=0;
+	
 
 };
 
