@@ -1,6 +1,6 @@
 #ifndef LOGICA_DTO_DTOCURSO_H_
 #define LOGICA_DTO_DTOCURSO_H_
-
+#include "../Dominio/Curso.h"
 #include "DTOIdioma.h"
 #include <iostream>
 

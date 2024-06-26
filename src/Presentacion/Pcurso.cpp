@@ -29,13 +29,11 @@ void PCurso::AgregarLeccion()
     map<int,DTOCurso> Temp;
     cout << "\nAgregando Lección.\nListando no Habilitados:\n" << endl;
     Temp = SystemInstance->ConsultaCursosNoHabilitados();
-    int cont = 1;
 
     for(auto ct = Temp.begin(); ct!= Temp.end(); ct++)
     {
-        cout << "Curso Número " << cont << endl;
+        cout << "Curso Número " << ct->first << endl;
         ct->second.MostrarDatos();
-        cont++;
     }
 
     int in = 0;

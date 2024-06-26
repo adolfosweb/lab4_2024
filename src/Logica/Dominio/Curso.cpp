@@ -1,7 +1,7 @@
 #include "Curso.h"
 #include "../Dto/DTOIdioma.h"
 #include <string>
-
+#include <set>
 
 Curso::Curso()
 {
@@ -36,13 +36,16 @@ DTOIdioma* Curso :: getIdioma()
     return idioma;
 
 }
-
+ENUMDificultad Curso :: getDificultad()
+{
+    return dificultad;
+}
 void Curso :: setLeccion(DTOLeccion leccion)
 {
 
     Leccion *L = new Leccion (0,leccion.getTema(),leccion.getObjetivoAprendizaje());
     
-    lecciones.insert(*L);   //Se ingresa un puntero a Lección.
+    lecciones.insert(L);   //Se ingresa un puntero a Lección.
 
 
 }

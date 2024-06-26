@@ -4,6 +4,7 @@
 #include "../Dto/DTOIdioma.h"
 #include "../Dto/DTOLeccion.h"
 #include "Leccion.h"
+#include <set>
 using namespace std;
 
 enum ENUMDificultad
