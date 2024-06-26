@@ -144,10 +144,12 @@ set<string> Controller::consultarIdioma(){
 	
 }
 
-set<DTOCurso> Controller :: agregarLeccion()
+set<DTOCurso> Controller :: consultaCursoNoHabilitados()
 {
 
+	set<DTOCurso> CursosNoHab;
 
+	
 
 
 }

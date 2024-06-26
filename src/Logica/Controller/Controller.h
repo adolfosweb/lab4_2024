@@ -32,7 +32,7 @@ public:
 	 set<string> consultarIdioma();
 
 	//CU 6 Agregar Lección
-	set<DTOCurso> agregarLeccion();
+	set<DTOCurso> consultaCursoNoHabilitados();
 };
 
 #endif /* NEGOCIO_CONTROLLER_IUSUARIOCONTROLLER_H_ */

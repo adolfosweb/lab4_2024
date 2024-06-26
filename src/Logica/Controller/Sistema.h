@@ -26,7 +26,7 @@ public:
 
 	set<Usuario*> usuarios;
 	set<Idioma*> idiomas;
-	//set<Curso*> Curso;
+	set<Curso*> Cursos;
 
 	
 	Idioma* buscarIdioma(string nomIdioma);
