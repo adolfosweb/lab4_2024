@@ -1,5 +1,5 @@
 #include "Curso.h"
-#include "DTOIdioma.h"
+#include "../Dto/DTOIdioma.h"
 #include <string>
 Curso::Curso()
 {
