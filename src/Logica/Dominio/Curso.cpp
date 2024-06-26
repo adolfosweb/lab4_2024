@@ -2,7 +2,8 @@
 #include "../Dto/DTOIdioma.h"
 #include <string>
 
-//HOLA
+
+//CAMBIO DE PRUEBA
 Curso::Curso()
 {
 }
