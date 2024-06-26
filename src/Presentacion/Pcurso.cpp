@@ -22,7 +22,7 @@ void PCurso::altaCurso()
 
     this->SystemInstance->altaCurso(nombre,descr);
 }
-void PCurso::AgregarEjercicio()
+void PCurso::AgregarLeccion()
 {
-
+    
 }
