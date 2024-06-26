@@ -156,8 +156,8 @@ void Controller::altaCurso(string nombre,string descripcion){
 	}
  
 	if(result){
-		Curso *C1 = new Curso(nombre,descripcion);
-		this->sistema->cursos.insert(C1);
+		//Curso *C1 = new Curso(nombre,descripcion);
+		//this->sistema->cursos.insert(C1);
 
 		cout<<"Se creo el Curso"<<endl;
 	}else{
@@ -165,7 +165,22 @@ void Controller::altaCurso(string nombre,string descripcion){
 	}
 
 }
-//set<DTOCurso> Controller :: agregarLeccion()
-//{
+set<DTOCurso> Controller :: ConsultaCursosNoHabilitados()
+{
 
-//}
+	set<DTOCurso> CursosNoHab;
+
+	for(auto ct = sistema->cursos.begin(); ct != sistema->cursos.end(); ct++ )
+	{
+
+		if((*ct)->estaHabilitado())
+		{
+			//DTOCurso Temp = new DTOCurso(ct->getNombre(), DTOIdioma *IdiomaAsignado, bool habilitado))
+			//CursosNoHab.insert(ct);
+
+
+		}
+
+	}
+
+}

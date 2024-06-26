@@ -33,7 +33,7 @@ public:
 	//CU 5 Alta Curso
 	void altaCurso(string nombre,string descripcion);
 	//CU 6 Agregar Leccion
-	//set<DTOCurso> agregarLeccion();
+	set<DTOCurso> ConsultaCursosNoHabilitados();
 };
 
 #endif /* NEGOCIO_CONTROLLER_IUSUARIOCONTROLLER_H_ */

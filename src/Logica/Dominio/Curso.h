@@ -3,19 +3,28 @@
 #include <iostream>
 using namespace std;
 
+enum ENUMDificultad
+{
+    FACIL,MEDIO,DIFICIL
+};
+
+
 class Curso
 {
 private:
     string nombre;
     string descripcion;
-    //dtidioma idioma;
-    //Edificultad dificultad;
+    DTOIdioma *idioma;
+    ENUMDificultad dificultad;
     bool habilitado;
 public:
     Curso(/* args */);
-    Curso(string nombre,string descripcion);
+    Curso(string nombre,string descripcion, DTOIdioma *idioma, ENUMDificultad dificultad, bool habilitado);
     ~Curso();
     string getNombre();
+    string getDescripcion();
+    DTOIdioma* getIdioma();
+    ENUMDificultad getDificultad();
     bool estaHabilitado();
 };
 

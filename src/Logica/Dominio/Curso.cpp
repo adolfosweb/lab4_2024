@@ -1,14 +1,16 @@
 #include "Curso.h"
+#include "DTOIdioma.h"
 #include <string>
 Curso::Curso()
 {
 }
-Curso::Curso(string nombre,string descripcion)
+Curso::Curso(string nombre,string descripcion, DTOIdioma *idioma, ENUMDificultad dificultad, bool habilitado)
 {
-    this->nombre=nombre;
-    this->descripcion=descripcion;
-    //this->enum1=enum1;
-    //this->idioma=idioma;
+    this->nombre = nombre;
+    this->descripcion = descripcion;
+    this->idioma = idioma;
+    this->dificultad = dificultad;
+    this->habilitado = habilitado;
 }
 Curso::~Curso()
 {
@@ -19,10 +21,16 @@ string Curso::getNombre()
 }
 bool Curso :: estaHabilitado()
 {
-    if(habilitado == true)
-    {
-        return true;
-    }
+    return habilitado;
+}
+string Curso :: getDescripcion()
+{
+    return descripcion;
+}
 
-    return false;
+DTOIdioma* Curso :: getIdioma()
+{
+
+    return idioma;
+
 }
