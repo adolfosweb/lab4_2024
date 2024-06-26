@@ -4,7 +4,7 @@
 #include "../Logica/Dto/DTOCurso.h"
 #include "PCurso.h"
 
-void PCurso :: AgregarEjercicio()
+void PCurso :: AgregarLeccion()
 {
-
+    
 }

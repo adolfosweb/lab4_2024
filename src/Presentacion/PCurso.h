@@ -15,7 +15,7 @@ public:
     ~PCurso(); 
     
     //CU6 Agregar Ejercicio
-    void AgregarEjercicio();
+    void AgregarLeccion();
 };
 
 
