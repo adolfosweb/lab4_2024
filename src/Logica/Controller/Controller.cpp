@@ -168,19 +168,21 @@ void Controller::altaCurso(string nombre,string descripcion){
 set<DTOCurso> Controller :: ConsultaCursosNoHabilitados()
 {
 
-	set<DTOCurso> CursosNoHab;
+	set<DTOCurso> CursosNoHab;	//Se crea set vacío.
 
 	for(auto ct = sistema->cursos.begin(); ct != sistema->cursos.end(); ct++ )
 	{
 
-		if((*ct)->estaHabilitado())
+		if( ! (*ct)->estaHabilitado()) //Si no está habilitado...
 		{
-			//DTOCurso Temp = new DTOCurso((*ct)->getNombre(), DTOIdioma *IdiomaAsignado, bool habilitado))
-			CursosNoHab.insert(ct);
-
-
+			//Se crea ese DataType con los valores indicados...
+			DTOCurso *Temp = new DTOCurso((*ct)->getNombre(),(*ct)->getDescripcion(), (*ct)->getIdioma(), (*ct)->getDificultad(),(*ct)->estaHabilitado());
+			//Ingreso en el set.
+			CursosNoHab.insert(*Temp);
 		}
 
 	}
+
+	return CursosNoHab;
 
 }

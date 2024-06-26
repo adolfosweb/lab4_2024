@@ -3,7 +3,6 @@
 #include <string>
 
 
-//CAMBIO DE PRUEBA
 Curso::Curso()
 {
 }

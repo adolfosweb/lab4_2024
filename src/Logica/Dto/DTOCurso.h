@@ -18,7 +18,7 @@ private:
 public:
 	
 	DTOCurso();
-	DTOCurso(string nombreCurso,string Descripcion, DTOIdioma *IdiomaAsignado, bool habilitado);
+	DTOCurso(string nombre,string descripcion, DTOIdioma *idioma, ENUMDificultad dificultad, bool habilitado);
 	virtual ~DTOCurso();
 	string getNombreCurso();
 	bool estaHabilitado();
