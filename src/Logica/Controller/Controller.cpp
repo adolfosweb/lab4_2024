@@ -175,8 +175,8 @@ set<DTOCurso> Controller :: ConsultaCursosNoHabilitados()
 
 		if((*ct)->estaHabilitado())
 		{
-			//DTOCurso Temp = new DTOCurso(ct->getNombre(), DTOIdioma *IdiomaAsignado, bool habilitado))
-			//CursosNoHab.insert(ct);
+			//DTOCurso Temp = new DTOCurso((*ct)->getNombre(), DTOIdioma *IdiomaAsignado, bool habilitado))
+			CursosNoHab.insert(ct);
 
 
 		}

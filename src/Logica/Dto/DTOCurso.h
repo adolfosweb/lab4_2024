@@ -9,11 +9,11 @@ using namespace std;
 class DTOCurso
 {
 private:
-    string nombreCurso;
-	string Descripcion;
-    DTOIdioma *IdiomaAsignado;
-    //ENUM dificultad; -Pendiente ENUM-
-	bool habilitado;
+    string nombre;
+    string descripcion;
+    DTOIdioma *idioma;
+    ENUMDificultad dificultad;
+    bool habilitado;
 
 public:
 	
