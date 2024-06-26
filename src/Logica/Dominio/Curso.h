@@ -1,6 +1,7 @@
 #ifndef LOGICA_CURSO_H_
 #define LOGICA_CURSO_H_
 #include <iostream>
+#include "../Dto/DTOIdioma.h"
 using namespace std;
 
 enum ENUMDificultad
