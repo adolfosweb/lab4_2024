@@ -15,6 +15,9 @@ public:
     ~Estudiante();
     string getPaisResidencia();
     DTOFecha getFecha();
+    bool esProfesor();
+    void setCurso(string curso);
+//  void listoIdiomaProfesor(string nombreProf);
 };
 
 

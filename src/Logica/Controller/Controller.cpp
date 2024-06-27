@@ -2,11 +2,14 @@
 #include "../Dto/DTOEstudiante.h"
 #include "../Dto/DTOUsuario.h"
 #include "../Dto/DTOProfesor.h"
+#include "../Dto/DTOCurso.h"
 #include "../Dominio/Estudiante.h"
 #include "../Dominio/Profesor.h"
 #include "../Dominio/Usuario.h"
 #include "../Dominio/Idioma.h"
+#include "../Dominio/Curso.h"
 #include <set>
+
 
 Controller::Controller() {
 	//obtendo la unica instancia del Sistema
@@ -155,9 +158,6 @@ DTOProfesor Controller::infoProfesor(string nick){
 }
 
 //CU2 FIN
-
-
-
 void Controller::altaIdioma(string idioma){
 
 	bool result = true;
@@ -170,7 +170,7 @@ void Controller::altaIdioma(string idioma){
 			break;
 		}
 	}
- 
+	
 	if(result){
 		Idioma *I = new Idioma(idioma);
 
@@ -196,4 +196,91 @@ set<string> Controller::consultarIdioma(){
 	return result;
 
 	
+}
+void Controller::altaCurso(string nombre,string descripcion, DTOIdioma *idioma, ENUMDificultad dificultad, bool habilitado,string nombreProf)
+{
+	Profesor* nom;
+	bool resultNick = true;
+	bool result = true;
+	set<Curso*>::iterator it;
+	set<Usuario*>::iterator itr;
+	for (it = this->sistema->cursos.begin(); it != this->sistema->cursos.end(); it++) {
+		
+		if (nombre == (*it)->getNombre()) {
+			result = false;			
+			break;
+		}
+	}
+	for (itr = this->sistema->usuarios.begin(); itr != this->sistema->usuarios.end(); itr++) {
+		
+		if ((*itr)->esProfesor()) {
+			resultNick = true;	
+			nom = dynamic_cast<Profesor*>(*itr);
+			break;
+		}
+		else
+		{
+			resultNick= false;
+		}
+	}
+	if(result && resultNick){
+		Curso *C1 = new Curso(nombre,descripcion,idioma,dificultad,habilitado);
+		this->sistema->cursos.insert(C1);
+		nom->setCurso(C1->getNombre());
+		
+		cout<<"Se creo el Curso"<<endl;
+	}else{
+		cout<<"El Curso ya existia en sistema o Nick de Estudiante"<<endl;
+		
+	}
+}
+void Controller :: listoProfesor()
+{
+    set<Usuario*>::iterator it;
+    for (it = this->sistema->usuarios.begin(); it != this->sistema->usuarios.end(); it++) 
+    {	
+        if ((*it)->esProfesor())
+        {
+            cout << ": " << (*it)->getNick() << endl;	
+        }
+    }
+}
+map<int,DTOCurso> Controller :: ConsultaCursosNoHabilitados()
+{
+
+	map<int,DTOCurso> CursosNoHab;	//Se crea map vacío.
+
+	int cont = 1;
+
+	for(auto ct = sistema->cursos.begin(); ct != sistema->cursos.end(); ct++ )
+	{
+
+		if( ! (*ct)->estaHabilitado()) //Si no está habilitado...
+		{
+			//Se crea ese DataType con los valores indicados...
+			DTOCurso Temp((*ct)->getNombre(),(*ct)->getDescripcion(), (*ct)->getIdioma(), (*ct)->getDificultad(),(*ct)->estaHabilitado());
+			//Ingreso al map...
+			CursosNoHab.insert({cont,Temp});
+			cont ++;
+		}
+
+	}
+
+	return CursosNoHab;
+
+}
+
+bool Controller :: IngresoLeccion(DTOCurso curso, DTOLeccion leccion)
+{
+
+	for(auto ct = sistema->cursos.begin(); ct != sistema->cursos.end(); ct++ )
+	{
+
+		if((*ct)->getNombre() == curso.getNombreCurso() && (*ct)->getDescripcion() == curso.getDescripcion()) //Busca curso...
+		{
+			(*ct)->setLeccion(leccion);
+			return true;
+		}
+	}
+	return false;
 }

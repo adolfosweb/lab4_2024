@@ -21,3 +21,9 @@ string Estudiante::getPaisResidencia(){
 DTOFecha Estudiante:: getFecha(){
     return this->fechaNacimiento;
 }
+bool Estudiante::esProfesor() {
+    return false;
+}
+void Estudiante :: setCurso(string curso)
+{  
+}

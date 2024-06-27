@@ -2,10 +2,13 @@
 #define NEGOCIO_CONTROLLER_IUSUARIOCONTROLLER_H_
 #include <iostream>
 #include <set>
+#include <map>
 #include "../Dto/DTOUsuario.h"
 #include "../Dto/DTOEstudiante.h"
 #include "../Dto/DTOProfesor.h"
 #include "../Dto/DTOIdioma.h"
+#include "../Dto/DTOCurso.h"
+#include "../Dto/DTOLeccion.h"
 #include "Interface.h"
 #include "Sistema.h"
 
@@ -22,7 +25,7 @@ public:
 	bool verificarNick(string nick);
 	set<string> listIdiomas();
 	void agregarUsuario(DTOUsuario* usuario);
-	
+
 	//CU2 - Consulta de Usuario
 	set<string> listadoUsuarios();
 	bool esEstudiante(string nick);
@@ -34,6 +37,13 @@ public:
 
 	//CU 4 Consultar Curso
 	 set<string> consultarIdioma();
+	//CU 5 Alta Curso
+	void altaCurso(string nombre,string descripcion, DTOIdioma *idioma, ENUMDificultad dificultad, bool habilitado,string nombreProf);
+	void listoProfesor();
+
+	//CU 6 Agregar Leccion
+	map<int,DTOCurso> ConsultaCursosNoHabilitados();
+	bool IngresoLeccion(DTOCurso curso,DTOLeccion leccion);
 };
 
 #endif /* NEGOCIO_CONTROLLER_IUSUARIOCONTROLLER_H_ */
