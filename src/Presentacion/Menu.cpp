@@ -150,6 +150,7 @@ void Menu::mostrarMenuCursos()
    {
 	    int op = 0;
 	do {
+		std::system("clear");
 		cout << "*** Menu de Curso ***" << endl;
 		cout <<"1) Alta Curso" << endl;
 		cout <<"2) Agregar Leccion " << endl;
@@ -159,19 +160,20 @@ void Menu::mostrarMenuCursos()
 		cout <<"6) Consultar Curso " << endl;
 		cout <<"7) Volver A Menu Pricipal "<< endl;
 		cout <<"Ingrese una opcion: " << endl;
-
+		PCurso datocurso;
 		cin >> op;
 		switch (op) {
 		case 1: {
 				std::system("clear");
 				cout << "Agregar Curso" << endl;
-				PCurso datocurso;
 				datocurso.altaCurso();
 			}
 			break;
 		case 2:
 			{
 				std::system("clear");
+				cout << "Agregar Leccion" << endl;
+				datocurso.AgregarLeccion();
 			}
 			break;
         case 3:

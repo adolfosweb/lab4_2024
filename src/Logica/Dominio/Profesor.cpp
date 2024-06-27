@@ -35,3 +35,11 @@ void Profesor :: setCurso(string curso)
 {
     this->cursor.insert(curso);   
 }
+void Profesor :: listoIdiomaProfesor()
+{
+    set<Idioma*> :: iterator it;
+   	for (it = this->idioma.begin(); it != this->idioma.end(); it++) {
+        cout<<": "<< (*it)->getIdioma()<<endl;
+	}
+
+}

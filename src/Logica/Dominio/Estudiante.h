@@ -13,7 +13,7 @@ public:
     ~Estudiante();
     bool esProfesor();
     void setCurso(string curso);
-//  void listoIdiomaProfesor(string nombreProf);
+    void listoIdiomaProfesor();
 };
 
 

@@ -28,13 +28,15 @@ public:
 	set<string> listadoUsuarios();
 
 	//Caso de uso Alta idioma
-	 void altaIdioma(string idioma);
+	void altaIdioma(string idioma);
 
 	//CU 4 Consultar Curso
-	 set<string> consultarIdioma();
+	set<string> consultarIdioma();
 	//CU 5 Alta Curso
-	void altaCurso(string nombre,string descripcion, DTOIdioma *idioma, ENUMDificultad dificultad, bool habilitado,string nombreProf);
+	void altaCurso(string nombre,string descripcion, DTOIdioma *idioma, ENUMDificultad dificultad, bool habilitado,string nombreProf,set<string> previa,DTOLeccion nuevaLeccion);
 	void listoProfesor();
+	void listoIdiomaProfesor(string nick);
+	set<string> listaCursos();
 
 	//CU 6 Agregar Leccion
 	map<int,DTOCurso> ConsultaCursosNoHabilitados();

@@ -14,7 +14,7 @@ private:
     DTOIdioma *idioma;
     ENUMDificultad dificultad;
     bool habilitado;
-
+    set<string> previas;
 public:
 	
 	DTOCurso();
@@ -26,6 +26,7 @@ public:
     ENUMDificultad getDificultad();
 	bool estaHabilitado();
     void MostrarDatos();
+    set<string> getPrevia(); 
 };
 
 #endif /* LOGICA_DTO_DTOCURSO_H_ */

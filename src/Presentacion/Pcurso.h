@@ -15,6 +15,7 @@ public:
     ~PCurso(); 
     //CU5 Alta Curso
     void altaCurso();
+    set<string> seleccionarCursos();
     //CU6 Agregar Ejercicio
     void AgregarLeccion();
 
