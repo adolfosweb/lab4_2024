@@ -157,7 +157,9 @@ DTOProfesor Controller::infoProfesor(string nick){
 	return elProfesor;
 }
 
-//CU2 FIN
+//CU2 FIN Consulta de Usuario
+
+//CU3 Alta idioma
 void Controller::altaIdioma(string idioma){
 
 	bool result = true;
@@ -181,7 +183,7 @@ void Controller::altaIdioma(string idioma){
 	}
 
 }
-
+//FIN CU3 Alta idioma
 
 set<string> Controller::consultarIdioma(){
 
@@ -197,6 +199,7 @@ set<string> Controller::consultarIdioma(){
 
 	
 }
+//CU 5 Alta Curso
 void Controller::altaCurso(string nombre,string descripcion, DTOIdioma *idioma, ENUMDificultad dificultad, bool habilitado,string nombreProf)
 {
 	Profesor* nom;
@@ -233,6 +236,7 @@ void Controller::altaCurso(string nombre,string descripcion, DTOIdioma *idioma, 
 		cout<<"El Curso ya existia en sistema o Nick de Estudiante"<<endl;
 		
 	}
+//FIN CU 5 Alta Curso
 }
 void Controller :: listoProfesor()
 {
@@ -245,6 +249,9 @@ void Controller :: listoProfesor()
         }
     }
 }
+//FIN CU 5 Alta Curso
+
+//CU 6 Agregar Leccion
 map<int,DTOCurso> Controller :: ConsultaCursosNoHabilitados()
 {
 
@@ -284,3 +291,4 @@ bool Controller :: IngresoLeccion(DTOCurso curso, DTOLeccion leccion)
 	}
 	return false;
 }
+//FIN CU 6 Agregar Leccion
