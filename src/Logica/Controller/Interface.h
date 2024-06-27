@@ -37,6 +37,10 @@ public:
 	//CU 6 Agregar Leccion
 	virtual map<int,DTOCurso> ConsultaCursosNoHabilitados() = 0;
 	virtual bool IngresoLeccion(DTOCurso curso,DTOLeccion leccion) = 0;
+
+	//CU 8 Habilitar Curso
+	virtual void habilitarCurso(string nombreCurso)=0;
+
 };
 
 #endif /* LOGICA_CONTROLLER_INTERFACE_H_ */

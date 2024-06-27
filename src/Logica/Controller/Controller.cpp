@@ -292,3 +292,16 @@ bool Controller :: IngresoLeccion(DTOCurso curso, DTOLeccion leccion)
 	return false;
 }
 //FIN CU 6 Agregar Leccion
+
+// CU 8 Habilitar Curso
+
+void Controller::habilitarCurso(string nombreCurso){
+	set<Curso*>::iterator it;
+	for (it = this->sistema->cursos.begin(); it != this->sistema->cursos.end(); it++) {
+		if (nombreCurso == (*it)->getNombre()) {	
+			(*it)->habilitate();	
+			break;
+		}
+	}
+	cout<<"El Curso a sido Habilitado"<<endl;
+}

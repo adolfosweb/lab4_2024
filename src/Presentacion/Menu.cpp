@@ -177,13 +177,14 @@ void Menu::mostrarMenuCursos()
         case 3:
 			{
 				std::system("clear");
-            
 			}
 			break;
 		case 4:
 			{
 				std::system("clear");
-            
+           		cout << "Habilitar Curso" << endl;
+				PCurso datocurso;
+				datocurso.habilitarCurso();
 			}
 			break;
 		case 5:

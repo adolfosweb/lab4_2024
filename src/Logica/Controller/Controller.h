@@ -44,6 +44,9 @@ public:
 	//CU 6 Agregar Leccion
 	map<int,DTOCurso> ConsultaCursosNoHabilitados();
 	bool IngresoLeccion(DTOCurso curso,DTOLeccion leccion);
+
+	//CU 8 Habilitar Curso
+	void habilitarCurso(string nombreCurso);
 };
 
 #endif /* NEGOCIO_CONTROLLER_IUSUARIOCONTROLLER_H_ */

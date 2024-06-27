@@ -98,7 +98,44 @@ void PCurso::AgregarLeccion()
         cout << "\nIngreso Completado..." << endl;
     }
 
-    
+}
+
+//CU 8 HABILITAR CURSO
+void PCurso::habilitarCurso(){
+    map<int,DTOCurso>  cursoNoHabilitados;
+
+    cursoNoHabilitados = this->SystemInstance->ConsultaCursosNoHabilitados();
+    if(!cursoNoHabilitados.empty()){
+            cout<<"Los cursos no habilitados son: "<<endl;
+
+    for(auto ct = cursoNoHabilitados.begin(); ct!= cursoNoHabilitados.end(); ct++)
+        {
+            cout << "Curso " << ct->first <<" "<<ct->second.getNombreCurso() << endl;
+            
+        }
+
+        int numeroCurso;
+        bool exiteCurso=false;
+        
+
+        while(!exiteCurso){
+            cout<<"selecciona el numero de un curso a habilitar"<<endl;
+
+            cin>>numeroCurso;
+
+            auto it = cursoNoHabilitados.find(numeroCurso);
+
+            if(it != cursoNoHabilitados.end()){
+
+                this->SystemInstance->habilitarCurso(it->second.getNombreCurso());
+                exiteCurso=true;
+            }else{
+                cout<<"El curso eleguido no existe"<<endl;
+            }
 
 
+        }
+    }else{
+        cout<<"No hay curso para habilitar"<<endl;
+    }
 }
