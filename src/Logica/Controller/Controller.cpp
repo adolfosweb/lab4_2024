@@ -2,6 +2,7 @@
 #include "../Dto/DTOEstudiante.h"
 #include "../Dto/DTOUsuario.h"
 #include "../Dto/DTOProfesor.h"
+#include "../Dto/DTOCurso.h"
 #include "../Dominio/Estudiante.h"
 #include "../Dominio/Profesor.h"
 #include "../Dominio/Usuario.h"
@@ -101,9 +102,6 @@ set<string>  Controller::listadoUsuarios() {
 
 
 //CU2 FIN
-
-
-
 void Controller::altaIdioma(string idioma){
 
 	bool result = true;
@@ -116,7 +114,7 @@ void Controller::altaIdioma(string idioma){
 			break;
 		}
 	}
- 
+	
 	if(result){
 		Idioma *I = new Idioma(idioma);
 
@@ -143,28 +141,53 @@ set<string> Controller::consultarIdioma(){
 
 	
 }
-void Controller::altaCurso(string nombre,string descripcion){
-
+void Controller::altaCurso(string nombre,string descripcion, DTOIdioma *idioma, ENUMDificultad dificultad, bool habilitado,string nombreProf)
+{
+	Profesor* nom;
+	bool resultNick = true;
 	bool result = true;
 	set<Curso*>::iterator it;
+	set<Usuario*>::iterator itr;
 	for (it = this->sistema->cursos.begin(); it != this->sistema->cursos.end(); it++) {
 		
 		if (nombre == (*it)->getNombre()) {
-			result = false;
-			
+			result = false;			
 			break;
 		}
 	}
- 
-	if(result){
-		//Curso *C1 = new Curso(nombre,descripcion);
-		//this->sistema->cursos.insert(C1);
-
+	for (itr = this->sistema->usuarios.begin(); itr != this->sistema->usuarios.end(); itr++) {
+		
+		if ((*itr)->esProfesor()) {
+			resultNick = true;	
+			nom = dynamic_cast<Profesor*>(*itr);
+			break;
+		}
+		else
+		{
+			resultNick= false;
+		}
+	}
+	if(result && resultNick){
+		Curso *C1 = new Curso(nombre,descripcion,idioma,dificultad,habilitado);
+		this->sistema->cursos.insert(C1);
+		nom->setCurso(C1->getNombre());
+		
 		cout<<"Se creo el Curso"<<endl;
 	}else{
-		cout<<"El Curso ya existia en sistema"<<endl;
+		cout<<"El Curso ya existia en sistema o Nick de Estudiante"<<endl;
+		
 	}
-
+}
+void Controller :: listoProfesor()
+{
+    set<Usuario*>::iterator it;
+    for (it = this->sistema->usuarios.begin(); it != this->sistema->usuarios.end(); it++) 
+    {	
+        if ((*it)->esProfesor())
+        {
+            cout << ": " << (*it)->getNick() << endl;	
+        }
+    }
 }
 map<int,DTOCurso> Controller :: ConsultaCursosNoHabilitados()
 {

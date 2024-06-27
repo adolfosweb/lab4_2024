@@ -34,3 +34,15 @@ string DTOCurso :: getDescripcion()
 {
 	return descripcion;
 }
+DTOIdioma* DTOCurso :: getIdioma()
+{
+	return idioma;
+}
+ENUMDificultad DTOCurso :: getDificultad()
+{
+	return dificultad;
+}
+bool DTOCurso :: estaHabilitado()
+{
+	return habilitado;
+}

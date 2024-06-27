@@ -11,6 +11,9 @@ public:
     Estudiante();
     Estudiante(string nick, string pass, string nom,string descrip, string pais, DTOFecha fecha);
     ~Estudiante();
+    bool esProfesor();
+    void setCurso(string curso);
+//  void listoIdiomaProfesor(string nombreProf);
 };
 
 

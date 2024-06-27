@@ -14,3 +14,9 @@ Estudiante::Estudiante(string nick, string pass, string nom,string descrip, stri
 
 Estudiante::~Estudiante(){
 }
+bool Estudiante::esProfesor() {
+    return false;
+}
+void Estudiante :: setCurso(string curso)
+{  
+}

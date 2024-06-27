@@ -22,6 +22,8 @@ public:
 	virtual ~DTOCurso();
 	string getNombreCurso();
     string getDescripcion();
+    DTOIdioma* getIdioma();
+    ENUMDificultad getDificultad();
 	bool estaHabilitado();
     void MostrarDatos();
 };

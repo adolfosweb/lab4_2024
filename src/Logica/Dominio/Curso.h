@@ -22,6 +22,7 @@ private:
     ENUMDificultad dificultad;
     bool habilitado;
     set<Leccion*> lecciones;
+//    set<string> previa;
 
 public:
     Curso(/* args */);
@@ -33,6 +34,7 @@ public:
     ENUMDificultad getDificultad();
     bool estaHabilitado();
     void setLeccion(DTOLeccion leccion);
+//    void setPrevia(string curso);
 };
 
 

@@ -26,8 +26,9 @@ public:
 	//CU 4 Concultar Idioma
 	virtual set<string> consultarIdioma()=0;
 	//CU 5 Alta Curso
-	virtual void altaCurso(string nombre,string descripcion)=0;
-	
+	virtual void altaCurso(string nombre,string descripcion, DTOIdioma *idioma, ENUMDificultad dificultad, bool habilitado,string nombreProf)=0;
+	virtual void listoProfesor()=0;
+
 	//CU 6 Agregar Leccion
 	virtual map<int,DTOCurso> ConsultaCursosNoHabilitados() = 0;
 	virtual bool IngresoLeccion(DTOCurso curso,DTOLeccion leccion) = 0;

@@ -1,4 +1,6 @@
 #include "Profesor.h"
+#include "Curso.h"
+#include "../Dto/DTOCurso.h"
 Profesor::Profesor(){}
 
 Profesor::Profesor(string nick, string pass, string nom,string descrip, string instituto) 
@@ -10,7 +12,10 @@ Profesor::~Profesor(){
 void Profesor::agregarIdioma(Idioma* idioma) {
 	this->idioma.insert(idioma);
 }
-
+bool verificarTipoUsuario(Usuario* usuario)
+{
+    return usuario->esProfesor();
+}
 /*void Profesor::mostrarInfo(){
 	cout<<this->getNick()<<endl;
 	cout<<this->getPass()<<endl;
@@ -23,3 +28,10 @@ void Profesor::agregarIdioma(Idioma* idioma) {
         cout << "- " << idioma->getIdioma() << endl; // Asumiendo que Idioma tiene un método getNombre()
     }
 }*/
+bool Profesor::esProfesor(){
+    return true;
+}
+void Profesor :: setCurso(string curso)
+{
+    this->cursor.insert(curso);   
+}

@@ -1,9 +1,8 @@
 #include <iostream>
 #include <set>
 #include "../Logica/Controller/Controller.h"
-#include "../Logica/Dto/DTOCurso.h"
+#include "../Logica/Dominio/Usuario.h"
 #include "Pcurso.h"
-
 PCurso::PCurso(){
     this->SystemInstance=new Controller();
 }
@@ -14,16 +13,47 @@ PCurso::~PCurso(){
 void PCurso::altaCurso()
 {
     string nombre;
-    string descr;
-    
+    string descripcion;
+    ENUMDificultad dif;
+    int difInt;
+    int select;
+    DTOIdioma *idioma;
+    bool habilitado=false;
+    string nombreProf;
 	cout << "Ingrese Nombre del Curso:"<< endl;
 	cin >> nombre;
     cout << "Ingrese una Descripcion:"<< endl;
-	cin >> descr;
-
-    this->SystemInstance->altaCurso(nombre,descr);
+	cin >> descripcion;
+   cout << "Ingrese la dificultad (0: Fácil, 1: Intermedio, 2: Avanzado):" << endl;
+    cin >> difInt;
+    cout << "Lista de Profesores:" << endl;
+    this->SystemInstance->listoProfesor();
+    cout << "Ingrese Nombre del Profesor:"<< endl;
+	cin >> nombreProf;
+    switch (difInt) {
+        case 0:
+            dif = ENUMDificultad::FACIL;
+            break;
+        case 1:
+            dif = ENUMDificultad::MEDIO;
+            break;
+        case 2:
+            dif = ENUMDificultad::DIFICIL;
+            break;
+        default:
+            cout << "Valor de dificultad no válido." << endl;
+    }
+    //muestro lista de idioma de prof
+    //selecciona idioma
+    if (this->SystemInstance->verificarNick(nombreProf))
+    {
+        this->SystemInstance->altaCurso(nombre,descripcion,idioma,dif,habilitado,nombreProf);
+    }
+    else
+    {
+        cout<<"Nombre de Usuario No encontrado"<<endl;
+    }
 }
-
 void PCurso::AgregarLeccion()
 {
     map<int,DTOCurso> Temp;

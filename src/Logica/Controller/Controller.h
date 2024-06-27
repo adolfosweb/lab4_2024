@@ -23,7 +23,7 @@ public:
 	bool verificarNick(string nick);
 	set<string> listIdiomas();
 	void agregarUsuario(DTOUsuario* usuario);
-	
+
 	//CU2 - Consulta de Usuario
 	set<string> listadoUsuarios();
 
@@ -33,7 +33,9 @@ public:
 	//CU 4 Consultar Curso
 	 set<string> consultarIdioma();
 	//CU 5 Alta Curso
-	void altaCurso(string nombre,string descripcion);
+	void altaCurso(string nombre,string descripcion, DTOIdioma *idioma, ENUMDificultad dificultad, bool habilitado,string nombreProf);
+	void listoProfesor();
+
 	//CU 6 Agregar Leccion
 	map<int,DTOCurso> ConsultaCursosNoHabilitados();
 	bool IngresoLeccion(DTOCurso curso,DTOLeccion leccion);

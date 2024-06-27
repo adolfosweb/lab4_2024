@@ -49,3 +49,7 @@ void Curso :: setLeccion(DTOLeccion leccion)
 
 
 }
+//void Curso :: setPrevia(string curso)
+//{
+//    this->previa.insert(curso); 
+//}

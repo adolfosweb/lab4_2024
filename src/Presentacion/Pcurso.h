@@ -17,8 +17,8 @@ public:
     void altaCurso();
     //CU6 Agregar Ejercicio
     void AgregarLeccion();
-    
 
+    
 };
 
 
