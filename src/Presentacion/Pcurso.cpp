@@ -12,30 +12,25 @@ PCurso::~PCurso(){
 }
 void PCurso::altaCurso()
 {
-   // std::system("clear");
-    string nombre="",objetivoAprendizaje="",tema="",nombreProf="",descripcion="";
+    string nombre;
+    string descripcion;
     ENUMDificultad dif;
-    int difInt=0,select=0;
+    int difInt;
+    int select;
     DTOIdioma *idioma;
     bool habilitado=false;
-
+    string nombreProf;
 	cout << "Ingrese Nombre del Curso:"<< endl;
 	cin >> nombre;
-
     cout << "Ingrese una Descripcion:"<< endl;
 	cin >> descripcion;
-
    cout << "Ingrese la dificultad (0: Fácil, 1: Intermedio, 2: Avanzado):" << endl;
     cin >> difInt;
-
     cout << "Lista de Profesores:" << endl;
     this->SystemInstance->listoProfesor();
-
     cout << "Ingrese Nombre del Profesor:"<< endl;
 	cin >> nombreProf;
-
-    switch (difInt) 
-    {
+    switch (difInt) {
         case 0:
             dif = ENUMDificultad::FACIL;
             break;
@@ -48,88 +43,16 @@ void PCurso::altaCurso()
         default:
             cout << "Valor de dificultad no válido." << endl;
     }
-    this->SystemInstance->listoIdiomaProfesor(nombreProf);
+    //muestro lista de idioma de prof
     //selecciona idioma
-    set<string> previas;
-    int agregarCurso;
-
-    cout << " ¿Desea agregar Previas? (1=si 2 =no)? " <<endl;
-    cin >> agregarCurso;
-
-    if (agregarCurso == 1) 
-    {
-        previas = seleccionarCursos();
-    } else 
-    {
-        cout << "No se agrego previa" << endl;
-    }
-
-    int Adleccion;
-    cout << " ¿Desea agregar Lecciones? (1=si 2 =no)? " <<endl;
-    cin >> Adleccion;
-    DTOLeccion nuevaLeccion(0,tema,objetivoAprendizaje);
-
-    if (Adleccion == 1) 
-    {
-        cout << "Ingrese un tema" << endl;
-        cin >> tema;
-        cout << "Ingrese un objetivo de aprendizaje" << endl;
-        cin >> objetivoAprendizaje;
-    } else 
-    {
-        cout << "No se agrego Lecciones" << endl;
-    }
-
     if (this->SystemInstance->verificarNick(nombreProf))
     {
-        this->SystemInstance->altaCurso(nombre,descripcion,idioma,dif,habilitado,nombreProf,previas,nuevaLeccion);
+        this->SystemInstance->altaCurso(nombre,descripcion,idioma,dif,habilitado,nombreProf);
     }
     else
     {
         cout<<"Nombre de Usuario No encontrado"<<endl;
     }
-}
-set<string>  PCurso::seleccionarCursos()
-{
-
-    set<string> cursosExistentes = this->SystemInstance->listaCursos();
-	set<string> CursosSeleccionados;
-
-	set<string>::iterator it;
-	for (it = cursosExistentes.begin(); it != cursosExistentes.end(); it++) 
-    {
-		cout << "Curso: " << *it << endl;
-	}
-	string curs;
-	bool quiereIngresarcurso = true;
-	do 
-    {
-		cout << "Ingrese un curso de la lista: (S/s para salir)" << endl;
-		cin >> curs;
-
-		if (curs != "S" && curs != "s") 
-        {
-			it = cursosExistentes.find(curs);
-
-			if (it != cursosExistentes.end()) 
-            {
-				//solo selecciono los cursos que existen
-				CursosSeleccionados.insert(curs);
-				cout << "Previa ingresado: " << curs  << endl;
-			} 
-            else 
-            {
-				cout << "El curso ingresado no existe" << endl;
-			}
-		} 
-        else 
-        {
-			quiereIngresarcurso = false;
-		}
-	} 
-    while (quiereIngresarcurso);
-
-	return CursosSeleccionados;
 }
 void PCurso::AgregarLeccion()
 {
@@ -155,7 +78,7 @@ void PCurso::AgregarLeccion()
     string nombreLeccion = "", objetivo = "";
     char sel = ' ';
 
-    cout << "\nIngrese tema de la nueva lección:" << endl;
+    cout << "\nIngrese nombre de la nueva lección:" << endl;
     cin >> nombreLeccion;
     cout << "\nIngrese objetivo de la lección:" << endl;
     cin >> objetivo;
