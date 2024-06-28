@@ -93,70 +93,6 @@ set<string>  Controller::listadoUsuarios() {
 	return listaUsuarios;
 }
 
-bool Controller::esEstudiante(string nick){
-	// bool esEstudiante(nickUsuario)
-	//Busco el usuario
-	set<Usuario*>::iterator it;
-	for (it = this->sistema->usuarios.begin(); it != this->sistema->usuarios.end(); it++) {
-		if (nick == (*it)->getNick()) {
-			// chequeo algo para ver si es estudiante o profesor
-			//hago un casting para determinar el tipo de instancia
-			Estudiante* est = dynamic_cast<Estudiante*>(*it);
-			if (est != nullptr) {
-				//Si el puntero no esta vacio es un estudiante
-				//cout << "Depurado: Es estudiante";
-				return true;
-				
-			}
-			else{
-				//cout << "Depurado: Es profe";
-				return false;
-			}
-			break;
-		}
-	}
-	return false;
-}
-
-DTOEstudiante Controller::infoEstudiante(string nick){
-	// dtoEstudiante consultaDatos(nickName)
-	DTOEstudiante elEstudiante;
-
-	//busco el estudiante
-	set<Usuario*>::iterator it;
-	for (it = this->sistema->usuarios.begin(); it != this->sistema->usuarios.end(); it++) {
-		if (nick == (*it)->getNick()) {
-			Estudiante* est = dynamic_cast<Estudiante*>(*it);
-			if (est != nullptr) {  // Asegurarse de que la conversión es exitosa
-				//cout << "El estudiante es: " << est->getNick();
-				elEstudiante = DTOEstudiante(est->getNick(), "***", est->getNom(), est->getDescrip(), est->getPaisResidencia(), est->getFecha());
-			}
-			break;  // Salir del bucle una vez que se encuentra el estudiante
-		}
-	}
-	return elEstudiante;
-}
-
-DTOProfesor Controller::infoProfesor(string nick){
-	// dtoProfesor consultaDatos(nickName)
-	DTOProfesor elProfesor;
-
-	//busco el Profesor
-	set<Usuario*>::iterator it;
-	for (it = this->sistema->usuarios.begin(); it != this->sistema->usuarios.end(); it++) {
-		if (nick == (*it)->getNick()) {
-			Profesor* est = dynamic_cast<Profesor*>(*it);
-			if (est != nullptr) {  // Asegurarse de que la conversión es exitosa
-				//cout << "El Profesor es: " << est->getNick();
-				//DTOProfesor(string nick, string pass, string nom,string descrip, string instituto, set<string> idiomas);
-				elProfesor = DTOProfesor(est->getNick(), "***", est->getNom(), est->getDescrip(), est->getInstituto(), est->getIdiomas());
-			}
-			break;  // Salir del bucle una vez que se encuentra el Profesor
-		}
-	}
-	return elProfesor;
-}
-
 //CU2 FIN Consulta de Usuario
 
 //CU3 Alta idioma
@@ -200,8 +136,10 @@ set<string> Controller::consultarIdioma(){
 	
 }
 //CU 5 Alta Curso
-void Controller::altaCurso(string nombre,string descripcion, DTOIdioma *idioma, ENUMDificultad dificultad, bool habilitado,string nombreProf)
+void Controller::altaCurso(string nombre,string descripcion, DTOIdioma *idioma, ENUMDificultad dificultad, bool habilitado,string nombreProf,set<string> previa,DTOLeccion nuevaLeccion)
 {
+	string select="";
+	string idiomaProf;
 	Profesor* nom;
 	bool resultNick = true;
 	bool result = true;
@@ -214,25 +152,56 @@ void Controller::altaCurso(string nombre,string descripcion, DTOIdioma *idioma, 
 			break;
 		}
 	}
-	for (itr = this->sistema->usuarios.begin(); itr != this->sistema->usuarios.end(); itr++) {
-		
-		if ((*itr)->esProfesor()) {
-			resultNick = true;	
-			nom = dynamic_cast<Profesor*>(*itr);
-			break;
+	for(auto ct = sistema->usuarios.begin(); ct != sistema->usuarios.end(); ct++ )
+	{
+		if((*ct)->esProfesor() && (*ct)->getNick()==nombreProf)
+		{
+			(*ct)->listoIdiomaProfesor();
+
+			cout<<"Ingrese el Idioma: "<<endl;
+			getline(cin,idiomaProf);
+			getchar();
+			
+			select = (*ct)->seleccionarIdioma(idiomaProf);
+			resultNick = true;
+			nom = dynamic_cast<Profesor*>(*ct);
 		}
 		else
 		{
 			resultNick= false;
 		}
 	}
-	if(result && resultNick){
-		Curso *C1 = new Curso(nombre,descripcion,idioma,dificultad,habilitado);
-		this->sistema->cursos.insert(C1);
+	if(result && resultNick)
+	{
+		Curso *C1=nullptr;
+		if (select != "")
+		{
+			Curso *C1 = new Curso(nombre,descripcion,idioma,dificultad,habilitado);
+			this->sistema->cursos.insert(C1);	
+		}
+		else
+		{
+			cout<<"Profesor no tiene ese idioma"<<endl;
+		}
+		DTOCurso Cur1(nombre,descripcion, idioma, dificultad,habilitado);
+		if (C1 != nullptr && IngresoLeccion(Cur1,nuevaLeccion))
+		{
+			cout<<"Leccion ingresada"<<endl;
+		}
+		else
+		{
+			cout<<"Error de ingreso"<<endl;
+		}
+		if (C1 != nullptr)
+		{
 		nom->setCurso(C1->getNombre());
 		
 		cout<<"Se creo el Curso"<<endl;
-	}else{
+		}
+
+	}
+	else
+	{
 		cout<<"El Curso ya existia en sistema o Nick de Estudiante"<<endl;
 		
 	}
