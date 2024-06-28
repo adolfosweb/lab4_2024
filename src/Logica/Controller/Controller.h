@@ -41,6 +41,8 @@ public:
 	void altaCurso(string nombre,string descripcion, DTOIdioma *idioma, ENUMDificultad dificultad, bool habilitado,string nombreProf);
 	void listoProfesor();
 
+	set<string> listaCursos();
+
 	//CU 6 Agregar Leccion
 	map<int,DTOCurso> ConsultaCursosNoHabilitados();
 	bool IngresoLeccion(DTOCurso curso,DTOLeccion leccion);

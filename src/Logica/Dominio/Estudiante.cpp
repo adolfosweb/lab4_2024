@@ -27,3 +27,11 @@ bool Estudiante::esProfesor() {
 void Estudiante :: setCurso(string curso)
 {  
 }
+void Estudiante ::listoIdiomaProfesor()
+{
+}
+string Estudiante :: seleccionarIdioma(string idiomaProf)
+{
+
+    return "";
+}

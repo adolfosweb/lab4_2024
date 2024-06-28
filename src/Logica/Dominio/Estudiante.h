@@ -17,7 +17,8 @@ public:
     DTOFecha getFecha();
     bool esProfesor();
     void setCurso(string curso);
-//  void listoIdiomaProfesor(string nombreProf);
+    void listoIdiomaProfesor();
+    string seleccionarIdioma(string idiomaProf);
 };
 
 
