@@ -2,9 +2,11 @@
 #define LOGICA_CONTROLLER_INTERFACE_H_
 #include <iostream>
 #include <set>
+#include <map>
 #include "../Dto/DTOUsuario.h"
 #include "../Dto/DTOIdioma.h"
 #include "../Dto/DTOCurso.h"
+#include "../Dto/DTOLeccion.h"
 
 // Esta es una iterface del Sistema.
 
@@ -23,10 +25,22 @@ public:
 
 	//CU 4 Concultar Idioma
 	virtual set<string> consultarIdioma()=0;
+	//CU 5 Alta Curso
+	virtual void altaCurso(string nombre,string descripcion, DTOIdioma *idioma, ENUMDificultad dificultad, bool habilitado,string nombreProf,set<string> previa,DTOLeccion nuevaLeccion)=0;
+	virtual void listoProfesor()=0;
+	
+	virtual set<string> listaCursos()=0;
 
-	//CU 6 Agregar Lección
-	virtual set<DTOCurso> agregarLeccion() = 0;
+	//CU 6 Agregar Leccion
+	virtual map<int,DTOCurso> ConsultaCursosNoHabilitados() = 0;
+	virtual bool IngresoLeccion(DTOCurso curso,DTOLeccion leccion) = 0;
 
+	//CU 13 Consultar Estadísticas
+	virtual void listarEstudiantes() = 0;
+	virtual void consultarStatsEstudiante(string nick) = 0;
+	virtual void consultarStatsProfesor(string nick) = 0;
+	virtual map<int,DTOCurso> ConsultaCursosHabilitados() = 0;
+	virtual float obtenerPromedioCurso(DTOCurso curso) = 0;
 };
 
 #endif /* LOGICA_CONTROLLER_INTERFACE_H_ */

@@ -1,6 +1,7 @@
 #ifndef LOGICA_USUARIO_H_
 #define LOGICA_USUARIO_H_
 #include <iostream>
+#include "../Dto/DTOCurso.h"
 using namespace std;
 
 class Usuario {
@@ -18,6 +19,12 @@ public:
      string getPass();
      string getNom();
      string getDescrip();
+	 virtual bool esProfesor()= 0;
+	 virtual void setCurso(string curso)=0;
+	 virtual void listoIdiomaProfesor()=0;
+	 virtual string seleccionarIdioma(string idiomaProf)=0;
+	 virtual map<int,Inscripcion*> obtenerCursosInscriptos() = 0;
+	 virtual set<Curso*> ObtenerCursos() = 0;
 };
 
 #endif /* LOGICA_USUARIO_H_ */

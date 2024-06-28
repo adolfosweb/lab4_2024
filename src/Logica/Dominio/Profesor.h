@@ -1,16 +1,19 @@
 #ifndef LOGICA_PROFESOR_H_
 #define LOGICA_PROFESOR_H_
-
+#include "../Dto/DTOCurso.h"
 #include <iostream>
 #include "Usuario.h"
+#include "Curso.h"
 using namespace std;
 #include <set>
 #include "Idioma.h"
 
-class Profesor :public Usuario{
+class Profesor :public Usuario
+{
  private:
         string instituto;
         set<Idioma*> idioma;
+        set<Curso*> cursor;
 public:
 
     Profesor();
@@ -18,5 +21,11 @@ public:
 	virtual ~Profesor();
     void mostrarInfo();
 	void agregarIdioma(Idioma* idioma);
+    bool esProfesor();
+    void setCurso(string curso);
+    void listoIdiomaProfesor();
+    string seleccionarIdioma(string idiomaProf);
+    map<int,Inscripcion*> obtenerCursosInscriptos();
+    set<Curso*> ObtenerCursos();
 };
 #endif /*LOGICA_PROFESOR_H_*/

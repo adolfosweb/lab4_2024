@@ -14,3 +14,21 @@ Estudiante::Estudiante(string nick, string pass, string nom,string descrip, stri
 
 Estudiante::~Estudiante(){
 }
+bool Estudiante::esProfesor() {
+    return false;
+}
+void Estudiante :: setCurso(string curso)
+{  
+}
+void Estudiante ::listoIdiomaProfesor()
+{
+}
+string Estudiante :: seleccionarIdioma(string idiomaProf)
+{
+
+    return "";
+}
+map<int,Inscripcion*> Estudiante :: obtenerCursosInscriptos()
+{
+    return cursosInscriptos;
+}

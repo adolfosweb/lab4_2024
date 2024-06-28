@@ -2,9 +2,11 @@
 #define NEGOCIO_CONTROLLER_IUSUARIOCONTROLLER_H_
 #include <iostream>
 #include <set>
+#include <map>
 #include "../Dto/DTOUsuario.h"
 #include "../Dto/DTOIdioma.h"
 #include "../Dto/DTOCurso.h"
+#include "../Dto/DTOLeccion.h"
 #include "Interface.h"
 #include "Sistema.h"
 
@@ -21,18 +23,31 @@ public:
 	bool verificarNick(string nick);
 	set<string> listIdiomas();
 	void agregarUsuario(DTOUsuario* usuario);
-	
+
 	//CU2 - Consulta de Usuario
 	set<string> listadoUsuarios();
 
 	//Caso de uso Alta idioma
-	 void altaIdioma(string idioma);
+	void altaIdioma(string idioma);
 
 	//CU 4 Consultar Curso
-	 set<string> consultarIdioma();
+	set<string> consultarIdioma();
+	//CU 5 Alta Curso
+	void altaCurso(string nombre,string descripcion, DTOIdioma *idioma, ENUMDificultad dificultad, bool habilitado,string nombreProf,set<string> previa,DTOLeccion nuevaLeccion);
+	void listoProfesor();
 
-	//CU 6 Agregar Lección
-	set<DTOCurso> consultaCursoNoHabilitados();
+	set<string> listaCursos();
+
+	//CU 6 Agregar Leccion
+	map<int,DTOCurso> ConsultaCursosNoHabilitados();
+	bool IngresoLeccion(DTOCurso curso,DTOLeccion leccion);
+	
+	//CU 13 Consultar estadísticas
+	void listarEstudiantes();
+	void consultarStatsEstudiante(string nick);
+	void consultarStatsProfesor(string nick);
+	map<int,DTOCurso> ConsultaCursosHabilitados();
+	float obtenerPromedioCurso(DTOCurso curso);
 };
 
 #endif /* NEGOCIO_CONTROLLER_IUSUARIOCONTROLLER_H_ */

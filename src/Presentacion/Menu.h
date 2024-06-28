@@ -12,6 +12,8 @@ public:
 	void mostrarMenu();
 	void mostrarMenuUsarios();
 	void mostrarMenuIdioma();
+	void mostrarMenuCursos();
+	void MenuConsultarEstadísticas();
 };
 
 #endif /* MENU_H_ */

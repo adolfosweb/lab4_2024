@@ -1,4 +1,5 @@
 #include "DTOCurso.h"
+#include "../src/Logica/Dominio/Curso.h" //PARA EL ENUM!
 #include <iostream>
 using namespace std;
 
@@ -8,7 +9,7 @@ DTOCurso :: DTOCurso()
 
 }
 
-DTOCurso :: DTOCurso(string nombreCurso,string Descripcion, DTOIdioma *IdiomaAsignado, bool habilitado) : nombreCurso(nombreCurso), Descripcion(Descripcion), IdiomaAsignado(IdiomaAsignado), habilitado(habilitado)
+DTOCurso :: DTOCurso(string nombre,string descripcion, DTOIdioma *idioma, ENUMDificultad dificultad, bool habilitado) : nombre(nombre), descripcion(descripcion), idioma(idioma), habilitado(habilitado)
 {
     //Constructor por parámetros...
 }
@@ -20,6 +21,32 @@ DTOCurso :: ~DTOCurso()
 
 string DTOCurso :: getNombreCurso()
 {
-	return nombreCurso;
+	return nombre;
 }
 
+void DTOCurso :: MostrarDatos()
+{
+	cout << "Nombre: " << nombre << "\nDescripcion" << descripcion <<  "\nIdioma del curso: " << idioma->getIdioma() << "\nDificultad: " << dificultad << endl;
+	cout << "\n________________________________________________" << endl;
+}
+
+string DTOCurso :: getDescripcion()
+{
+	return descripcion;
+}
+DTOIdioma* DTOCurso :: getIdioma()
+{
+	return idioma;
+}
+ENUMDificultad DTOCurso :: getDificultad()
+{
+	return dificultad;
+}
+bool DTOCurso :: estaHabilitado()
+{
+	return habilitado;
+}
+set<string> DTOCurso :: getPrevia()
+{
+	return this->previas;
+}

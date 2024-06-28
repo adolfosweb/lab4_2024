@@ -26,10 +26,11 @@ public:
 
 	set<Usuario*> usuarios;
 	set<Idioma*> idiomas;
-	set<Curso*> Cursos;
+	set<Curso*> cursos;
 
 	
 	Idioma* buscarIdioma(string nomIdioma);
+	Curso* buscarCurso(string nomCur);
 	static Sistema* getInstance(); //metodo de clase que devuele siempre la misma instancia
 	virtual ~Sistema();
 };
