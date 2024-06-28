@@ -293,6 +293,53 @@ bool Controller :: IngresoLeccion(DTOCurso curso, DTOLeccion leccion)
 }
 //FIN CU 6 Agregar Leccion
 
+//CU 7 Agregar Ejercicio
+map<DTOCurso,int>  Controller::listarCursosNoHab(){
+	map<DTOCurso,int> listaCursos;
+	set<Curso*>::iterator it;
+	int indice = 0;
+	for (it = this->sistema->cursos.begin(); it != this->sistema->cursos.end(); it++) {
+		if(!(*it)->estaHabilitado()){
+			DTOCurso cursoNoHab((*it)->getNombre(),(*it)->getDescripcion(),(*it)->getIdioma(),(*it)->getDificultad(),(*it)->estaHabilitado());
+			listaCursos.insert(make_pair(cursoNoHab,indice));
+			indice++;
+		}
+	}
+	return listaCursos;
+}
+
+set<DTOLeccion>  Controller::listarLecciones(DTOCurso curso){
+	set<DTOLeccion> resultado;
+	set<Curso*>::iterator it;
+	for (it = this->sistema->cursos.begin(); it != this->sistema->cursos.end(); it++) {
+		if(curso.getNombreCurso() == (*it)->getNombre() && curso.getDescripcion() == (*it)->getDescripcion() && curso.getIdioma() == (*it)->getIdioma()){
+			resultado = (*it)->listarLecciones();
+			break;
+		}
+	}
+	return resultado;
+}
+
+bool Controller::ingresarEjercicioPalabra(DTOCurso c, DTOLeccion l, DTOEjercicio e){
+	set<Curso*>::iterator it;
+	for (it = this->sistema->cursos.begin(); it != this->sistema->cursos.end(); it++) {
+		if(c.getNombreCurso() == (*it)->getNombre() && c.getDescripcion() == (*it)->getDescripcion() && c.getIdioma() == (*it)->getIdioma()){
+			return (*it)->ingresarEjercicioPalabra(l, e);
+		}
+	}
+	return false;
+}
+
+bool Controller::ingresarEjercicioTraduccion(DTOCurso c, DTOLeccion l, DTOEjercicio e){
+	set<Curso*>::iterator it;
+	for (it = this->sistema->cursos.begin(); it != this->sistema->cursos.end(); it++) {
+		if(c.getNombreCurso() == (*it)->getNombre() && c.getDescripcion() == (*it)->getDescripcion() && c.getIdioma() == (*it)->getIdioma()){
+			return (*it)->ingresarEjercicioTraduccion(l, e);
+		}
+	}
+	return false;
+}
+//FIN CU 7 Agregar Ejercicio
 // CU 8 Habilitar Curso
 
 void Controller::habilitarCurso(string nombreCurso){
