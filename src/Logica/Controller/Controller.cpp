@@ -239,6 +239,7 @@ void Controller::altaCurso(string nombre,string descripcion, DTOIdioma *idioma, 
 			resultNick= false;
 		}
 	}
+
 	if(result && resultNick)
 	{
 		Curso *C1=nullptr;
@@ -345,7 +346,6 @@ bool Controller :: IngresoLeccion(DTOCurso curso, DTOLeccion leccion)
 //FIN CU 6 Agregar Leccion
 
 // CU 8 Habilitar Curso
-
 void Controller::habilitarCurso(string nombreCurso){
 	set<Curso*>::iterator it;
 	for (it = this->sistema->cursos.begin(); it != this->sistema->cursos.end(); it++) {
