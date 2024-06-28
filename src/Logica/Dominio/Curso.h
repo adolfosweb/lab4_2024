@@ -34,6 +34,7 @@ public:
     DTOIdioma* getIdioma();
     ENUMDificultad getDificultad();
     bool estaHabilitado();
+    void habilitate();
     void setLeccion(DTOLeccion leccion);
 //    void setPrevia(string curso);
     //CU 7

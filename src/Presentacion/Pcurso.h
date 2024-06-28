@@ -18,6 +18,8 @@ public:
     //CU6 Agregar Ejercicio
     void AgregarLeccion();
 
+    //CU8 HabilitarCurso
+    void habilitarCurso();
     
 };
 

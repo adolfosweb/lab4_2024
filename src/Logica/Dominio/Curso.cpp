@@ -48,6 +48,9 @@ void Curso :: setLeccion(DTOLeccion leccion)
 
 
 }
+void Curso::habilitate(){
+    this->habilitado=true;
+}
 //void Curso :: setPrevia(string curso)
 //{
 //    this->previa.insert(curso); 

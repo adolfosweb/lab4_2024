@@ -3,6 +3,9 @@
 #include "../Logica/Dto/DTOFecha.h"
 #include <set>
 #include <iostream>
+
+using namespace std;
+
 Pusuarios::Pusuarios(){
     this->iPusuario = new Controller();
 }
@@ -17,21 +20,23 @@ void  Pusuarios::altaUsuario(){
 
 	bool existe = this->iPusuario->verificarNick(nick);
 	if (!existe) {
-		cout << "Es estudiante o profesor? (1 estudiante 2 profesor)" << endl;
-		int tipoUsuario;
+		cout << "Es estudiante o profesor? (E estudiante o P profesor)" << endl;
+		string tipoUsuario;
 		DTOUsuario *nuevoUsuario;
 
         // Validacion tipo usuario
 		cin >> tipoUsuario;
-        while (tipoUsuario != 1 && tipoUsuario != 2){
+        while (tipoUsuario != "e" && tipoUsuario != "p" && tipoUsuario != "E" && tipoUsuario != "P"){
             cout << "error, las opciones son 1 Estudiante o 2 Profesor";
             cin >> tipoUsuario;
         }
 
-		if (tipoUsuario == 1) {
+		if (tipoUsuario == "e" or tipoUsuario == "E") {
 			nuevoUsuario = ingresarEstudiante(nick);
 
-		} else {
+		} 
+        else
+        {
 			nuevoUsuario = ingresarProfesor(nick);
 		}
 
@@ -58,12 +63,12 @@ DTOEstudiante* Pusuarios::ingresarEstudiante(string nick){
     cout << "Ingresar pass:" << endl;
     cin >> pass;
     cout << "Ingresar nombre:" << endl;
-    cin >> nom;
-
-
+    cin.ignore();
+    getline(cin, nom); // Usa getline para leer toda la línea de entrada
+    cout << "Ingresar descripcion:" << endl;
+    getline(cin, descrip); // Usa getline para leer toda la línea de entrada
     cout << "Ingresar pais:" << endl;
     cin >> pais;
-
     cout << "Ingresar Fecha Nacimiento:" << endl;
     cout << "Ingresar dia:" << endl;
     cin >> dia;
@@ -89,9 +94,11 @@ DTOProfesor* Pusuarios::ingresarProfesor(string nick){
     cout << "Ingresar pass:" << endl;
     cin >> pass;
     cout << "Ingresar nombre:" << endl;
-    cin >> nom;
+    cin.ignore();
+    getline(cin, nom); // Usa getline para leer toda la línea de entrada
     cout << "Ingresar descripcion:" << endl;
-    cin >> descrip;
+    cin.ignore();
+    getline(cin, descrip); // Usa getline para leer toda la línea de entrada
     cout << "Ingresar instituto:" << endl;
     cin >> instituto;
 
@@ -175,6 +182,7 @@ void Pusuarios::infoUsuario() {
         DTOEstudiante elEstudiante = this->iPusuario->infoEstudiante(elUsuario);
         cout << "Nick: " << elEstudiante.getNick() << endl;
         cout << "Nombre: " << elEstudiante.getNom() << endl;
+        cout << "Descripcion: " << elEstudiante.getDescripcion() << endl;
         cout << "Pais Recidencia1: " << elEstudiante.getPaisResidencia() << endl;
         cout << "Fecha Nac: " << elEstudiante.getFecha().dia << "/" <<
         elEstudiante.getFecha().mes << "/" <<
@@ -186,6 +194,7 @@ void Pusuarios::infoUsuario() {
         DTOProfesor elProfesor = this->iPusuario->infoProfesor(elUsuario);
         cout << "Nick: " << elProfesor.getNick() << endl;
         cout << "Nombre: " << elProfesor.getNom() << endl;
+        cout << "Descripcion: " << elProfesor.getDescripcion() << endl;
         cout << "Instituto: " << elProfesor.getInstituto() << endl;
         //cout << elProfesor->*getIdiomas() << endl;
         

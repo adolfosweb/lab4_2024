@@ -340,3 +340,15 @@ bool Controller::ingresarEjercicioTraduccion(DTOCurso c, DTOLeccion l, DTOEjerci
 	return false;
 }
 //FIN CU 7 Agregar Ejercicio
+// CU 8 Habilitar Curso
+
+void Controller::habilitarCurso(string nombreCurso){
+	set<Curso*>::iterator it;
+	for (it = this->sistema->cursos.begin(); it != this->sistema->cursos.end(); it++) {
+		if (nombreCurso == (*it)->getNombre()) {	
+			(*it)->habilitate();	
+			break;
+		}
+	}
+	cout<<"El Curso a sido Habilitado"<<endl;
+}
