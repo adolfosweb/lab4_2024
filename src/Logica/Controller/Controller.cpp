@@ -92,16 +92,10 @@ set<string>  Controller::listadoUsuarios() {
 	}
 	return listaUsuarios;
 }
-//Find listar usuario
 
-// bool esEstudiante(nickUsuario)
+//CU2 FIN Consulta de Usuario
 
-// dtoEstudiante consultaDatos(nickName)
-
-// dtoProfesor consultarDatos(nickName)
-
-
-//CU2 FIN
+//CU3 Alta idioma
 void Controller::altaIdioma(string idioma){
 
 	bool result = true;
@@ -125,7 +119,7 @@ void Controller::altaIdioma(string idioma){
 	}
 
 }
-
+//FIN CU3 Alta idioma
 
 set<string> Controller::consultarIdioma(){
 
@@ -141,6 +135,7 @@ set<string> Controller::consultarIdioma(){
 
 	
 }
+//CU 5 Alta Curso
 void Controller::altaCurso(string nombre,string descripcion, DTOIdioma *idioma, ENUMDificultad dificultad, bool habilitado,string nombreProf,set<string> previa,DTOLeccion nuevaLeccion)
 {
 	string select="";
@@ -237,6 +232,9 @@ void Controller :: listoProfesor()
         }
     }
 }
+//FIN CU 5 Alta Curso
+
+//CU 6 Agregar Leccion
 map<int,DTOCurso> Controller :: ConsultaCursosNoHabilitados()
 {
 
