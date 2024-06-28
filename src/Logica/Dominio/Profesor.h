@@ -26,7 +26,6 @@ public:
 	void agregarIdioma(Idioma* idioma);
     bool esProfesor();
     void setCurso(string curso);
-    void listoIdiomaProfesor();
-    string seleccionarIdioma(string idiomaProf);
+//    void listoIdiomaProfesor(string nombreProf);
 };
 #endif /*LOGICA_PROFESOR_H_*/
