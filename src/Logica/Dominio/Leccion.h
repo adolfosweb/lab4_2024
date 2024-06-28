@@ -2,9 +2,6 @@
 #define LOGICA_LECCION_H_
 
 #include <iostream>
-#include <set>
-#include "../Dominio/Ejercicio.h"
-#include "../Dto/DTOEjercicio.h"
 using namespace std;
 
 class Leccion{
@@ -12,7 +9,6 @@ private:
     int numero;
     string tema;
     string objetivoAprendizaje;
-    set<Ejercicio*> ejercicios;
 public:
      Leccion();
      Leccion(int numero, string tema, string objetivoAprendizaje);
@@ -20,10 +16,6 @@ public:
      string getTema();
      string getObjetivoAprendizaje();
     ~Leccion();
-
-    //CU7
-    bool ingresarEjercicioPalabra(DTOEjercicio e);
-    bool ingresarEjercicioTraduccion(DTOEjercicio e);
 };
 
 

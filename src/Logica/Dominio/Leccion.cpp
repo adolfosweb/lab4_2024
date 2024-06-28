@@ -1,3 +1,4 @@
+
 #include "Leccion.h"
 
 Leccion::Leccion(){
@@ -22,33 +23,4 @@ string Leccion::getTema(){
 
 string Leccion::getObjetivoAprendizaje(){
     return this->objetivoAprendizaje;
-}
-
-//CU 7 
-bool Leccion::ingresarEjercicioPalabra(DTOEjercicio e){
-    set<Ejercicio*>::iterator it;
-    for (it = this->ejercicios.begin(); it != this->ejercicios.end(); it++){
-        if((*it)->getTipo() == COMPLETAR ){
-            if(e.getDescripcion() == (*it)->getDescripcion() && e.getFrase() == (*it)->getFrase() && e.getSolucion() == (*it)->getSolucion()){
-                return false;
-            }
-        }
-    }
-    Ejercicio* ej = new Ejercicio(e.getDescripcion(),e.getFrase(),e.getSolucion(),e.getTipo());
-    this->ejercicios.insert(ej);
-    return true;
-}
-
-bool Leccion::ingresarEjercicioTraduccion(DTOEjercicio e){
-    set<Ejercicio*>::iterator it;
-    for (it = this->ejercicios.begin(); it != this->ejercicios.end(); it++){
-        if((*it)->getTipo() == TRADUCCION ){
-            if(e.getDescripcion() == (*it)->getDescripcion() && e.getFrase() == (*it)->getFrase() && e.getSolucion() == (*it)->getSolucion()){
-                return false;
-            }
-        }
-    }
-    Ejercicio* ej = new Ejercicio(e.getDescripcion(),e.getFrase(),e.getSolucion(),e.getTipo());
-    this->ejercicios.insert(ej);
-    return true;
 }

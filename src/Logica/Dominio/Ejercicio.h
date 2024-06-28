@@ -5,23 +5,17 @@
 
 using namespace std;
 
-enum ENUMTipo{
-    COMPLETAR,TRADUCCION
-};
-
-class Ejercicio{
+class Ejercicio
+{
 private:
     string descripcion;
-    string frase;
-    string solucion;
-    ENUMTipo tipo;
 public:
-    Ejercicio(string descripcion, string frase, string solucion, ENUMTipo tipo);
-    virtual ~Ejercicio();
+    Ejercicio();
+     Ejercicio(string descripcion);
+
+    ~Ejercicio();
+
     string getDescripcion();
-    string getFrase();
-    string getSolucion();
-    ENUMTipo getTipo();
 };
 
 
