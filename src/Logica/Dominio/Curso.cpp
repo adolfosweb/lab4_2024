@@ -56,3 +56,10 @@ void Curso::habilitate(){
 //{
 //    this->previa.insert(curso); 
 //}
+void Curso :: setAllPrevias(set<string> previa)
+{
+    for (auto ct = previa.begin();ct!=previa.end();ct++)
+    {
+       this->previa.insert((*ct));
+    } 
+}

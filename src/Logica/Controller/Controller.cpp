@@ -199,26 +199,32 @@ set<string> Controller::consultarIdioma(){
 
 	
 }
-//CU 5 Alta Curso
-void Controller::altaCurso(string nombre,string descripcion, DTOIdioma *idioma, ENUMDificultad dificultad, bool habilitado,string nombreProf)
+void Controller::altaCurso(string nombre,string descripcion, DTOIdioma *idioma, ENUMDificultad dificultad, bool habilitado,string nombreProf,set<string> previa,DTOLeccion nuevaLeccion)
 {
 	Profesor* nom;
+	Curso* nuevocurso;
 	bool resultNick = true;
 	bool result = true;
 	set<Curso*>::iterator it;
 	set<Usuario*>::iterator itr;
-	for (it = this->sistema->cursos.begin(); it != this->sistema->cursos.end(); it++) {
+
+	for (it = this->sistema->cursos.begin(); it != this->sistema->cursos.end(); it++) 
+	{
 		
-		if (nombre == (*it)->getNombre()) {
+		if (nombre == (*it)->getNombre()) 
+		{
 			result = false;			
 			break;
 		}
 	}
-	for (itr = this->sistema->usuarios.begin(); itr != this->sistema->usuarios.end(); itr++) {
+	for (itr = this->sistema->usuarios.begin(); itr != this->sistema->usuarios.end(); itr++) 
+	{
 		
-		if ((*itr)->esProfesor()) {
+		if ((*itr)->esProfesor()) 
+		{
 			resultNick = true;	
 			nom = dynamic_cast<Profesor*>(*itr);
+			
 			break;
 		}
 		else
@@ -226,17 +232,44 @@ void Controller::altaCurso(string nombre,string descripcion, DTOIdioma *idioma, 
 			resultNick= false;
 		}
 	}
-	if(result && resultNick){
+	if(result && resultNick)
+	{
 		Curso *C1 = new Curso(nombre,descripcion,idioma,dificultad,habilitado);
 		this->sistema->cursos.insert(C1);
+
+		DTOCurso Cur1(nombre,descripcion, idioma, dificultad,habilitado);
+		if (IngresoLeccion(Cur1,nuevaLeccion))
+		{
+			cout<<"Leccion ingresada"<<endl;
+		}
+		else
+		{
+			cout<<"Error de ingreso"<<endl;
+		}
+
 		nom->setCurso(C1->getNombre());
-		
+
+		nuevocurso->setAllPrevias(previa);
+
 		cout<<"Se creo el Curso"<<endl;
-	}else{
+	}
+	else
+	{
 		cout<<"El Curso ya existia en sistema o Nick de Estudiante"<<endl;
 		
 	}
-//FIN CU 5 Alta Curso
+	getchar();
+}
+set<string> Controller::listaCursos()
+{
+	set<string> result;
+
+	set<Curso*>::iterator it;
+	for (it = this->sistema->cursos.begin(); it != this->sistema->cursos.end(); it++) 
+	{
+		result.insert((*it)->getNombre());
+	}
+	return result;
 }
 void Controller :: listoProfesor()
 {

@@ -46,3 +46,7 @@ bool DTOCurso :: estaHabilitado()
 {
 	return habilitado;
 }
+set<string> DTOCurso :: getPrevia()
+{
+	return this->previas;
+}
