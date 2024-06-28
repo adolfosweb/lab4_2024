@@ -161,8 +161,11 @@ void Controller::altaCurso(string nombre,string descripcion, DTOIdioma *idioma, 
 		if((*ct)->esProfesor() && (*ct)->getNick()==nombreProf)
 		{
 			(*ct)->listoIdiomaProfesor();
+
 			cout<<"Ingrese el Idioma: "<<endl;
-			cin>>idiomaProf;
+			getline(cin,idiomaProf);
+			getchar();
+			
 			select = (*ct)->seleccionarIdioma(idiomaProf);
 			resultNick = true;
 			nom = dynamic_cast<Profesor*>(*ct);

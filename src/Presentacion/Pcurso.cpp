@@ -13,28 +13,32 @@ PCurso::~PCurso(){
 void PCurso::altaCurso()
 {
     std::system("clear");
-    string nombre="",objetivoAprendizaje="",tema="",nombreProf="",descripcion="";
+    string nombre = "", objetivoAprendizaje = "", tema = "", nombreProf = "", descripcion = "";
     ENUMDificultad dif;
-    int difInt=0,select=0;
+    int difInt = 0, select = 0;
     DTOIdioma *idioma;
-    bool habilitado=false;
+    bool habilitado = false;
 
-	cout << "Ingrese Nombre del Curso:"<< endl;
-	cin >> nombre;
-
-    cout << "Ingrese una Descripcion:"<< endl;
-	cin >> descripcion;
-
-   cout << "Ingrese la dificultad (0: Fácil, 1: Intermedio, 2: Avanzado):" << endl;
+    cout << "Ingrese Nombre del Curso:" << endl;
+    getline(cin, nombre); 
+    getchar();
+    
+    cout << "Ingrese una Descripcion:" << endl;
+    getline(cin, descripcion); 
+    getchar();
+    
+    cin.ignore();
+    cout << "Ingrese la dificultad (0: Fácil, 1: Intermedio, 2: Avanzado):" << endl;
     cin >> difInt;
+    getchar();
 
     cout << "Lista de Profesores:" << endl;
     this->SystemInstance->listoProfesor();
+    cout << "Ingrese Nombre del Profesor:" << endl;
+    getline(cin, nombreProf); 
+    getchar();
 
-    cout << "Ingrese Nombre del Profesor:"<< endl;
-	cin >> nombreProf;
-
-    switch (difInt) 
+    switch (difInt)
     {
         case 0:
             dif = ENUMDificultad::FACIL;
@@ -48,44 +52,50 @@ void PCurso::altaCurso()
         default:
             cout << "Valor de dificultad no válido." << endl;
     }
-    
+
     set<string> previas;
     int agregarCurso;
 
-    cout << " ¿Desea agregar Previas? (1=si 2 =no)? " <<endl;
-    cin >> agregarCurso;
-
-    if (agregarCurso == 1) 
+    cout << "¿Desea agregar Previas? (1=si, 2=no): " << endl;
+    cin >> agregarCurso; 
+    getchar();
+    if (agregarCurso == 1)
     {
         previas = seleccionarCursos();
-    } else 
+    }
+    else
     {
-        cout << "No se agrego previa" << endl;
+        cout << "No se agregó previa" << endl;
     }
 
     int Adleccion;
-    cout << " ¿Desea agregar Lecciones? (1=si 2 =no)? " <<endl;
+    cout << "¿Desea agregar Lecciones? (1=si, 2=no): " << endl;
     cin >> Adleccion;
-    DTOLeccion nuevaLeccion(0,tema,objetivoAprendizaje);
+    getchar();
+    DTOLeccion nuevaLeccion(0, tema, objetivoAprendizaje);
 
-    if (Adleccion == 1) 
+    if (Adleccion == 1)
     {
-        cout << "Ingrese un tema" << endl;
-        cin >> tema;
-        cout << "Ingrese un objetivo de aprendizaje" << endl;
-        cin >> objetivoAprendizaje;
-    } else 
+        cout << "Ingrese un tema: " << endl; 
+        getline(cin, tema); 
+        getchar();
+
+        cout << "Ingrese un objetivo de aprendizaje: " << endl;
+        getline(cin, objetivoAprendizaje); 
+        getchar();
+    }
+    else
     {
-        cout << "No se agrego Lecciones" << endl;
+        cout << "No se agregó Lecciones" << endl;
     }
 
     if (this->SystemInstance->verificarNick(nombreProf))
     {
-        this->SystemInstance->altaCurso(nombre,descripcion,idioma,dif,habilitado,nombreProf,previas,nuevaLeccion);
+        this->SystemInstance->altaCurso(nombre, descripcion, idioma, dif, habilitado, nombreProf, previas, nuevaLeccion);
     }
     else
     {
-        cout<<"Nombre de Usuario No encontrado"<<endl;
+        cout << "Nombre de Usuario No encontrado" << endl;
     }
 }
 set<string>  PCurso::seleccionarCursos()
