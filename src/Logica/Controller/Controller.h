@@ -51,7 +51,6 @@ public:
 	set<DTOLeccion> listarLecciones(DTOCurso);
 	bool ingresarEjercicioPalabra(DTOCurso c, DTOLeccion l, DTOEjercicio e);
 	bool ingresarEjercicioTraduccion(DTOCurso c, DTOLeccion l, DTOEjercicio e);
-	bool IngresoLeccion(DTOCurso curso,DTOLeccion leccion);
 
 	//CU 8 Habilitar Curso
 	void habilitarCurso(string nombreCurso);
