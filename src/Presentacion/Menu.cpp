@@ -172,6 +172,9 @@ void Menu::mostrarMenuCursos()
 		case 2:
 			{
 				std::system("clear");
+				cout << "Agregar Leccion" << endl;
+				PCurso datocurso;
+				datocurso.AgregarLeccion();
 			}
 			break;
         case 3:

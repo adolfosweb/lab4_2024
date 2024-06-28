@@ -288,6 +288,7 @@ set<string> Controller::listaCursos()
 	}
 	return result;
 }
+
 void Controller :: listoProfesor()
 {
     set<Usuario*>::iterator it;
