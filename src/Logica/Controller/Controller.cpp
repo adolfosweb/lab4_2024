@@ -200,17 +200,10 @@ set<string> Controller::consultarIdioma(){
 	
 }
 //CU 5 Alta Curso
-void Controller::altaCurso(string nombre,string descripcion, DTOIdioma *idioma, ENUMDificultad dificultad, bool habilitado,string nombreProf,set<string> previa,DTOLeccion nuevaLeccion)
+void Controller::altaCurso(string nombre,string descripcion, string idioma,string nombreProf, ENUMDificultad dificultad, bool habilitado,set<string> previa)
 {
-	string select="";
-	string idiomaProf;
-	Profesor* nom;
-	Curso* nuevocurso;
-	bool resultNick = true;
 	bool result = true;
 	set<Curso*>::iterator it;
-	set<Usuario*>::iterator itr;
-
 	for (it = this->sistema->cursos.begin(); it != this->sistema->cursos.end(); it++) 
 	{
 		
@@ -220,63 +213,41 @@ void Controller::altaCurso(string nombre,string descripcion, DTOIdioma *idioma, 
 			break;
 		}
 	}
-	for(auto ct = sistema->usuarios.begin(); ct != sistema->usuarios.end(); ct++ )
-	{
-		if((*ct)->esProfesor() && (*ct)->getNick()==nombreProf)
-		{
-			(*ct)->listoIdiomaProfesor();
 
-			cout<<"Ingrese el Idioma: "<<endl;
-			getline(cin,idiomaProf);
-			getchar();
-			
-			select = (*ct)->seleccionarIdioma(idiomaProf);
-			resultNick = true;
-			nom = dynamic_cast<Profesor*>(*ct);
-		}
-		else
+	set<Idioma*>::iterator itr2;
+	for(itr2 = this->sistema->idiomas.begin(); itr2 != this->sistema->idiomas.end(); itr2++ )
+	{
+		if((*itr2)->getIdioma()==idioma)
 		{
-			resultNick= false;
+			break;
 		}
 	}
 
-	if(result && resultNick)
-	{
-		Curso *C1=nullptr;
-		if (select != "")
-		{
-			Curso *C1 = new Curso(nombre,descripcion,idioma,dificultad,habilitado);
-			this->sistema->cursos.insert(C1);	
-		}
-		else
-		{
-			cout<<"Profesor no tiene ese idioma"<<endl;
-		}
-		DTOCurso Cur1(nombre,descripcion, idioma, dificultad,habilitado);
-		if (C1 != nullptr && IngresoLeccion(Cur1,nuevaLeccion))
-		{
-			cout<<"Leccion ingresada"<<endl;
-		}
-		else
-		{
-			cout<<"Error de ingreso"<<endl;
-		}
-		if (C1 != nullptr)
-		{
-		nom->setCurso(C1->getNombre());
+	if(result){
+		Curso *C1 = new Curso(nombre,descripcion,*itr2,dificultad,habilitado);
+		this->sistema->cursos.insert(C1);	
+	
 
-		nuevocurso->setAllPrevias(previa);
+		C1->setAllPrevias(previa);
 
 		cout<<"Se creo el Curso"<<endl;
-		}
 
-	}
-	else
+		Profesor* nom;
+		set<Usuario*>::iterator itr;
+		for(itr = this->sistema->usuarios.begin(); itr != this->sistema->usuarios.end(); itr++ ){
+			if((*itr)->esProfesor() && (*itr)->getNick()==nombreProf)
+			{
+				nom = dynamic_cast<Profesor*>(*itr);
+				break;
+			}
+		}
+		nom->setCurso(C1);
+	}else
 	{
 		cout<<"El Curso ya existia en sistema o Nick de Estudiante"<<endl;
 		
 	}
-	getchar();
+
 }
 set<string> Controller::listaCursos()
 {
@@ -290,16 +261,28 @@ set<string> Controller::listaCursos()
 	return result;
 }
 
-void Controller :: listoProfesor()
-{
+set<string> Controller :: listoProfesor(){	
+	set<string> result;
     set<Usuario*>::iterator it;
-    for (it = this->sistema->usuarios.begin(); it != this->sistema->usuarios.end(); it++) 
-    {	
-        if ((*it)->esProfesor())
-        {
-            cout << ": " << (*it)->getNick() << endl;	
+    for (it = this->sistema->usuarios.begin(); it != this->sistema->usuarios.end(); it++) {	
+        if ((*it)->esProfesor()){
+            result.insert((*it)->getNick());	
         }
     }
+	return result;
+}
+
+set<string> Controller::idiomasProfesor(string nick){
+	set<string> result;
+    set<Usuario*>::iterator it;
+    for (it = this->sistema->usuarios.begin(); it != this->sistema->usuarios.end(); it++) {	
+        if ((*it)->esProfesor() && (*it)->getNick() == nick ){
+			result=(*it)->listoIdiomaProfesor();
+            break;
+        }
+    }
+	return result;
+
 }
 //FIN CU 5 Alta Curso
 

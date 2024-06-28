@@ -38,9 +38,10 @@ public:
 	//CU 4 Consultar Curso
 	 set<string> consultarIdioma();
 	//CU 5 Alta Curso
-	void altaCurso(string nombre,string descripcion, DTOIdioma *idioma, ENUMDificultad dificultad, bool habilitado,string nombreProf,set<string> previa,DTOLeccion nuevaLeccion);
-	void listoProfesor();
+	void altaCurso(string nombre,string descripcion, string idioma,string nombreProf, ENUMDificultad dificultad, bool habilitado,set<string> previa);
+	set<string> listoProfesor();
 	set<string> listaCursos();
+	set<string> idiomasProfesor(string nick);
 
 	//CU 6 Agregar Leccion
 	map<int,DTOCurso> ConsultaCursosNoHabilitados();

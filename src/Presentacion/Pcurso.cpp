@@ -2,6 +2,7 @@
 #include <set>
 #include "../Logica/Controller/Controller.h"
 #include "../Logica/Dominio/Usuario.h"
+#include "../Logica/Dto/DTOCurso.h"
 #include "Pcurso.h"
 PCurso::PCurso(){
     this->SystemInstance=new Controller();
@@ -15,10 +16,10 @@ PCurso::~PCurso(){
 void PCurso::altaCurso(){
 
     std::system("clear");
-    string nombre = "", objetivoAprendizaje = "", tema = "", nombreProf = "", descripcion = "";
+    string nombre = "", objetivoAprendizaje = "", tema = "", descripcion = "";
     ENUMDificultad dif;
     int difInt = 0, select = 0;
-    DTOIdioma *idioma;
+    
     bool habilitado = false;
     
     cin.ignore();
@@ -51,12 +52,45 @@ void PCurso::altaCurso(){
     }
 
     cout << "Lista de Profesores:" << endl;
-    this->SystemInstance->listoProfesor();
+    set<string> listaProf =this->SystemInstance->listoProfesor();
 
-    cout << "Ingrese Nombre del Profesor:" << endl;
-    getline(cin, nombreProf); 
+    set<string>::iterator it;
+	for (it = listaProf.begin(); it != listaProf.end(); it++) {
+		cout << "Idioma: " << *it << endl;
+	}
+    string nombreProf;
+	bool existeUsuario = false;
+    while (existeUsuario == false)
+    {
+        cout << "Ingresa un usuario de la lista:" << endl;
+        cin >> nombreProf;
+        existeUsuario = this->SystemInstance->verificarNick(nombreProf);
+        if(existeUsuario==false){
+            cout<<"el nick ingresado no es correcto"<<endl;
+        }
+    }
+
+    set<string> idiomasProfesor=this->SystemInstance->idiomasProfesor(nombreProf);
+    cout << "Lista de Idioma del Profesor:" << endl;
+    set<string>::iterator it2;
+	for (it2 = idiomasProfesor.begin(); it2 != idiomasProfesor.end(); it2++) {
+		cout << "Idioma: " << *it2 << endl;
+	}
+
+    string idioma;
+	bool existeIdioma = false;
+    while (!existeIdioma)
+    {
+        cout << "Ingresa un Idioma de la lista:" << endl;
+        cin >> idioma;
+       
+       if (idiomasProfesor.find(idioma) != idiomasProfesor.end()) {
+        existeIdioma = true;
+       }else {
+        cout << "El idioma ingresado no es correcto. Por favor, intenta nuevamente." << endl;
+        }
+    }
     
-
     set<string> previas;
     int agregarCurso;
 
@@ -70,29 +104,10 @@ void PCurso::altaCurso(){
         cout << "No se agregó previa" << endl;
     }
 
-    int Adleccion;
-    cout << "¿Desea agregar Lecciones? (1=si, 2=no): " << endl;
-    cin >> Adleccion;
-    cin.ignore();
-    DTOLeccion nuevaLeccion(0, tema, objetivoAprendizaje);
-
-    if (Adleccion == 1){
-        cout << "Ingrese un tema: " << endl; 
-        getline(cin, tema); 
-        getchar();
-
-        cout << "Ingrese un objetivo de aprendizaje: " << endl;
-        getline(cin, objetivoAprendizaje); 
-        getchar();
-    }else{
-        cout << "No se agregó Lecciones" << endl;
-    }
+       
+        
+        this->SystemInstance->altaCurso(nombre,descripcion,idioma,nombreProf,dif,habilitado,previas);
     
-    if (this->SystemInstance->verificarNick(nombreProf)){
-        this->SystemInstance->altaCurso(nombre, descripcion, idioma, dif, habilitado, nombreProf, previas, nuevaLeccion);
-    }else{
-        cout << "Nombre de Usuario No encontrado" << endl;
-    }
 }
 
 set<string>  PCurso::seleccionarCursos()

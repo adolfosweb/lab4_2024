@@ -12,7 +12,7 @@ class Profesor :public Usuario{
  private:
         string instituto;
         set<Idioma*> idioma;
-        set<string> cursor;
+        set<Curso*> cursor;
 public:
 
     Profesor();
@@ -24,8 +24,8 @@ public:
 	virtual ~Profesor();
 	void agregarIdioma(Idioma* idioma);
     bool esProfesor();
-    void setCurso(string curso);
-    void listoIdiomaProfesor();
+    void setCurso(Curso* curso);
+    set<string> listoIdiomaProfesor();
     string seleccionarIdioma(string idiomaProf);
 };
 #endif /*LOGICA_PROFESOR_H_*/

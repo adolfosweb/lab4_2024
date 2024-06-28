@@ -16,8 +16,8 @@ public:
     string getPaisResidencia();
     DTOFecha getFecha();
     bool esProfesor();
-    void setCurso(string curso);
-    void listoIdiomaProfesor();
+    void setCurso(Curso* curso);
+    set<string> listoIdiomaProfesor();
     string seleccionarIdioma(string idiomaProf);
 };
 

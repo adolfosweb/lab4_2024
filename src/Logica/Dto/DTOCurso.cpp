@@ -9,7 +9,7 @@ DTOCurso :: DTOCurso()
 
 }
 
-DTOCurso :: DTOCurso(string nombre,string descripcion, DTOIdioma *idioma, ENUMDificultad dificultad, bool habilitado) : nombre(nombre), descripcion(descripcion), idioma(idioma), habilitado(habilitado)
+DTOCurso :: DTOCurso(string nombre,string descripcion, DTOIdioma idioma, ENUMDificultad dificultad, bool habilitado) : nombre(nombre), descripcion(descripcion), idioma(idioma), habilitado(habilitado)
 {
     //Constructor por parámetros...
 }
@@ -26,7 +26,7 @@ string DTOCurso :: getNombreCurso()
 
 void DTOCurso :: MostrarDatos()
 {
-	cout << "Nombre: " << nombre << "\nDescripcion" << descripcion <<  "\nIdioma del curso: " << idioma->getIdioma() << "\nDificultad: " << dificultad << endl;
+	cout << "Nombre: " << nombre << "\nDescripcion" << descripcion <<  "\nIdioma del curso: " << idioma.getIdioma() << "\nDificultad: " << dificultad << endl;
 	cout << "\n________________________________________________" << endl;
 }
 
@@ -34,7 +34,7 @@ string DTOCurso :: getDescripcion()
 {
 	return descripcion;
 }
-DTOIdioma* DTOCurso :: getIdioma()
+DTOIdioma DTOCurso :: getIdioma()
 {
 	return idioma;
 }

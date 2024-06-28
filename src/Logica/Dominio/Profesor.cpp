@@ -36,18 +36,19 @@ bool verificarTipoUsuario(Usuario* usuario)
 bool Profesor::esProfesor(){
     return true;
 }
-void Profesor :: setCurso(string curso)
+void Profesor :: setCurso(Curso* curso)
 {
     this->cursor.insert(curso);   
 }
 
-void Profesor :: listoIdiomaProfesor()
+set<string> Profesor :: listoIdiomaProfesor()
 {
+    set<string> resu;
     set<Idioma*> :: iterator it;
    	for (it = this->idioma.begin(); it != this->idioma.end(); it++) {
-        cout<<": "<< (*it)->getIdioma()<<endl;
+        resu.insert((*it)->getIdioma());
 	}
-
+    return resu;
 }
 
 string Profesor :: seleccionarIdioma(string idiomaProf)
