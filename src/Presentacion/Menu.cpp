@@ -32,10 +32,12 @@ void Menu::mostrarMenu() {
 		cout <<"1) Opciones de Usuarios" << endl;
 		cout <<"2) Menu de Opciones de idiomas" << endl;
 		cout <<"3) Menu de Opciones de Curso" << endl;
+		cout <<"4) Consultar estadísticas" << endl;
 		cout <<"0) Salir " << endl;
 		cout <<"Ingrese una opcion: " << endl;
 		cin >> op;
-		switch (op) {
+		switch (op) 
+		{
 			case 1: {
 				std::system("clear");
 				mostrarMenuUsarios();
@@ -52,6 +54,9 @@ void Menu::mostrarMenu() {
 				std::system("clear");
 				mostrarMenuCursos();
 			}
+
+		case 4:	{std::system("clear");	 MenuConsultarEstadísticas();	} 	break;
+
 		case 0:
 			break;
 		default:
@@ -214,3 +219,32 @@ void Menu::mostrarMenuCursos()
 
 	} while (op != 0);
    }
+
+void MenuConsultarEstadísticas()
+{
+	Pusuarios users;
+	PCurso cursos;
+	int sel = 0;
+	do
+	{
+
+		std::system("clear");
+		sel = 0;
+		cout << "*** Menu de consulta de estadísticas***"	 << endl;
+		cout <<	"1) Consulta estadísticas de Estudiante"	 << endl;
+		cout <<	"2) Consulta estadísticas de Profesor"		 << endl;
+		cout <<	"3) Consulta estadísticas de Curso" 		 << endl;
+		cin >> sel;
+
+		switch(sel)
+		{
+			case 1: {	users.consultaEstudiante();				break;};
+			case 2: {	users.consultaProfesor();				break;};
+			case 3: {	cursos.consultaCurso();					break;};
+			default:{ 	cout << "Ingreso incorrecto!" << endl; 	break;};
+		}
+
+	}	
+	while(sel != 1 || sel != 2 || sel != 3);
+
+}

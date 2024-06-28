@@ -24,3 +24,7 @@ string Leccion::getTema(){
 string Leccion::getObjetivoAprendizaje(){
     return this->objetivoAprendizaje;
 }
+set<Ejercicio*> Leccion:: ObtenerEjercicios()
+{
+    return Ejercicios;
+}

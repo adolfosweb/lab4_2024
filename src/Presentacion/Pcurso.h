@@ -18,6 +18,9 @@ public:
     set<string> seleccionarCursos();
     //CU6 Agregar Ejercicio
     void AgregarLeccion();
+    //CU 13 Consultar estadísticas
+    void consultaCurso();
+    
 
     
 };

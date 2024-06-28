@@ -28,3 +28,7 @@ string Estudiante :: seleccionarIdioma(string idiomaProf)
 
     return "";
 }
+map<int,Inscripcion*> Estudiante :: obtenerCursosInscriptos()
+{
+    return cursosInscriptos;
+}

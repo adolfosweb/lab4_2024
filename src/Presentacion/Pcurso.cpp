@@ -148,15 +148,17 @@ void PCurso::AgregarLeccion()
 
     for(auto ct = Temp.begin(); ct!= Temp.end(); ct++)
     {
-        cout << "Curso Número " << ct->first << endl;
+        cout << "Código Curso: C" << ct->first << endl;
         ct->second.MostrarDatos();
     }
 
     int in = 0;
+    string ingreso = "";
 
     while (in < 1 && in > Temp.size())  //Mientras sea menor a 1 o mayor al max del map...
-    {   cout << "\nIngrese el número del curso a seleccionar..." << endl;
-        cin >> in;
+    {   cout << "\nIngrese el curso a seleccionar..." << endl;
+        cin >> ingreso;
+        int in = stoi(ingreso);  //Solo almacenará el número del ingreso.
     }
 
     auto Cur = Temp.find(in);   //Se obtiene DTOCurso
@@ -184,7 +186,35 @@ void PCurso::AgregarLeccion()
         cout << "\nIngreso Completado..." << endl;
     }
 
-    
 
+}
+
+void PCurso :: consultaCurso()
+{
+    cout << "Mostrando todos los cursos: " << endl;
+    map<int,DTOCurso> cursos = SystemInstance->ConsultaCursosHabilitados();
+    string ingreso = "";
+    
+    for(auto ct = cursos.begin(); ct != cursos.end(); ct++)
+    {
+        cout << "Código Curso: C" << ct->first << "Nombre Curso: "<< ct->second.getNombreCurso() << endl ;
+            
+    }
+
+    cout << "\nIngrese el curso a seleccionar." << endl;
+    cin >> ingreso;
+
+    int seleccion = stoi(ingreso);  //Solo almacenará el número del ingreso.
+
+    auto Cur = cursos.find(seleccion);   //Se obtiene DTOCurso
+
+    float promedio = SystemInstance->obtenerPromedioCurso(Cur->second);  //Se obtiene el promedio de ese curso entre todos los estudiantes.
+
+    Cur->second.MostrarDatos();
+
+    if(promedio != 0)
+        cout << "Promedio total de este Curso: " << promedio << "%"<< endl;
+    else
+        cout << "No hay estudiantes que hayan cursado/aprobado este curso." << endl;
 
 }

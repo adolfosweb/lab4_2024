@@ -8,11 +8,12 @@ using namespace std;
 #include <set>
 #include "Idioma.h"
 
-class Profesor :public Usuario{
+class Profesor :public Usuario
+{
  private:
         string instituto;
         set<Idioma*> idioma;
-        set<string> cursor;
+        set<Curso*> cursor;
 public:
 
     Profesor();
@@ -24,5 +25,7 @@ public:
     void setCurso(string curso);
     void listoIdiomaProfesor();
     string seleccionarIdioma(string idiomaProf);
+    map<int,Inscripcion*> obtenerCursosInscriptos();
+    set<Curso*> ObtenerCursos();
 };
 #endif /*LOGICA_PROFESOR_H_*/

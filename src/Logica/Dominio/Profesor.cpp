@@ -56,3 +56,8 @@ string Profesor :: seleccionarIdioma(string idiomaProf)
 	}
     return "";
 }
+
+set<Curso*> Profesor :: ObtenerCursos()
+{
+    return cursor;
+}

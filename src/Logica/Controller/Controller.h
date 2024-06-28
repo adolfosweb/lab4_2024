@@ -41,6 +41,13 @@ public:
 	//CU 6 Agregar Leccion
 	map<int,DTOCurso> ConsultaCursosNoHabilitados();
 	bool IngresoLeccion(DTOCurso curso,DTOLeccion leccion);
+	
+	//CU 13 Consultar estadísticas
+	void listarEstudiantes();
+	void consultarStatsEstudiante(string nick);
+	void consultarStatsProfesor(string nick);
+	map<int,DTOCurso> ConsultaCursosHabilitados();
+	float obtenerPromedioCurso(DTOCurso curso);
 };
 
 #endif /* NEGOCIO_CONTROLLER_IUSUARIOCONTROLLER_H_ */

@@ -34,6 +34,13 @@ public:
 	//CU 6 Agregar Leccion
 	virtual map<int,DTOCurso> ConsultaCursosNoHabilitados() = 0;
 	virtual bool IngresoLeccion(DTOCurso curso,DTOLeccion leccion) = 0;
+
+	//CU 13 Consultar Estadísticas
+	virtual void listarEstudiantes() = 0;
+	virtual void consultarStatsEstudiante(string nick) = 0;
+	virtual void consultarStatsProfesor(string nick) = 0;
+	virtual map<int,DTOCurso> ConsultaCursosHabilitados() = 0;
+	virtual float obtenerPromedioCurso(DTOCurso curso) = 0;
 };
 
 #endif /* LOGICA_CONTROLLER_INTERFACE_H_ */
