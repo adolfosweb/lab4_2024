@@ -12,7 +12,7 @@ PCurso::~PCurso(){
 }
 void PCurso::altaCurso()
 {
-   // std::system("clear");
+    std::system("clear");
     string nombre="",objetivoAprendizaje="",tema="",nombreProf="",descripcion="";
     ENUMDificultad dif;
     int difInt=0,select=0;
@@ -48,8 +48,7 @@ void PCurso::altaCurso()
         default:
             cout << "Valor de dificultad no válido." << endl;
     }
-    this->SystemInstance->listoIdiomaProfesor(nombreProf);
-    //selecciona idioma
+    
     set<string> previas;
     int agregarCurso;
 

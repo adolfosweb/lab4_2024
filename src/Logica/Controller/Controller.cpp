@@ -143,6 +143,8 @@ set<string> Controller::consultarIdioma(){
 }
 void Controller::altaCurso(string nombre,string descripcion, DTOIdioma *idioma, ENUMDificultad dificultad, bool habilitado,string nombreProf,set<string> previa,DTOLeccion nuevaLeccion)
 {
+	string select="";
+	string idiomaProf;
 	Profesor* nom;
 	Curso* nuevocurso;
 	bool resultNick = true;
@@ -159,15 +161,16 @@ void Controller::altaCurso(string nombre,string descripcion, DTOIdioma *idioma, 
 			break;
 		}
 	}
-	for (itr = this->sistema->usuarios.begin(); itr != this->sistema->usuarios.end(); itr++) 
+	for(auto ct = sistema->usuarios.begin(); ct != sistema->usuarios.end(); ct++ )
 	{
-		
-		if ((*itr)->esProfesor()) 
+		if((*ct)->esProfesor() && (*ct)->getNick()==nombreProf)
 		{
-			resultNick = true;	
-			nom = dynamic_cast<Profesor*>(*itr);
-			
-			break;
+			(*ct)->listoIdiomaProfesor();
+			cout<<"Ingrese el Idioma: "<<endl;
+			cin>>idiomaProf;
+			select = (*ct)->seleccionarIdioma(idiomaProf);
+			resultNick = true;
+			nom = dynamic_cast<Profesor*>(*ct);
 		}
 		else
 		{
@@ -176,11 +179,18 @@ void Controller::altaCurso(string nombre,string descripcion, DTOIdioma *idioma, 
 	}
 	if(result && resultNick)
 	{
-		Curso *C1 = new Curso(nombre,descripcion,idioma,dificultad,habilitado);
-		this->sistema->cursos.insert(C1);
-
+		Curso *C1=nullptr;
+		if (select != "")
+		{
+			Curso *C1 = new Curso(nombre,descripcion,idioma,dificultad,habilitado);
+			this->sistema->cursos.insert(C1);	
+		}
+		else
+		{
+			cout<<"Profesor no tiene ese idioma"<<endl;
+		}
 		DTOCurso Cur1(nombre,descripcion, idioma, dificultad,habilitado);
-		if (IngresoLeccion(Cur1,nuevaLeccion))
+		if (C1 != nullptr && IngresoLeccion(Cur1,nuevaLeccion))
 		{
 			cout<<"Leccion ingresada"<<endl;
 		}
@@ -188,12 +198,15 @@ void Controller::altaCurso(string nombre,string descripcion, DTOIdioma *idioma, 
 		{
 			cout<<"Error de ingreso"<<endl;
 		}
-
+		if (C1 != nullptr)
+		{
 		nom->setCurso(C1->getNombre());
 
 		nuevocurso->setAllPrevias(previa);
 
 		cout<<"Se creo el Curso"<<endl;
+		}
+
 	}
 	else
 	{

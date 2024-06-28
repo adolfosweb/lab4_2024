@@ -14,6 +14,7 @@ public:
     bool esProfesor();
     void setCurso(string curso);
     void listoIdiomaProfesor();
+    string seleccionarIdioma(string idiomaProf);
 };
 
 

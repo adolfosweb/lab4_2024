@@ -28,7 +28,7 @@ public:
 	//CU 5 Alta Curso
 	virtual void altaCurso(string nombre,string descripcion, DTOIdioma *idioma, ENUMDificultad dificultad, bool habilitado,string nombreProf,set<string> previa,DTOLeccion nuevaLeccion)=0;
 	virtual void listoProfesor()=0;
-	virtual void listoIdiomaProfesor(string nick)=0;
+	
 	virtual set<string> listaCursos()=0;
 
 	//CU 6 Agregar Leccion
