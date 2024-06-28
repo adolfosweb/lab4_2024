@@ -22,10 +22,10 @@ public:
     set<string> getIdiomas();
 
 	virtual ~Profesor();
-    //void mostrarInfo();
 	void agregarIdioma(Idioma* idioma);
     bool esProfesor();
     void setCurso(string curso);
-//    void listoIdiomaProfesor(string nombreProf);
+    void listoIdiomaProfesor();
+    string seleccionarIdioma(string idiomaProf);
 };
 #endif /*LOGICA_PROFESOR_H_*/

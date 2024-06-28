@@ -32,22 +32,34 @@ bool verificarTipoUsuario(Usuario* usuario)
 {
     return usuario->esProfesor();
 }
-/*void Profesor::mostrarInfo(){
-	cout<<this->getNick()<<endl;
-	cout<<this->getPass()<<endl;
-	cout<<this->getNom()<<endl;
-	cout<<this->getDescrip()<<endl;
-	
 
-	cout << "Idiomas: " << endl;
-    for (const auto& idioma : idioma) {
-        cout << "- " << idioma->getIdioma() << endl; // Asumiendo que Idioma tiene un método getNombre()
-    }
-}*/
 bool Profesor::esProfesor(){
     return true;
 }
 void Profesor :: setCurso(string curso)
 {
     this->cursor.insert(curso);   
+}
+
+void Profesor :: listoIdiomaProfesor()
+{
+    set<Idioma*> :: iterator it;
+   	for (it = this->idioma.begin(); it != this->idioma.end(); it++) {
+        cout<<": "<< (*it)->getIdioma()<<endl;
+	}
+
+}
+
+string Profesor :: seleccionarIdioma(string idiomaProf)
+{
+    set<Idioma*> :: iterator it;
+   	for (it = this->idioma.begin(); it != this->idioma.end(); it++) 
+    {
+        if ((*it)->getIdioma()==idiomaProf)
+        {
+            return (*it)->getIdioma();
+        }
+
+	}
+    return "";
 }
