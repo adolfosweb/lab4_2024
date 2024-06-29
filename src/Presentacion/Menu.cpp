@@ -160,7 +160,8 @@ void Menu::mostrarMenuCursos()
 		cout <<"4) Habilitar Curso " << endl;
 		cout <<"5) Eliminar Curso " << endl;
 		cout <<"6) Consultar Curso " << endl;
-		cout <<"7) Volver A Menu Pricipal "<< endl;
+		cout <<"7) Inscribirse a curso" << endl;
+		cout <<"8) Volver A Menu Pricipal "<< endl;
 		cout <<"Ingrese una opcion: " << endl;
 
 		cin >> op;
@@ -206,6 +207,14 @@ void Menu::mostrarMenuCursos()
 			}
 			break;
 		case 7:
+			{
+				std::system("clear");
+           		cout << "Inscribirse a curso" << endl;
+				PCurso datocurso;
+				datocurso.Inscripcion();     	
+			}
+			break;
+			case 8:
 			{
 				std::system("clear");
             	return;

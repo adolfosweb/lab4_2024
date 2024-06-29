@@ -21,7 +21,8 @@ public:
 
     //CU8 HabilitarCurso
     void habilitarCurso();
-
+    //CU11 Inscribir curso
+    void Inscripcion();
     //CU 13 Consultar estadísticas
     void consultaCurso();
     

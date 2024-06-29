@@ -42,7 +42,9 @@ public:
 
 	//CU 8 Habilitar Curso
 	virtual void habilitarCurso(string nombreCurso)=0;
-
+	//CU 11 Inscribirse a curso
+	virtual bool Inscribir(string nombreCurs,string nombreEst)=0;
+	virtual void listoCursosPendientes(string nombreEst)=0;
 	//CU 13 Consultar Estadísticas
 	virtual int listarUsuarios(int sel) = 0;
 	virtual void consultarStatsEstudiante(string nick) = 0;

@@ -5,7 +5,7 @@
 #include "Inscripcion.h"
 #include <iostream>
 #include <map>
-
+#include <set>
 using namespace std;
 
 class Estudiante : public Usuario{
@@ -28,6 +28,8 @@ public:
     string seleccionarIdioma(string idiomaProf);
     map<int,Inscripcion*> obtenerCursosInscriptos();
     set<Curso*> ObtenerCursos();
+    set<Curso*> listarCursoAprobado();
+    bool inscribir(Curso* curso);
 };
 
 

@@ -60,7 +60,6 @@ string Profesor :: seleccionarIdioma(string idiomaProf)
         {
             return (*it)->getIdioma();
         }
-
 	}
     return "";
 }
@@ -72,4 +71,12 @@ set<Curso*> Profesor :: ObtenerCursos()
 map<int,Inscripcion*> Profesor :: obtenerCursosInscriptos()
 {
     return map<int, Inscripcion*>();
+}
+set<Curso*> Profesor :: listarCursoAprobado()
+{
+    return set<Curso*>();
+}
+bool Profesor :: inscribir(Curso* curso)
+{
+    return false;
 }

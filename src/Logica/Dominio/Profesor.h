@@ -20,7 +20,6 @@ public:
 
     string getInstituto();
     set<string> getIdiomas();
-
 	virtual ~Profesor();
 	void agregarIdioma(Idioma* idioma);
     bool esProfesor();
@@ -29,6 +28,7 @@ public:
     string seleccionarIdioma(string idiomaProf);
     map<int,Inscripcion*> obtenerCursosInscriptos();
     set<Curso*> ObtenerCursos();
-    
+    set<Curso*> listarCursoAprobado();
+	bool inscribir(Curso* curso);
 };
 #endif /*LOGICA_PROFESOR_H_*/

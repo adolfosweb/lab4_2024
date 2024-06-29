@@ -19,7 +19,7 @@ private:
    
 public:
     Inscripcion();
-    //Inscripcion(dtfecha fecha, bool aprobado);
+    Inscripcion(int dd,int mm,int aaaa, bool aprobado,Curso* curso);
     ~Inscripcion();
 
     //d0tfecha getFecha();
@@ -29,6 +29,7 @@ public:
     bool esCurso(string nombreCurso,string descripcion);
     void ObtenerPromedio();
     float ObtenerDatoPromedio();
+    Curso* getCurso();
 };
 
 

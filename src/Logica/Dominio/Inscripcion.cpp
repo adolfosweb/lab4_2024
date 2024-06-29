@@ -2,7 +2,14 @@
 
 Inscripcion::Inscripcion(){
 }
-//Inscripcion::Inscripcion(dtfecha fecha, bool aprobado){}
+Inscripcion::Inscripcion(int dd,int mm,int aaaa, bool aprobado,Curso* curso)
+{
+   this->dd=dd;
+   this->mm=mm;
+   this->aaaa=aaaa;
+   this->aprobado=aprobado;
+   this->curso=curso;
+}
 
 Inscripcion::~Inscripcion(){
 }
@@ -40,4 +47,8 @@ bool Inscripcion :: esCurso(string nombreCurso,string descripcion)
       return false;
    }
 
+}
+Curso* Inscripcion :: getCurso()
+{
+   return curso;
 }

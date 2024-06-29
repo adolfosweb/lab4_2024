@@ -51,6 +51,10 @@ public:
 	//CU 8 Habilitar Curso
 	void habilitarCurso(string nombreCurso);
 
+	//CU 11 Inscribirse a curso
+	bool Inscribir(string nombreCurs,string nombreEst);
+	void listoCursosPendientes(string nombreEst);
+
 	//CU 13 Consultar estadísticas
 	int listarUsuarios(int sel);
 	void consultarStatsEstudiante(string nick);
