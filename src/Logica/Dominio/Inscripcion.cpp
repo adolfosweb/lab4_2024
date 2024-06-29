@@ -10,11 +10,9 @@ Inscripcion::~Inscripcion(){
 bool Inscripcion::getAprobado(){
     return this->aprobado;
 }
-
-
 void Inscripcion :: ObtenerPromedio()
 {
-   float prom = (*Curso).obtenerPromedio();
+   float prom = (*curso).obtenerPromedio();
 
    if(prom != 0)
    {
@@ -28,12 +26,12 @@ void Inscripcion :: ObtenerPromedio()
 
 float Inscripcion :: ObtenerDatoPromedio()
 {
-   return (*Curso).obtenerPromedio();
+   return (*curso).obtenerPromedio();
 }
 
 bool Inscripcion :: esCurso(string nombreCurso,string descripcion)
 {
-   if((*Curso).getNombre() == nombreCurso && (*Curso).getDescripcion() == descripcion)
+   if((*curso).getNombre() == nombreCurso && (*curso).getDescripcion() == descripcion)
    {
       return true;
    }

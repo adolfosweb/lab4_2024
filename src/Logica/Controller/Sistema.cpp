@@ -36,6 +36,8 @@ void Sistema::inicializarDatos() {
 
 
 	Usuario *usr1 = new Profesor("pp","pass1","nombre1","desc1","Instituto1");
+	dynamic_cast<Profesor*>(usr1)->agregarIdioma(idioma1);
+	dynamic_cast<Profesor*>(usr1)->agregarIdioma(idioma3);
 	this->usuarios.insert(usr1);
 
 	cout << "Fin inicializacion Sistema " << endl;
@@ -51,15 +53,4 @@ Idioma* Sistema::buscarIdioma(string nomIdioma) {
 		}
 	}
 	return idioma;
-}
-Curso* Sistema::buscarCurso(string nomCur) {
-	Curso* cursos= nullptr;
-	set<Curso*>::iterator it;
-	for (it = this->cursos.begin(); it != this->cursos.end(); it++) {
-		if ((*it)->getNombre() == nomCur) {
-			cursos = (*it);
-			break;
-		}
-	}
-	return cursos;
 }

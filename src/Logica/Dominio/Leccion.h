@@ -1,9 +1,10 @@
 #ifndef LOGICA_LECCION_H_
 #define LOGICA_LECCION_H_
 
-#include "Ejercicio.h"
 #include <iostream>
+#include "Ejercicio.h"
 #include <set>
+
 using namespace std;
 
 class Leccion{
@@ -19,7 +20,7 @@ public:
      int getNumero();
      string getTema();
      string getObjetivoAprendizaje();
-    ~Leccion();
+    ~Leccion(); 
     set<Ejercicio*> ObtenerEjercicios();
 };
 
