@@ -24,6 +24,7 @@ public:
     string getDescripcion();
     DTOIdioma getIdioma();
     ENUMDificultad getDificultad();
+    string dificultadToString(ENUMDificultad dificultad);
 	bool estaHabilitado();
     void MostrarDatos();
 };

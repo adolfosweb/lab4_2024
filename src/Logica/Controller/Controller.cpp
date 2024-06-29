@@ -225,6 +225,7 @@ void Controller::altaCurso(string nombre,string descripcion, string idioma,strin
 
 	if(result){
 		Curso *C1 = new Curso(nombre,descripcion,*itr2,dificultad,habilitado);
+		
 		this->sistema->cursos.insert(C1);	
 	
 		set<Curso*> result;
@@ -313,7 +314,9 @@ map<int,DTOCurso> Controller :: ConsultaCursosNoHabilitados()
 		if( ! (*ct)->estaHabilitado()) //Si no está habilitado...
 		{
 			//Se crea ese DataType con los valores indicados...
-			DTOCurso Temp((*ct)->getNombre(),(*ct)->getDescripcion(), (*ct)->getIdioma(), (*ct)->getDificultad(),(*ct)->estaHabilitado());
+			
+			DTOCurso Temp((*ct)->getNombre(),(*ct)->getDescripcion(), (*ct)->getIdioma(), (*ct)->getDificultad() ,(*ct)->estaHabilitado());
+			
 			//Ingreso al map...
 			CursosNoHab.insert({cont,Temp});
 			cont ++;
