@@ -482,16 +482,17 @@ set<string> Controller::listarNombreCursos(){
 	return nombres;
 }
 
-void Controller::seleccionarCursoAEliminar(string nombre){
+bool Controller::seleccionarCursoAEliminar(string nombre){
 	set<Curso*>::iterator it;
 	for (it = this->sistema->cursos.begin(); it != this->sistema->cursos.end(); it++) {
 		if((*it)->getNombre() == nombre){
 			(*it)->borrarLecciones();
 			this->sistema->cursos.erase(it);
 			delete((*it));
-			break;
+			return true;
 		}
 	}
+	return false;
 }
 //FIN CU 9 Eliminar Curso
 

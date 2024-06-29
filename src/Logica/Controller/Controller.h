@@ -60,7 +60,7 @@ public:
 
 	//CU9 Eliminar Curso
 	set<string> listarNombreCursos();
-	void seleccionarCursoAEliminar(string nombre);
+	bool seleccionarCursoAEliminar(string nombre);
 
 	//CU 11 Inscribirse a curso
 	bool Inscribir(string nombreCurs,string nombreEst);

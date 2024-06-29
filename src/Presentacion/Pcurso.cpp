@@ -56,7 +56,7 @@ void PCurso::altaCurso()
     set<string>::iterator it;
     for (it = listaProf.begin(); it != listaProf.end(); it++)
     {
-        cout << "Idioma: " << *it << endl;
+        cout << "Profesor: " << *it << endl;
     }
     string nombreProf;
     bool existeUsuario = false;
@@ -354,7 +354,32 @@ void PCurso::habilitarCurso()
         cout << "No hay curso para habilitar" << endl;
     }
 }
-
+//CU5 Eliminar Curso
+void PCurso::eliminarCurso(){
+    std::system("clear");
+    set<string> nombres;
+    string opcion = "";
+    int pos = 1;
+    nombres = this->SystemInstance->listarNombreCursos();
+    cin.ignore();
+    if(!nombres.empty()){
+        cout << "Cursos creados:" << endl; 
+        for(auto it = nombres.begin(); it != nombres.end(); it++){
+            cout << "Curso " << pos << ": " << *it << endl;
+            pos++;
+        }
+        cout << "Seleccione curso a eliminar:" << endl;
+        getline(cin,opcion);
+        if(this->SystemInstance->seleccionarCursoAEliminar(opcion)){
+            cout << "Se ha eliminado el curso: " << opcion << endl;
+        }else{
+            cout << "El curso: " << opcion << "no existe" << endl;
+        }
+    }else{
+        cout << "No hay cursos creados" << endl;
+    }
+}
+//FIN Eliminar curso
 
 
 // CU11 inscripcion

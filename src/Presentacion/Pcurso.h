@@ -22,6 +22,8 @@ public:
     void agregarEjercicio();
     //CU8 HabilitarCurso
     void habilitarCurso();
+    //CU9 Eliminar Curso
+    void eliminarCurso();
     //CU11 Inscribir curso
     void Inscripcion();
     //CU 13 Consultar estadísticas
