@@ -220,25 +220,39 @@ void Pusuarios::infoUsuario() {
 void Pusuarios :: consultaEstudiante()
 {	
 	string INick = "";
-	cout << "Mostrando listado de estudiantes" << endl;	//Muestra todos los estudiantes del sistema...
-	iPusuario->listarEstudiantes();
+	cout << "Mostrando listado de estudiantes:" << endl;	//Muestra todos los estudiantes del sistema...
+	int pass = iPusuario->listarUsuarios('e');
 
-	cout << "Ingrese Nick de estudiante a seleccionar" << endl;
-	cin >> INick;
+	if(pass != 0)
+    {    
+        cout << "Ingrese Nick de estudiante a seleccionar" << endl;
+	    cin >> INick;
 
-	iPusuario->consultarStatsEstudiante(INick);	//Se muestran las stats del estudiante.
-
+	    iPusuario->consultarStatsEstudiante(INick);	        //Se muestran las stats del estudiante.
+    }
+    else
+    {
+        cout << "No existen estudiantes registrados." << endl;
+        getchar();getchar();
+    }
 }
 
 void Pusuarios :: consultaProfesor()
 {
 	string INick = "";
 	cout << "Mostrando listado de profesores" << endl;	//Muestra todos los estudiantes del sistema...
-	iPusuario->listoProfesor();	
+	int pass = iPusuario->listarUsuarios('p');	
 	
-	cout << "Ingrese Nick de profesor a seleccionar" << endl;
-	cin >> INick;
+    if(pass != 0)
+	{
+        cout << "Ingrese Nick de profesor a seleccionar" << endl;
+	    cin >> INick;
 
-	iPusuario->consultarStatsProfesor(INick);	
-
+	    iPusuario->consultarStatsProfesor(INick);	
+    }
+    else
+    {
+        cout << "No existen profesores registrados." << endl;
+        getchar();getchar();
+    }
 }

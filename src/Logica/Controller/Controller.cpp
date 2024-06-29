@@ -285,7 +285,7 @@ set<string> Controller :: listoProfesor(){
 	return result;
 }
 
-set<string> Controller::idiomasProfesor(string nick){
+set<string> Controller :: idiomasProfesor(string nick){
 	set<string> result;
     set<Usuario*>::iterator it;
     for (it = this->sistema->usuarios.begin(); it != this->sistema->usuarios.end(); it++) {	
@@ -354,16 +354,30 @@ void Controller::habilitarCurso(string nombreCurso){
 }
 
 //CU 13 Consultar estadísticas (estudiante)
-void Controller :: listarEstudiantes()
+int Controller :: listarUsuarios(int sel)
 {
+	int adv = 0;
+
     set<Usuario*>::iterator it;
     for (it = this->sistema->usuarios.begin(); it != this->sistema->usuarios.end(); it++) 
     {	
-        if (!(*it)->esProfesor())
+        if (!(*it)->esProfesor() && sel == 'e')	//Estudiante
         {
+			adv++;
+            cout << ": " << (*it)->getNick() << endl;	
+        }
+
+		if ((*it)->esProfesor() && sel == 'p')	//Profesor
+        {
+			adv++;
             cout << ": " << (*it)->getNick() << endl;	
         }
     }
+
+
+
+	return adv;
+
 }
 void Controller :: consultarStatsEstudiante(string nick)
 {
@@ -403,52 +417,60 @@ void Controller :: consultarStatsProfesor(string nick)
 
 	}
 
-	for(auto ct = cursosProf.begin(); ct != cursosProf.end(); ct++)	//Por cada curso del profesor
-	{	 
-		map<int,Inscripcion*> cursosEst;
+	if(!cursosProf.empty())
+	{
+		for(auto ct = cursosProf.begin(); ct != cursosProf.end(); ct++)	//Por cada curso del profesor
+		{	 
+			map<int,Inscripcion*> cursosEst;
 
-		float prom  = 0, 					//Promedio final del curso
-			  total = 0;					//Suma de promedio de estudiantes.
-		int cantEst = 0;					//Cantidad de estudiantes que cursaron.				
+			float prom  = 0, 					//Promedio final del curso
+				total = 0;					//Suma de promedio de estudiantes.
+			int cantEst = 0;					//Cantidad de estudiantes que cursaron.				
 
-		if((*ct)->estaHabilitado())	//Si es un curso habilitado
-		{
-			cout << "Curso: " << (*ct)->getNombre();
-			
-			for(auto tt = sistema->usuarios.begin(); tt!= sistema->usuarios.end(); tt++)
+			if((*ct)->estaHabilitado())	//Si es un curso habilitado
 			{
-				cursosEst.clear();	//Se vacía el map
-
-				if (!(*tt)->esProfesor())	//Si es estudiante
+				cout << "Curso: " << (*ct)->getNombre();
+				
+				for(auto tt = sistema->usuarios.begin(); tt!= sistema->usuarios.end(); tt++)
 				{
-					cursosEst = (*tt)->obtenerCursosInscriptos();	//Guarda inscripciones del estudiante.
-					
-					for(auto it = cursosEst.begin(); it != cursosEst.end(); it ++)
-					{	
-						if(it->second->esCurso((*ct)->getNombre(),(*ct)->getDescripcion()))	//Verifica que se trate del mismo
-						{
-							cantEst ++;
-							total =	total + it->second->ObtenerDatoPromedio();
+					cursosEst.clear();	//Se vacía el map
+
+					if (!(*tt)->esProfesor())	//Si es estudiante
+					{
+						cursosEst = (*tt)->obtenerCursosInscriptos();	//Guarda inscripciones del estudiante.
+						
+						for(auto it = cursosEst.begin(); it != cursosEst.end(); it ++)
+						{	
+							if(it->second->esCurso((*ct)->getNombre(),(*ct)->getDescripcion()))	//Verifica que se trate del mismo
+							{
+								cantEst ++;
+								total =	total + it->second->ObtenerDatoPromedio();
+							}
+						
 						}
 					
 					}
-				
+
+				}
+			
+				prom = total/cantEst;
+
+				if(prom != 0 && cantEst != 0)
+				{
+					cout << " - Promedio: " << prom << "%" << endl;
+				}
+				else
+				{
+					cout << "No ha sido cursado." << endl;
 				}
 
 			}
-		
-			prom = total/cantEst;
-
-			if(prom != 0 && cantEst != 0)
-			{
-				cout << " - Promedio: " << prom << "%" << endl;
-			}
-			else
-			{
-				cout << "No ha sido cursado." << endl;
-			}
-
 		}
+	}
+	else
+	{
+		cout << "Profesor no tiene cursos." << endl;
+		getchar();getchar();
 	}
 
 }

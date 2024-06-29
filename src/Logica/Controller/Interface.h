@@ -44,7 +44,7 @@ public:
 	virtual void habilitarCurso(string nombreCurso)=0;
 
 	//CU 13 Consultar Estadísticas
-	virtual void listarEstudiantes() = 0;
+	virtual int listarUsuarios(int sel) = 0;
 	virtual void consultarStatsEstudiante(string nick) = 0;
 	virtual void consultarStatsProfesor(string nick) = 0;
 	virtual map<int,DTOCurso> ConsultaCursosHabilitados() = 0;

@@ -52,7 +52,7 @@ public:
 	void habilitarCurso(string nombreCurso);
 
 	//CU 13 Consultar estadísticas
-	void listarEstudiantes();
+	int listarUsuarios(int sel);
 	void consultarStatsEstudiante(string nick);
 	void consultarStatsProfesor(string nick);
 	map<int,DTOCurso> ConsultaCursosHabilitados();

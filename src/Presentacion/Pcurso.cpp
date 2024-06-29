@@ -255,27 +255,30 @@ void PCurso::habilitarCurso(){
 
 void PCurso :: consultaCurso()
 {
-    cout << "Mostrando todos los cursos: " << endl;
     map<int,DTOCurso> cursos = SystemInstance->ConsultaCursosHabilitados();
     //string ingreso = "";
     int seleccion = 0;
+    int advisor = 0;
+
+    //Se comprueba que hayan cursos habilitados disponibles.
+    for(auto ct = cursos.begin(); ct != cursos.end(); ct++){if(ct->second.estaHabilitado()){advisor++;}}
 
     if(!cursos.empty()) //Mientras mapa no esté vacío.
     {
-        int advisor = 0;
-        
-        for(auto ct = cursos.begin(); ct != cursos.end(); ct++)
-        {
-            if(ct->second.estaHabilitado())
-            {
-                advisor ++;
-                cout << "Código Curso: C" << ct->first << "Nombre Curso: "<< ct->second.getNombreCurso() << endl ;
-            }
-
-        }
 
         if(advisor != 0)
         {
+            cout << "Mostrando todos los cursos: " << endl;
+        
+            for(auto ct = cursos.begin(); ct != cursos.end(); ct++)
+            {
+                if(ct->second.estaHabilitado())
+                {
+                  cout << "Código Curso: C" << ct->first << "Nombre Curso: "<< ct->second.getNombreCurso() << endl ;
+                }
+
+            }
+
             cout << "\nIngrese el curso a seleccionar." << endl;
             cin >> seleccion;
 
@@ -300,6 +303,8 @@ void PCurso :: consultaCurso()
     else
     {
         cout << "\nNo existen cursos registrados." << endl; //Mensaje error.
+        getchar();
+        getchar();
     }
 
 }

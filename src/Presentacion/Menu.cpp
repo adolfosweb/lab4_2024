@@ -230,10 +230,11 @@ void Menu :: MenuConsultarEstadísticas()
 
 		std::system("clear");
 		sel = 0;
-		cout << "* Menu de consulta de estadísticas***"	 << endl;
+		cout << "* Menu de consulta de estadísticas***"		 << endl;
 		cout <<	"1) Consulta estadísticas de Estudiante"	 << endl;
 		cout <<	"2) Consulta estadísticas de Profesor"		 << endl;
 		cout <<	"3) Consulta estadísticas de Curso" 		 << endl;
+		cout <<	"4) Menu Principal" 						 << endl;
 		cin >> sel;
 
 		switch(sel)
@@ -241,6 +242,7 @@ void Menu :: MenuConsultarEstadísticas()
 			case 1: {	users.consultaEstudiante();				break;};
 			case 2: {	users.consultaProfesor();				break;};
 			case 3: {	cursos.consultaCurso();					break;};
+			case 4: {	return;										  };
 			default:{ 	cout << "Ingreso incorrecto!" << endl; 	break;};
 		}
 
