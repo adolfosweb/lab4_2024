@@ -9,7 +9,7 @@ DTOCurso :: DTOCurso()
 
 }
 
-DTOCurso :: DTOCurso(string nombre,string descripcion, DTOIdioma idioma, ENUMDificultad dificultad, bool habilitado) : nombre(nombre), descripcion(descripcion), idioma(idioma),dificultad(dificultad), habilitado(habilitado)
+DTOCurso :: DTOCurso(string nombre,string descripcion, DTOIdioma idioma, ENUMDificultad dificultad, bool habilitado) : nombre(nombre), descripcion(descripcion), idioma(idioma), habilitado(habilitado)
 {
     //Constructor por parámetros...
 }
@@ -26,23 +26,10 @@ string DTOCurso :: getNombreCurso()
 
 void DTOCurso :: MostrarDatos()
 {
-
-	cout << "Nombre: " << nombre << "\nDescripcion: " << descripcion <<  "\nIdioma del curso: " << idioma.getIdioma() << "\nDificultad: " << dificultadToString(dificultad) << endl;
+	cout << "Nombre: " << nombre << "\nDescripcion: " << descripcion <<  "\nIdioma del curso: " << idioma.getIdioma() << "\nDificultad: " << dificultad << endl;
 	cout << "\n________________________________________________" << endl;
 }
 
-string DTOCurso::dificultadToString(ENUMDificultad dificultad) {
-    switch (dificultad) {
-        case FACIL:
-            return "Fácil";
-        case MEDIO:
-            return "Medio";
-        case DIFICIL:
-            return "Difícil";
-        default:
-            return "Desconocido";
-	 }
- }
 string DTOCurso :: getDescripcion()
 {
 	return descripcion;

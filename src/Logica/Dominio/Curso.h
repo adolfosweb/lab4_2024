@@ -10,7 +10,7 @@ using namespace std;
 
 enum ENUMDificultad
 {
-    FACIL, MEDIO, DIFICIL
+    FACIL,MEDIO,DIFICIL
 };
 
 
@@ -33,7 +33,6 @@ public:
     string getDescripcion();
     DTOIdioma getIdioma();
     ENUMDificultad getDificultad();
-    string dificultadToString(ENUMDificultad dificultad);
     bool estaHabilitado();
     void habilitate();
     void setLeccion(DTOLeccion leccion);

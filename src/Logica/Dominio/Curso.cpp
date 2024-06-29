@@ -97,16 +97,3 @@ float Curso :: obtenerPromedio()
 
 
 }
-
-string Curso::dificultadToString(ENUMDificultad dificultad) {
-    switch (dificultad) {
-        case FACIL:
-            return "Fácil";
-        case MEDIO:
-            return "Medio";
-        case DIFICIL:
-            return "Difícil";
-        default:
-            return "Desconocido";
-	 }
- }
