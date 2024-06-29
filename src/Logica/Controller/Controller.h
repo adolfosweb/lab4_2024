@@ -61,7 +61,8 @@ public:
 	//CU9 Eliminar Curso
 	set<string> listarNombreCursos();
 	bool seleccionarCursoAEliminar(string nombre);
-
+	//CU 10 ConsultarCurso
+	DTOCurso consultarCurso(string nombreCurso);
 	//CU 11 Inscribirse a curso
 	bool Inscribir(string nombreCurs,string nombreEst);
 	void listoCursosPendientes(string nombreEst);

@@ -24,10 +24,12 @@ public:
     void habilitarCurso();
     //CU9 Eliminar Curso
     void eliminarCurso();
+    //CU 10 ConsultarCurso();
+    void consultarCurso();
     //CU11 Inscribir curso
     void Inscripcion();
     //CU 13 Consultar estadísticas
-    void consultaCurso();
+    void consultaEstaditicaDeCurso();
     
 };
 

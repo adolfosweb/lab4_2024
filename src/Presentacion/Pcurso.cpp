@@ -354,7 +354,7 @@ void PCurso::habilitarCurso()
         cout << "No hay curso para habilitar" << endl;
     }
 }
-//CU5 Eliminar Curso
+//CU9 Eliminar Curso
 void PCurso::eliminarCurso(){
     std::system("clear");
     set<string> nombres;
@@ -381,6 +381,41 @@ void PCurso::eliminarCurso(){
 }
 //FIN Eliminar curso
 
+//CU 10 ConsultarCurso
+void PCurso :: consultarCurso(){
+
+    set<string> nombreCursos=this->SystemInstance->listaCursos();
+    set<string>::iterator it;
+	for (it = nombreCursos.begin(); it != nombreCursos.end(); it++) {
+		cout << "Curso: " << *it << endl;
+	}
+
+    string nomCurso;
+	bool existeIdioma = false;
+    while (!existeIdioma)
+    {
+        cout << "Ingresa un Idioma de la lista:" << endl;
+        cin >> nomCurso;
+       
+       if (nombreCursos.find(nomCurso) != nombreCursos.end()) {
+        existeIdioma = true;
+       }else {
+        cout << "El curso ingresado no es correcto. Por favor, intenta nuevamente." << endl;
+        }
+    }
+    std::system("clear");
+    DTOCurso infoCurso=this->SystemInstance->consultarCurso(nomCurso);
+    
+    infoCurso.MostrarDatos();
+    set<DTOLeccion> leccionesCurso=infoCurso.getLecciones();
+
+    set<DTOLeccion>::iterator it2;
+	for (it2 = leccionesCurso.begin(); it2 != leccionesCurso.end(); it2++) {
+		cout << "Leccion: " <<it2->getNumero()<<" "<<it2->getTema()<<" "<<it2->getObjetivoAprendizaje()<< endl;
+	}
+
+
+}
 
 // CU11 inscripcion
 void PCurso ::Inscripcion()
@@ -411,7 +446,7 @@ void PCurso ::Inscripcion()
 }
 
 
-void PCurso ::consultaCurso()
+void PCurso ::consultaEstaditicaDeCurso()
 {
     map<int, DTOCurso> cursos = SystemInstance->ConsultaCursosHabilitados();
     // string ingreso = "";

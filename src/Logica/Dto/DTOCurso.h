@@ -14,7 +14,8 @@ private:
     DTOIdioma idioma;
     ENUMDificultad dificultad;
     bool habilitado;
-
+    set<DTOLeccion> lecciones;
+    set<DTOEjercicio> ejercicio;
 public:
 	
 	DTOCurso();
@@ -26,6 +27,8 @@ public:
     ENUMDificultad getDificultad();
 	bool estaHabilitado();
     void MostrarDatos();
+    void setLecciones(set<DTOLeccion> leccion);
+    set<DTOLeccion> getLecciones();
 
     //Evitar error no match for operator<
     bool operator<(const DTOCurso& c) const;

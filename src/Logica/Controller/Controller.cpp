@@ -422,6 +422,48 @@ void Controller::habilitarCurso(string nombreCurso)
 	}
 	cout << "El Curso a sido Habilitado" << endl;
 }
+
+// CU 9 Eliminar Curso
+set<string> Controller::listarNombreCursos(){
+	set<string> nombres;
+	set<Curso*>::iterator it;
+	for (it = this->sistema->cursos.begin(); it != this->sistema->cursos.end(); it++) {
+		nombres.insert((*it)->getNombre());
+	}
+	return nombres;
+}
+
+bool Controller::seleccionarCursoAEliminar(string nombre){
+	set<Curso*>::iterator it;
+	for (it = this->sistema->cursos.begin(); it != this->sistema->cursos.end(); it++) {
+		if((*it)->getNombre() == nombre){
+			(*it)->borrarLecciones();
+			this->sistema->cursos.erase(it);
+			delete((*it));
+			return true;
+		}
+	}
+	return false;
+}
+//FIN CU 9 Eliminar Curso
+
+//CU 10 consultarCurso
+DTOCurso Controller::consultarCurso(string nombreCurso){
+	
+	set<Curso*>::iterator it;
+	for (it = this->sistema->cursos.begin(); it != this->sistema->cursos.end(); it++) {
+		if (nombreCurso == (*it)->getNombre()) {		
+			break;
+		}
+	}
+
+	DTOCurso resu((*it)->getNombre(),(*it)->getDescripcion(), (*it)->getIdioma(), (*it)->getDificultad(),(*it)->estaHabilitado());
+
+	resu.setLecciones((*it)->listarLecciones());
+
+	return resu;
+}
+
 // CU 11 Inscribirse a curso
 bool Controller ::Inscribir(string nombreCurs, string nombreEst)
 {
@@ -472,30 +514,6 @@ void Controller ::listoCursosPendientes(string nombreEst)
 		}
 	}
 }
-// CU 9 Eliminar Curso
-set<string> Controller::listarNombreCursos(){
-	set<string> nombres;
-	set<Curso*>::iterator it;
-	for (it = this->sistema->cursos.begin(); it != this->sistema->cursos.end(); it++) {
-		nombres.insert((*it)->getNombre());
-	}
-	return nombres;
-}
-
-bool Controller::seleccionarCursoAEliminar(string nombre){
-	set<Curso*>::iterator it;
-	for (it = this->sistema->cursos.begin(); it != this->sistema->cursos.end(); it++) {
-		if((*it)->getNombre() == nombre){
-			(*it)->borrarLecciones();
-			this->sistema->cursos.erase(it);
-			delete((*it));
-			return true;
-		}
-	}
-	return false;
-}
-//FIN CU 9 Eliminar Curso
-
 // CU 13 Consultar estadísticas (estudiante)
 int Controller ::listarUsuarios(int sel)
 {

@@ -51,6 +51,10 @@ public:
 	//CU9 Eliminar Curso
 	virtual set<string> listarNombreCursos() = 0;
 	virtual bool seleccionarCursoAEliminar(string nombre) = 0;
+
+	//CU10 ConsultarCurso
+	virtual DTOCurso consultarCurso(string nombreCurso)=0;
+
 	//CU 11 Inscribirse a curso
 	virtual bool Inscribir(string nombreCurs,string nombreEst)=0;
 	virtual void listoCursosPendientes(string nombreEst)=0;

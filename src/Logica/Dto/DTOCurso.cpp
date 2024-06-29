@@ -51,3 +51,11 @@ bool DTOCurso :: estaHabilitado()
 bool DTOCurso :: operator<(const DTOCurso& c) const{
 	return true;
 }
+
+void DTOCurso::setLecciones(set<DTOLeccion> leccion){
+	this->lecciones=leccion;
+}
+
+set<DTOLeccion> DTOCurso ::getLecciones(){
+	return this->lecciones;
+}

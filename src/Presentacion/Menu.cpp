@@ -208,6 +208,9 @@ void Menu::mostrarMenuCursos()
 		case 6:
 			{
 				std::system("clear");
+				cout << "ConsultarCurso" << endl;
+				PCurso datocurso;
+            	datocurso.consultarCurso();
             
 			}
 			break;
@@ -255,7 +258,7 @@ void Menu :: MenuConsultarEstadísticas()
 		{
 			case 1: {	users.consultaEstudiante();				break;};
 			case 2: {	users.consultaProfesor();				break;};
-			case 3: {	cursos.consultaCurso();					break;};
+			case 3: {	cursos.consultaEstaditicaDeCurso();		break;};
 			case 4: {	return;										  };
 			default:{ 	cout << "Ingreso incorrecto!" << endl; 	break;};
 		}
