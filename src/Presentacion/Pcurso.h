@@ -22,8 +22,6 @@ public:
     void consultaCurso();
     
 
-    //CU8 HabilitarCurso
-    void habilitarCurso();
     
 };
 

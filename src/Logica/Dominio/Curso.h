@@ -3,7 +3,6 @@
 #include <iostream>
 #include "../Dto/DTOIdioma.h"
 #include "../Dto/DTOLeccion.h"
-#include "../Dominio/Idioma.h"
 #include "Leccion.h"
 #include <set>
 using namespace std;
@@ -19,7 +18,7 @@ class Curso
 private:
     string nombre;
     string descripcion;
-    Idioma *idioma;
+    DTOIdioma *idioma;
     ENUMDificultad dificultad;
     bool habilitado;
     set<Leccion*> lecciones;
@@ -27,14 +26,13 @@ private:
 
 public:
     Curso(/* args */);
-    Curso(string nombre,string descripcion, Idioma *idioma, ENUMDificultad dificultad, bool habilitado);
+    Curso(string nombre,string descripcion, DTOIdioma *idioma, ENUMDificultad dificultad, bool habilitado);
     ~Curso();
     string getNombre();
     string getDescripcion();
-    DTOIdioma getIdioma();
+    DTOIdioma* getIdioma();
     ENUMDificultad getDificultad();
     bool estaHabilitado();
-    void habilitate();
     void setLeccion(DTOLeccion leccion);
     void setAllPrevias(set<string> previa);
     float obtenerPromedio();

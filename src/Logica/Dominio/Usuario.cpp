@@ -16,13 +16,8 @@ Usuario::~Usuario(){}
 string Usuario::getNick(){
     return this->nick;
 }
-
 string Usuario::getPass(){
     return this->pass;
-}
-
-string Usuario::getNom(){
-	return this->nom;
 }
 string Usuario::getDescrip(){
     return this->descrip;

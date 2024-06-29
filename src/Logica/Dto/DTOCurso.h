@@ -11,21 +11,22 @@ class DTOCurso
 private:
     string nombre;
     string descripcion;
-    DTOIdioma idioma;
+    DTOIdioma *idioma;
     ENUMDificultad dificultad;
     bool habilitado;
-
+    set<string> previas;
 public:
 	
 	DTOCurso();
-	DTOCurso(string nombre,string descripcion, DTOIdioma idioma, ENUMDificultad dificultad, bool habilitado);
+	DTOCurso(string nombre,string descripcion, DTOIdioma *idioma, ENUMDificultad dificultad, bool habilitado);
 	virtual ~DTOCurso();
 	string getNombreCurso();
     string getDescripcion();
-    DTOIdioma getIdioma();
+    DTOIdioma* getIdioma();
     ENUMDificultad getDificultad();
 	bool estaHabilitado();
     void MostrarDatos();
+    set<string> getPrevia(); 
 };
 
 #endif /* LOGICA_DTO_DTOCURSO_H_ */
