@@ -1,9 +1,10 @@
 #include "DTOEjercicio.h"
 
-DTOEjercicio::DTOEjercicio(string descripcion, string frase, string solucion){
+DTOEjercicio::DTOEjercicio(string descripcion, string frase,ENUMTipo tipo, string solucion){
     this->descripcion = descripcion;
     this->frase = frase;
     this->solucion = solucion;
+    this->tipo=tipo;
 }
 
 DTOEjercicio::~DTOEjercicio(){

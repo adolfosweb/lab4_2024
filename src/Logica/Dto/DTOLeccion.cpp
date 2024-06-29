@@ -12,15 +12,15 @@ DTOLeccion::DTOLeccion(int numero, string tema, string objetivoAprendizaje){
 DTOLeccion::~DTOLeccion(){
 }
 
-int DTOLeccion::getNumero(){
+int DTOLeccion::getNumero() const{
     return this->numero;
 }
 
-string DTOLeccion::getTema(){
+string DTOLeccion::getTema() const{
     return this->tema;
 }
 
-string DTOLeccion::getObjetivoAprendizaje(){
+string DTOLeccion::getObjetivoAprendizaje() const{
     return this->objetivoAprendizaje;
 }
 

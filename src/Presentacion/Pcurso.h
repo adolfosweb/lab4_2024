@@ -19,7 +19,7 @@ public:
     //CU6 Agregar Ejercicio
     void AgregarLeccion();
     //CU7 Agregar Ejercicio
-    
+    void agregarEjercicio();
     //CU8 HabilitarCurso
     void habilitarCurso();
     //CU11 Inscribir curso

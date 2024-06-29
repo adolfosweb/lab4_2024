@@ -177,8 +177,6 @@ void PCurso::AgregarLeccion()
     {
         cout << "\nIngrese el curso a seleccionar..." << endl;
         cin >> in;
-        // ingreso = ingreso.substr(1);
-        // in = stoi(ingreso);
 
         if (in >= 1 && in <= Temp.size())
         {
@@ -216,7 +214,103 @@ void PCurso::AgregarLeccion()
         cout << "\nIngreso Completado..." << endl;
     }
 }
+//CU7
+void PCurso::agregarEjercicio(){
 
+        map<int,DTOCurso> cursos= this->SystemInstance->ConsultaCursosNoHabilitados();
+
+        for (auto ct = cursos.begin(); ct != cursos.end(); ct++){
+            cout << "Código Curso: C" << ct->first <<" "<< ct->second.getNombreCurso()<< endl;    
+        }
+
+        int in = 0;
+        bool cursoAceptado = false;
+
+        while (!cursoAceptado)
+        {
+            cout << "\nIngrese el curso a seleccionar..." << endl;
+            cin >> in;
+            if (in >= 1 && in <= cursos.size()){
+                cursoAceptado = true;
+            }else{
+                cout << "Número fuera de rango. Por favor, ingrese un número entre 1 y " << cursos.size() << "." << endl;
+            }
+        }
+
+        auto Cur = cursos.find(in);
+
+        set<DTOLeccion> lecciones=this->SystemInstance->listarLecciones(Cur->second.getNombreCurso());
+
+        cout<<"Las Lecciones del curso llamado "<<Cur->second.getNombreCurso()<<" son :"<<endl;
+
+        set<DTOLeccion>::iterator it;
+
+        for (it = lecciones.begin(); it != lecciones.end(); it++) {
+            cout<<"Leccion "<<it->getNumero() <<" "<< it->getTema()<<endl;	
+        }
+
+        string nombreLeccion;
+        bool leccionAceptada = false;
+        DTOLeccion aux;
+        while (!leccionAceptada) {
+            cout << "\nIngrese el nombre de la lección a seleccionar..." << endl;
+         cin >> nombreLeccion;
+
+            // Verificar si existe una lección con el nombre ingresado
+            for (it = lecciones.begin(); it != lecciones.end(); it++) {
+                if (it->getTema() == nombreLeccion) {
+                    leccionAceptada = true;
+                    aux=*it;
+                    break;
+                }
+            }
+
+            if (!leccionAceptada) {
+                 cout << "Lección no encontrada. Por favor, ingrese un nombre de lección válido." << endl;
+            }
+        }
+
+        cout<<"Elija que tipo de Ejercicio quere ingresar (1=Ejercicio de Completar Palabra, 2=Ejercicio de traduccion):"<<endl;
+        int num;
+        cin>>num;
+        cin.ignore();
+        string descripcion="";
+        string frase="";
+        string solucion="";
+        ENUMTipo tipo;
+
+        
+        if(num==1){
+            cout<<"Ingrese Descripcion del Ejercicio"<<endl;  
+            getline(cin,descripcion);
+
+            cout<<"Ingrese La Frase incompleta"<<endl;  
+            getline(cin,frase);
+
+            cout<<"Ingrese La Frase completa"<<endl;  
+            getline(cin,solucion);
+
+
+            tipo=ENUMTipo::COMPLETAR;
+            DTOEjercicio eje(descripcion,frase,tipo,solucion);
+            this->SystemInstance->ingresarEjercicioTraduccion(Cur->second,aux,eje);
+
+        }else if(num==2){
+
+            cout<<"Ingrese Descripcion del Ejercicio"<<endl;  
+            getline(cin,descripcion);
+
+            cout<<"Ingrese La Frase a Traduccir"<<endl;  
+            getline(cin,frase);
+
+            cout<<"Ingrese La Frase Traducida "<<endl;  
+            getline(cin,solucion);
+            tipo=ENUMTipo::TRADUCCION;
+            DTOEjercicio eje(descripcion,frase,tipo,solucion);
+            this->SystemInstance->ingresarEjercicioTraduccion(Cur->second,aux,eje);
+        }
+
+}
 // CU 8 HABILITAR CURSO
 void PCurso::habilitarCurso()
 {
@@ -260,6 +354,37 @@ void PCurso::habilitarCurso()
         cout << "No hay curso para habilitar" << endl;
     }
 }
+
+
+
+// CU11 inscripcion
+void PCurso ::Inscripcion()
+{
+    string nombreEst = "", nombreCurs = "";
+    if (this->SystemInstance->listarUsuarios('e') != 0)
+    {
+        cout << "Ingrese Nombre del Estudiante:" << endl;
+        getline(cin, nombreEst);
+
+        this->SystemInstance->listoCursosPendientes(nombreEst);
+        cout << "Ingrese Nombre del curso:" << endl;
+        getline(cin, nombreCurs);
+
+        if (this->SystemInstance->Inscribir(nombreCurs, nombreEst))
+        {
+            cout << "Se realizo la inscripcion" << endl;
+        }
+        else
+        {
+            cout << "Error de inscripcion" << endl;
+        }
+    }
+    else
+    {
+    cout << "No hay usuarios" << endl;
+    }
+}
+
 
 void PCurso ::consultaCurso()
 {
@@ -321,32 +446,5 @@ void PCurso ::consultaCurso()
         cout << "\nNo existen cursos registrados." << endl; // Mensaje error.
         getchar();
         getchar();
-    }
-}
-// CU11 inscripcion
-void PCurso ::Inscripcion()
-{
-    string nombreEst = "", nombreCurs = "";
-    if (this->SystemInstance->listarUsuarios('e') != 0)
-    {
-        cout << "Ingrese Nombre del Estudiante:" << endl;
-        getline(cin, nombreEst);
-
-        this->SystemInstance->listoCursosPendientes(nombreEst);
-        cout << "Ingrese Nombre del curso:" << endl;
-        getline(cin, nombreCurs);
-
-        if (this->SystemInstance->Inscribir(nombreCurs, nombreEst))
-        {
-            cout << "Se realizo la inscripcion" << endl;
-        }
-        else
-        {
-            cout << "Error de inscripcion" << endl;
-        }
-    }
-    else
-    {
-    cout << "No hay usuarios" << endl;
     }
 }

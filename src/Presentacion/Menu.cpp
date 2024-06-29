@@ -184,6 +184,9 @@ void Menu::mostrarMenuCursos()
         case 3:
 			{
 				std::system("clear");
+				cout << "Agregar Ejercicio" << endl;
+				PCurso datocurso;
+				datocurso.agregarEjercicio();
 			}
 			break;
 		case 4:
