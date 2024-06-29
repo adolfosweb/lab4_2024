@@ -45,6 +45,8 @@ public:
     set<DTOLeccion> listarLecciones();
     bool ingresarEjercicioPalabra(DTOLeccion l, DTOEjercicio e);
     bool ingresarEjercicioTraduccion(DTOLeccion l, DTOEjercicio e);
+    //CU9
+    void borrarLecciones();
 };
 
 

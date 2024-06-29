@@ -58,6 +58,10 @@ public:
 	//CU 8 Habilitar Curso
 	void habilitarCurso(string nombreCurso);
 
+	//CU9 Eliminar Curso
+	set<string> listarNombreCursos();
+	void seleccionarCursoAEliminar(string nombre);
+
 	//CU 11 Inscribirse a curso
 	bool Inscribir(string nombreCurs,string nombreEst);
 	void listoCursosPendientes(string nombreEst);

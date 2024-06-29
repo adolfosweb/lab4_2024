@@ -57,3 +57,11 @@ bool Leccion::ingresarEjercicioTraduccion(DTOEjercicio e){
     this->ejercicios.insert(ej);
     return true;
 }
+
+//CU9
+void Leccion::borrarEjercicios(){
+    for (auto it = this->ejercicios.begin(); it != this->ejercicios.end(); it++){
+        delete *it;
+    }
+    this->ejercicios.clear();
+}

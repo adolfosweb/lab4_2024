@@ -150,5 +150,14 @@ bool Curso::ingresarEjercicioTraduccion(DTOLeccion l, DTOEjercicio e){
 	}
     return false;
 }
-
 //FIN CU7
+
+//CU9
+void Curso::borrarLecciones(){
+    for (auto it = this->lecciones.begin(); it != this->lecciones.end(); it++){
+        (*it)->borrarEjercicios();
+        delete *it;
+    }
+    this->lecciones.clear();
+}
+//FIN CU9

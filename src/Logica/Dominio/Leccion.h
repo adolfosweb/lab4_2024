@@ -27,6 +27,9 @@ public:
      //CU7
     bool ingresarEjercicioPalabra(DTOEjercicio e);
     bool ingresarEjercicioTraduccion(DTOEjercicio e);
+
+    //CU9
+    void borrarEjercicios();
 };
 
 
