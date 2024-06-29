@@ -352,3 +352,166 @@ void Controller::habilitarCurso(string nombreCurso){
 	}
 	cout<<"El Curso a sido Habilitado"<<endl;
 }
+
+//CU 13 Consultar estadísticas (estudiante)
+void Controller :: listarEstudiantes()
+{
+    set<Usuario*>::iterator it;
+    for (it = this->sistema->usuarios.begin(); it != this->sistema->usuarios.end(); it++) 
+    {	
+        if (!(*it)->esProfesor())
+        {
+            cout << ": " << (*it)->getNick() << endl;	
+        }
+    }
+}
+void Controller :: consultarStatsEstudiante(string nick)
+{
+	//Se obtiene instancia de estudiante... 
+	for(auto ct = sistema->usuarios.begin(); ct != sistema->usuarios.end(); ct++)
+	{
+		if (!(*ct)->esProfesor() && (*ct)->getNick() == nick)	//Mientras no sea profesor y coincida el nick
+		{
+			map<int,Inscripcion*> cie = (*ct)->obtenerCursosInscriptos(); // Se obtienen cursos Inscriptos Estudiante
+			
+			for(auto ct = cie.begin(); ct != cie.end(); ct++)
+			{
+				cout << "Curso Número " << ct->first << endl;	//Por cada curso...
+				ct->second->ObtenerPromedio();					//Su promedio...
+			}
+			
+		}
+
+	}
+
+}
+
+void Controller :: consultarStatsProfesor(string nick)
+{
+	//Se obtiene instancia de profesor... 
+
+	set<Curso*> cursosProf;
+
+	for(auto ct = sistema->usuarios.begin(); ct != sistema->usuarios.end(); ct++)
+	{
+		if ((*ct)->esProfesor() && (*ct)->getNick() == nick)	//Mientras sea profesor y coincida el nick
+		{
+			
+			cursosProf = (*ct)->ObtenerCursos();	//Se obtienen sus cursos.
+
+		}
+
+	}
+
+	for(auto ct = cursosProf.begin(); ct != cursosProf.end(); ct++)	//Por cada curso del profesor
+	{	 
+		map<int,Inscripcion*> cursosEst;
+
+		float prom  = 0, 					//Promedio final del curso
+			  total = 0;					//Suma de promedio de estudiantes.
+		int cantEst = 0;					//Cantidad de estudiantes que cursaron.				
+
+		if((*ct)->estaHabilitado())	//Si es un curso habilitado
+		{
+			cout << "Curso: " << (*ct)->getNombre();
+			
+			for(auto tt = sistema->usuarios.begin(); tt!= sistema->usuarios.end(); tt++)
+			{
+				cursosEst.clear();	//Se vacía el map
+
+				if (!(*tt)->esProfesor())	//Si es estudiante
+				{
+					cursosEst = (*tt)->obtenerCursosInscriptos();	//Guarda inscripciones del estudiante.
+					
+					for(auto it = cursosEst.begin(); it != cursosEst.end(); it ++)
+					{	
+						if(it->second->esCurso((*ct)->getNombre(),(*ct)->getDescripcion()))	//Verifica que se trate del mismo
+						{
+							cantEst ++;
+							total =	total + it->second->ObtenerDatoPromedio();
+						}
+					
+					}
+				
+				}
+
+			}
+		
+			prom = total/cantEst;
+
+			if(prom != 0 && cantEst != 0)
+			{
+				cout << " - Promedio: " << prom << "%" << endl;
+			}
+			else
+			{
+				cout << "No ha sido cursado." << endl;
+			}
+
+		}
+	}
+
+}
+
+map<int,DTOCurso> Controller :: ConsultaCursosHabilitados()
+{
+
+	map<int,DTOCurso> CursosHab;	//Se crea map vacío.
+
+	int cont = 1;
+
+	for(auto ct = sistema->cursos.begin(); ct != sistema->cursos.end(); ct++ )
+	{
+
+		if((*ct)->estaHabilitado()) //Si no está habilitado...
+		{
+			//Se crea ese DataType con los valores indicados...
+			DTOCurso Temp((*ct)->getNombre(),(*ct)->getDescripcion(), (*ct)->getIdioma(), (*ct)->getDificultad(),(*ct)->estaHabilitado());
+			//Ingreso al map...
+			CursosHab.insert({cont,Temp});
+			cont ++;
+		}
+
+	}
+
+	return CursosHab;
+
+}
+
+float Controller :: obtenerPromedioCurso(DTOCurso curso)
+{
+	map<int,Inscripcion*> inscripcionesEst;	//Almacén temporal de cursos de estudiantes.
+	float total = 0;
+	int cantEst = 0;
+ 
+	for(auto ct = sistema->usuarios.begin(); ct != sistema->usuarios.end(); ct++)
+	{
+		inscripcionesEst.clear();	//Se vacía almacén de cursos para el siguiente estudiante...
+
+		if (!(*ct)->esProfesor())	//Mientras sea estudiante
+		{	
+			inscripcionesEst = (*ct)->obtenerCursosInscriptos();
+			
+			for(auto tt = inscripcionesEst.begin(); tt != inscripcionesEst.end(); tt++)
+			{
+					
+				if((*tt).second->esCurso(curso.getNombreCurso(),curso.getDescripcion()))	//Si se encuentra curso...
+				{
+					cantEst++;
+					total = total + (*tt).second->ObtenerDatoPromedio();
+				}
+			}
+
+		}
+
+	}
+
+	if(cantEst != 0)
+	{
+		return total/cantEst;
+	}
+	
+	
+	return 0;
+	
+}

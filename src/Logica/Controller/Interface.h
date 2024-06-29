@@ -43,6 +43,13 @@ public:
 	//CU 8 Habilitar Curso
 	virtual void habilitarCurso(string nombreCurso)=0;
 
+	//CU 13 Consultar Estadísticas
+	virtual void listarEstudiantes() = 0;
+	virtual void consultarStatsEstudiante(string nick) = 0;
+	virtual void consultarStatsProfesor(string nick) = 0;
+	virtual map<int,DTOCurso> ConsultaCursosHabilitados() = 0;
+	virtual float obtenerPromedioCurso(DTOCurso curso) = 0;
+
 };
 
 #endif /* LOGICA_CONTROLLER_INTERFACE_H_ */

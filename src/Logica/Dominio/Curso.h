@@ -37,6 +37,7 @@ public:
     void habilitate();
     void setLeccion(DTOLeccion leccion);
     void setAllPrevias(set<Curso*> previa);
+    float obtenerPromedio();
 };
 
 

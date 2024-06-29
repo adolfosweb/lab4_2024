@@ -60,3 +60,40 @@ void Curso :: setAllPrevias(set<Curso*> previa)
        this->previa.insert((*ct));
     } 
 }
+
+float Curso :: obtenerPromedio()
+{
+    int contadorAp = 0;
+    int contadorNa = 0;
+    int total = 0;
+
+    set<Ejercicio*> ejercicios;
+
+    for(auto ct = lecciones.begin(); ct != lecciones.end(); ct++) //De cada lección...
+    {
+        ejercicios = (*ct)->ObtenerEjercicios();
+        for(auto tt = ejercicios.begin(); tt != ejercicios.end(); tt++) //Se obtiene total de ejercicios aprobados y no aprobados
+        {
+            if((*tt)->getAprobado())
+            {
+                contadorAp ++;
+            }
+            else
+            {
+                contadorNa ++;
+            }
+        }
+
+    }
+
+    total = contadorAp + contadorNa;
+
+    if(total != 0)
+    {
+        return contadorAp/total;
+    }
+    
+    return 0;
+
+
+}

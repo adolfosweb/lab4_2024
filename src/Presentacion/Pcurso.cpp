@@ -159,18 +159,27 @@ void PCurso::AgregarLeccion()
 
     for(auto ct = Temp.begin(); ct!= Temp.end(); ct++)
     {
-        cout << "Curso Número " << ct->first << endl;
+        cout << "Código Curso: C" << ct->first << endl;
         ct->second.MostrarDatos();
     }
 
-    int in = 1;
-    bool cursoAceptado=false;
-    while (!cursoAceptado){   
-        cout << "\nIngrese el número del curso a seleccionar..." << endl;
+    int in = 0;
+    bool cursoAceptado = false;
+    //string ingreso = "";
+
+    while (!cursoAceptado)  
+    {  
+        cout << "\nIngrese el curso a seleccionar..." << endl;
         cin >> in;
-        if(in >= 1 && in <= Temp.size() ){
-            cursoAceptado=true; 
-        }else{
+        //ingreso = ingreso.substr(1);
+        //in = stoi(ingreso);
+
+        if(in >= 1 && in <= Temp.size() )
+        {
+            cursoAceptado = true; 
+        }
+        else
+        {
             cout << "Número fuera de rango. Por favor, ingrese un número entre 1 y " << Temp.size() << "." << endl;
         }
     }
@@ -180,14 +189,15 @@ void PCurso::AgregarLeccion()
     string nombreLeccion = "", objetivo = "";
     char sel = ' ';
 
+    cin.ignore();
     cout << "\nIngrese nombre de la nueva lección:" << endl;
-    cin >> nombreLeccion;
+    getline(cin,nombreLeccion,'\n');
 
     cout << "\nIngrese objetivo de la lección:" << endl;
-    cin >> objetivo;
+    getline(cin,objetivo,'\n');
 
     cout << "\nDesea ingresar También los ejercicios? S/N" << endl;
-    cin >> sel;
+    sel = getchar();
 
     if(sel == 'S' || sel == 's')
     {
@@ -241,4 +251,55 @@ void PCurso::habilitarCurso(){
     }else{
         cout<<"No hay curso para habilitar"<<endl;
     }
+}
+
+void PCurso :: consultaCurso()
+{
+    cout << "Mostrando todos los cursos: " << endl;
+    map<int,DTOCurso> cursos = SystemInstance->ConsultaCursosHabilitados();
+    //string ingreso = "";
+    int seleccion = 0;
+
+    if(!cursos.empty()) //Mientras mapa no esté vacío.
+    {
+        int advisor = 0;
+        
+        for(auto ct = cursos.begin(); ct != cursos.end(); ct++)
+        {
+            if(ct->second.estaHabilitado())
+            {
+                advisor ++;
+                cout << "Código Curso: C" << ct->first << "Nombre Curso: "<< ct->second.getNombreCurso() << endl ;
+            }
+
+        }
+
+        if(advisor != 0)
+        {
+            cout << "\nIngrese el curso a seleccionar." << endl;
+            cin >> seleccion;
+
+            //int seleccion = stoi(ingreso);  //Solo almacenará el número del ingreso.
+
+            auto Cur = cursos.find(seleccion);   //Se obtiene DTOCurso
+            float promedio = SystemInstance->obtenerPromedioCurso(Cur->second);  //Se obtiene el promedio de ese curso entre todos los estudiantes.
+
+            Cur->second.MostrarDatos();
+
+            if(promedio != 0)
+            cout << "Promedio total de este Curso: " << promedio << "%"<< endl;
+            else
+            cout << "No hay estudiantes que hayan cursado/aprobado este curso." << endl;
+        }
+        else
+        {
+            cout << "\nNo existen cursos habilitados actualmente." << endl; //Mensaje error.
+        }
+
+    }
+    else
+    {
+        cout << "\nNo existen cursos registrados." << endl; //Mensaje error.
+    }
+
 }

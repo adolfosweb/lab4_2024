@@ -35,6 +35,14 @@ set<string> Estudiante ::listoIdiomaProfesor()
 }
 string Estudiante :: seleccionarIdioma(string idiomaProf)
 {
-
     return "";
+}
+map<int,Inscripcion*> Estudiante :: obtenerCursosInscriptos()
+{
+    return cursosInscriptos;
+}
+set<Curso*> Estudiante :: ObtenerCursos()
+{//Esto es para evitar problemas con clase hija profesor
+
+    return set<Curso*>();   //Set vacío.
 }

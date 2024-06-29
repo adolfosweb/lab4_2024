@@ -21,6 +21,9 @@ public:
 
     //CU8 HabilitarCurso
     void habilitarCurso();
+
+    //CU 13 Consultar estadísticas
+    void consultaCurso();
     
 };
 

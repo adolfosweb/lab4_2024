@@ -27,5 +27,8 @@ public:
     void setCurso(Curso* curso);
     set<string> listoIdiomaProfesor();
     string seleccionarIdioma(string idiomaProf);
+    map<int,Inscripcion*> obtenerCursosInscriptos();
+    set<Curso*> ObtenerCursos();
+    
 };
 #endif /*LOGICA_PROFESOR_H_*/

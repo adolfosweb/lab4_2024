@@ -26,7 +26,7 @@ string DTOCurso :: getNombreCurso()
 
 void DTOCurso :: MostrarDatos()
 {
-	cout << "Nombre: " << nombre << "\nDescripcion" << descripcion <<  "\nIdioma del curso: " << idioma.getIdioma() << "\nDificultad: " << dificultad << endl;
+	cout << "Nombre: " << nombre << "\nDescripcion: " << descripcion <<  "\nIdioma del curso: " << idioma.getIdioma() << "\nDificultad: " << dificultad << endl;
 	cout << "\n________________________________________________" << endl;
 }
 
