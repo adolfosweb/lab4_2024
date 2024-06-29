@@ -67,12 +67,9 @@ void PCurso::altaCurso()
     {
         cout << "No se agregó previa" << endl;
     }
-
-    int Adleccion;
-    cout << "¿Desea agregar Lecciones? (1=si, 2=no): " << endl;
-    cin >> Adleccion;
-    getchar();
-    DTOLeccion nuevaLeccion(0, tema, objetivoAprendizaje);
+        this->SystemInstance->altaCurso(nombre,descripcion,idioma,nombreProf,dif,habilitado,previas);
+    
+}
 
     if (Adleccion == 1)
     {
@@ -152,22 +149,26 @@ void PCurso::AgregarLeccion()
         ct->second.MostrarDatos();
     }
 
-    int in = 0;
-    string ingreso = "";
-
-    while (in < 1 && in > Temp.size())  //Mientras sea menor a 1 o mayor al max del map...
-    {   cout << "\nIngrese el curso a seleccionar..." << endl;
-        cin >> ingreso;
-        int in = stoi(ingreso);  //Solo almacenará el número del ingreso.
+    int in = 1;
+    bool cursoAceptado=false;
+    while (!cursoAceptado){   
+        cout << "\nIngrese el número del curso a seleccionar..." << endl;
+        cin >> in;
+        if(in >= 1 && in <= Temp.size() ){
+            cursoAceptado=true; 
+        }else{
+            cout << "Número fuera de rango. Por favor, ingrese un número entre 1 y " << Temp.size() << "." << endl;
+        }
     }
 
-    auto Cur = Temp.find(in);   //Se obtiene DTOCurso
-
+      
+    auto Cur = Temp.find(in); //Se obtiene DTOCurso
     string nombreLeccion = "", objetivo = "";
     char sel = ' ';
 
     cout << "\nIngrese tema de la nueva lección:" << endl;
     cin >> nombreLeccion;
+
     cout << "\nIngrese objetivo de la lección:" << endl;
     cin >> objetivo;
 
