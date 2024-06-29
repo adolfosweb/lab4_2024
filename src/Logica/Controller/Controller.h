@@ -45,7 +45,13 @@ public:
 
 	//CU 6 Agregar Leccion
 	map<int,DTOCurso> ConsultaCursosNoHabilitados();
-	bool IngresoLeccion(DTOCurso curso,DTOLeccion leccion);
+	bool IngresoLeccion(DTOCurso curso, DTOLeccion leccion);
+
+	//CU 7 Agregar Ejercicio
+	map<DTOCurso,int> listarCursosNoHab();
+	set<DTOLeccion> listarLecciones(DTOCurso);
+	bool ingresarEjercicioPalabra(DTOCurso c, DTOLeccion l, DTOEjercicio e);
+	bool ingresarEjercicioTraduccion(DTOCurso c, DTOLeccion l, DTOEjercicio e);
 
 	//CU 8 Habilitar Curso
 	void habilitarCurso(string nombreCurso);
