@@ -26,9 +26,9 @@ string Leccion::getObjetivoAprendizaje(){
 }
 set<Ejercicio*> Leccion:: ObtenerEjercicios()
 {
-    return Ejercicios;
+    return ejercicios;
 
-
+}
 //CU 7 
 bool Leccion::ingresarEjercicioPalabra(DTOEjercicio e){
     set<Ejercicio*>::iterator it;
