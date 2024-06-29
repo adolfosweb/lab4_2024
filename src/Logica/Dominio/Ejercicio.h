@@ -13,10 +13,9 @@ private:
 public:
     Ejercicio();
     Ejercicio(string descripcion,bool aprobado);
-
     ~Ejercicio();
-    bool getAprobado();
     string getDescripcion();
+    bool getAprobado();
 };
 
 

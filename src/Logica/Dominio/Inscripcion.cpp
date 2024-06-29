@@ -2,7 +2,14 @@
 
 Inscripcion::Inscripcion(){
 }
-//Inscripcion::Inscripcion(dtfecha fecha, bool aprobado){}
+Inscripcion::Inscripcion(int dd,int mm,int aaaa, bool aprobado,Curso* curso)
+{
+   this->dd=dd;
+   this->mm=mm;
+   this->aaaa=aaaa;
+   this->aprobado=aprobado;
+   this->curso=curso;
+}
 
 Inscripcion::~Inscripcion(){
 }
@@ -10,11 +17,9 @@ Inscripcion::~Inscripcion(){
 bool Inscripcion::getAprobado(){
     return this->aprobado;
 }
-
-
 void Inscripcion :: ObtenerPromedio()
 {
-   float prom = (*Curso).obtenerPromedio();
+   float prom = (*curso).obtenerPromedio();
 
    if(prom != 0)
    {
@@ -28,12 +33,12 @@ void Inscripcion :: ObtenerPromedio()
 
 float Inscripcion :: ObtenerDatoPromedio()
 {
-   return (*Curso).obtenerPromedio();
+   return (*curso).obtenerPromedio();
 }
 
 bool Inscripcion :: esCurso(string nombreCurso,string descripcion)
 {
-   if((*Curso).getNombre() == nombreCurso && (*Curso).getDescripcion() == descripcion)
+   if((*curso).getNombre() == nombreCurso && (*curso).getDescripcion() == descripcion)
    {
       return true;
    }
@@ -42,4 +47,8 @@ bool Inscripcion :: esCurso(string nombreCurso,string descripcion)
       return false;
    }
 
+}
+Curso* Inscripcion :: getCurso()
+{
+   return curso;
 }

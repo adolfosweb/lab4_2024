@@ -36,8 +36,8 @@ void Menu::mostrarMenu() {
 		cout <<"0) Salir " << endl;
 		cout <<"Ingrese una opcion: " << endl;
 		cin >> op;
-		switch (op) 
-		{
+
+		switch (op) {
 			case 1: {
 				std::system("clear");
 				mostrarMenuUsarios();
@@ -53,10 +53,8 @@ void Menu::mostrarMenu() {
 			{
 				std::system("clear");
 				mostrarMenuCursos();
-			}
-
-		case 4:	{std::system("clear");	 MenuConsultarEstadísticas();	} 	break;
-
+			}break;
+		case 4:	{std::system("clear");	 MenuConsultarEstadísticas();	} 	break;	
 		case 0:
 			break;
 		default:
@@ -155,7 +153,6 @@ void Menu::mostrarMenuCursos()
    {
 	    int op = 0;
 	do {
-		std::system("clear");
 		cout << "*** Menu de Curso ***" << endl;
 		cout <<"1) Alta Curso" << endl;
 		cout <<"2) Agregar Leccion " << endl;
@@ -163,14 +160,16 @@ void Menu::mostrarMenuCursos()
 		cout <<"4) Habilitar Curso " << endl;
 		cout <<"5) Eliminar Curso " << endl;
 		cout <<"6) Consultar Curso " << endl;
-		cout <<"7) Volver A Menu Pricipal "<< endl;
+		cout <<"7) Inscribirse a curso" << endl;
+		cout <<"8) Volver A Menu Pricipal "<< endl;
 		cout <<"Ingrese una opcion: " << endl;
-		PCurso datocurso;
+
 		cin >> op;
 		switch (op) {
 		case 1: {
 				std::system("clear");
 				cout << "Agregar Curso" << endl;
+				PCurso datocurso;
 				datocurso.altaCurso();
 			}
 			break;
@@ -178,19 +177,21 @@ void Menu::mostrarMenuCursos()
 			{
 				std::system("clear");
 				cout << "Agregar Leccion" << endl;
+				PCurso datocurso;
 				datocurso.AgregarLeccion();
 			}
 			break;
         case 3:
 			{
 				std::system("clear");
-            
 			}
 			break;
 		case 4:
 			{
 				std::system("clear");
-            
+           		cout << "Habilitar Curso" << endl;
+				PCurso datocurso;
+				datocurso.habilitarCurso();
 			}
 			break;
 		case 5:
@@ -208,6 +209,14 @@ void Menu::mostrarMenuCursos()
 		case 7:
 			{
 				std::system("clear");
+           		cout << "Inscribirse a curso" << endl;
+				PCurso datocurso;
+				datocurso.Inscripcion();     	
+			}
+			break;
+			case 8:
+			{
+				std::system("clear");
             	return;
 			}
 			break;
@@ -220,7 +229,7 @@ void Menu::mostrarMenuCursos()
 	} while (op != 0);
    }
 
-void MenuConsultarEstadísticas()
+void Menu :: MenuConsultarEstadísticas()
 {
 	Pusuarios users;
 	PCurso cursos;
@@ -230,10 +239,11 @@ void MenuConsultarEstadísticas()
 
 		std::system("clear");
 		sel = 0;
-		cout << "*** Menu de consulta de estadísticas***"	 << endl;
+		cout << "* Menu de consulta de estadísticas***"		 << endl;
 		cout <<	"1) Consulta estadísticas de Estudiante"	 << endl;
 		cout <<	"2) Consulta estadísticas de Profesor"		 << endl;
 		cout <<	"3) Consulta estadísticas de Curso" 		 << endl;
+		cout <<	"4) Menu Principal" 						 << endl;
 		cin >> sel;
 
 		switch(sel)
@@ -241,6 +251,7 @@ void MenuConsultarEstadísticas()
 			case 1: {	users.consultaEstudiante();				break;};
 			case 2: {	users.consultaProfesor();				break;};
 			case 3: {	cursos.consultaCurso();					break;};
+			case 4: {	return;										  };
 			default:{ 	cout << "Ingreso incorrecto!" << endl; 	break;};
 		}
 

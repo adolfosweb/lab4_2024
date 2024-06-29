@@ -35,6 +35,9 @@ public:
     bool estaHabilitado();
     void setLeccion(DTOLeccion leccion);
     void setAllPrevias(set<Curso*> previa);
+    float obtenerPromedio();
+    bool cumplePrevia(set<Curso*> ct);
+    void mostrarCurso();
 };
 
 

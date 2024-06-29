@@ -21,10 +21,9 @@ public:
     
 	set<string> seleccionarIdiomas();
 
-
     //CU13 Consultar estadísticas 
     void consultaEstudiante();
-    void consultaProfesor();	
+    void consultaProfesor();
 
     //void listadoUsuarios();
 
