@@ -3,9 +3,10 @@
 #include <string>
 #include <set>
 
-Curso::Curso(){
+Curso::Curso()
+{
 }
-Curso::Curso(string nombre,string descripcion, DTOIdioma *idioma, ENUMDificultad dificultad, bool habilitado)
+Curso::Curso(string nombre, string descripcion, Idioma *idioma, ENUMDificultad dificultad, bool habilitado)
 {
     this->nombre = nombre;
     this->descripcion = descripcion;
@@ -20,43 +21,104 @@ string Curso::getNombre()
 {
     return this->nombre;
 }
-bool Curso :: estaHabilitado()
+bool Curso ::estaHabilitado()
 {
     return habilitado;
 }
-string Curso :: getDescripcion()
+string Curso ::getDescripcion()
 {
     return descripcion;
 }
 
-DTOIdioma* Curso :: getIdioma()
+DTOIdioma Curso ::getIdioma()
 {
 
-    return idioma;
-
+    return DTOIdioma(idioma->getIdioma());
 }
-ENUMDificultad Curso :: getDificultad()
+ENUMDificultad Curso ::getDificultad()
 {
     return dificultad;
 }
-void Curso :: setLeccion(DTOLeccion leccion)
+void Curso ::setLeccion(DTOLeccion leccion)
 {
 
-    Leccion *L = new Leccion (0,leccion.getTema(),leccion.getObjetivoAprendizaje());
-    
-    lecciones.insert(L);   //Se ingresa un puntero a Lección.
+    Leccion *L = new Leccion(0, leccion.getTema(), leccion.getObjetivoAprendizaje());
 
-
+    lecciones.insert(L); // Se ingresa un puntero a Lección.
 }
-void Curso::habilitate(){
-    this->habilitado=true;
+void Curso::habilitate()
+{
+    this->habilitado = true;
 }
-//void Curso :: setPrevia(string curso)
-//{
-//    this->previa.insert(curso); 
-//}
 
-//CU 7
+void Curso ::setAllPrevias(set<Curso *> previa)
+{
+    for (auto ct = previa.begin(); ct != previa.end(); ct++)
+    {
+        this->previa.insert((*ct));
+    }
+}
+
+float Curso ::obtenerPromedio()
+{
+    int contadorAp = 0;
+    int contadorNa = 0;
+    int total = 0;
+
+    set<Ejercicio *> ejercicios;
+
+    for (auto ct = lecciones.begin(); ct != lecciones.end(); ct++) // De cada lección...
+    {
+        ejercicios = (*ct)->ObtenerEjercicios();
+        for (auto tt = ejercicios.begin(); tt != ejercicios.end(); tt++) // Se obtiene total de ejercicios aprobados y no aprobados
+        {
+            if ((*tt)->getAprobado())
+            {
+                contadorAp++;
+            }
+            else
+            {
+                contadorNa++;
+            }
+        }
+    }
+
+    total = contadorAp + contadorNa;
+
+    if (total != 0)
+    {
+        return contadorAp / total;
+    }
+
+    return 0;
+}
+bool Curso ::cumplePrevia(set<Curso *> cursoAprob)
+{
+    int cont = 0;
+    for (auto prev = previa.begin(); prev != previa.end(); prev++)
+    {
+        for (auto curso = cursoAprob.begin(); curso != cursoAprob.end(); curso++)
+        {
+            if ((*prev)->getNombre() == (*curso)->getNombre() && nombre != (*curso)->getNombre())
+            {
+                cont++;
+            }
+        }
+    }
+    if (previa.size() == cont)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+void Curso ::mostrarCurso()
+{
+    cout << "-" << nombre << endl;
+}
+
 set<DTOLeccion> Curso::listarLecciones(){
     set<DTOLeccion> listaLecciones;
   	set<Leccion*>::iterator it;
@@ -95,8 +157,7 @@ void Curso::borrarLecciones(){
     for (auto it = this->lecciones.begin(); it != this->lecciones.end(); it++){
         (*it)->borrarEjercicios();
         delete *it;
-	}
+    }
     this->lecciones.clear();
 }
-
 //FIN CU9

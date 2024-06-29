@@ -15,6 +15,7 @@ private:
     string frase;
     string solucion;
     ENUMTipo tipo;
+    bool aprobado;
 public:
     Ejercicio(string descripcion, string frase, string solucion, ENUMTipo tipo);
     virtual ~Ejercicio();
@@ -22,6 +23,7 @@ public:
     string getFrase();
     string getSolucion();
     ENUMTipo getTipo();
+    bool getAprobado();
 };
 
 

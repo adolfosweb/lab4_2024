@@ -12,15 +12,14 @@ private:
 public:
      DTOLeccion();
      DTOLeccion(int numero, string tema, string objetivoAprendizaje);
-     int getNumero();
-     string getTema();
-     string getObjetivoAprendizaje();
+     int getNumero() const;
+     string getTema() const;
+     string getObjetivoAprendizaje() const;
     ~DTOLeccion();
 
     //Evitar error no match for operator<
     bool operator<(const DTOLeccion& l) const;
 };
-
 
 
 #endif /*LOGICA_DTO_DTOLECCION_H_*/

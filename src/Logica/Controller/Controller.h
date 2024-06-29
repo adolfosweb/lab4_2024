@@ -34,21 +34,24 @@ public:
 	DTOProfesor infoProfesor(string nick);
 
 	//Caso de uso Alta idioma
-	 void altaIdioma(string idioma);
+	void altaIdioma(string idioma);
 
 	//CU 4 Consultar Curso
-	 set<string> consultarIdioma();
+	set<string> consultarIdioma();
+
 	//CU 5 Alta Curso
-	void altaCurso(string nombre,string descripcion, DTOIdioma *idioma, ENUMDificultad dificultad, bool habilitado,string nombreProf);
-	void listoProfesor();
+	void altaCurso(string nombre,string descripcion, string idioma,string nombreProf, ENUMDificultad dificultad, bool habilitado,set<string> previa);
+	set<string> listoProfesor();
+	set<string> listaCursos();
+	set<string> idiomasProfesor(string nick);
 
 	//CU 6 Agregar Leccion
 	map<int,DTOCurso> ConsultaCursosNoHabilitados();
-	bool IngresoLeccion(DTOCurso curso, DTOLeccion leccion);
+	bool IngresoLeccion(DTOCurso curso,DTOLeccion leccion);
+
 
 	//CU 7 Agregar Ejercicio
-	map<DTOCurso,int> listarCursosNoHab();
-	set<DTOLeccion> listarLecciones(DTOCurso);
+	set<DTOLeccion> listarLecciones(string nombreCurso);
 	bool ingresarEjercicioPalabra(DTOCurso c, DTOLeccion l, DTOEjercicio e);
 	bool ingresarEjercicioTraduccion(DTOCurso c, DTOLeccion l, DTOEjercicio e);
 
@@ -58,6 +61,18 @@ public:
 	//CU9 Eliminar Curso
 	set<string> listarNombreCursos();
 	void seleccionarCursoAEliminar(string nombre);
+
+	//CU 11 Inscribirse a curso
+	bool Inscribir(string nombreCurs,string nombreEst);
+	void listoCursosPendientes(string nombreEst);
+
+	//CU 13 Consultar estadísticas
+	int listarUsuarios(int sel);
+	void consultarStatsEstudiante(string nick);
+	void consultarStatsProfesor(string nick);
+	map<int,DTOCurso> ConsultaCursosHabilitados();
+	float obtenerPromedioCurso(DTOCurso curso);
+
 };
 
 #endif /* NEGOCIO_CONTROLLER_IUSUARIOCONTROLLER_H_ */

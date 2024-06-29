@@ -1,3 +1,4 @@
+
 #include "Leccion.h"
 
 Leccion::Leccion(){
@@ -22,6 +23,10 @@ string Leccion::getTema(){
 
 string Leccion::getObjetivoAprendizaje(){
     return this->objetivoAprendizaje;
+}
+set<Ejercicio*> Leccion:: ObtenerEjercicios()
+{
+    return ejercicios;
 }
 
 //CU 7 

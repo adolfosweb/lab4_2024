@@ -32,22 +32,51 @@ bool verificarTipoUsuario(Usuario* usuario)
 {
     return usuario->esProfesor();
 }
-/*void Profesor::mostrarInfo(){
-	cout<<this->getNick()<<endl;
-	cout<<this->getPass()<<endl;
-	cout<<this->getNom()<<endl;
-	cout<<this->getDescrip()<<endl;
-	
 
-	cout << "Idiomas: " << endl;
-    for (const auto& idioma : idioma) {
-        cout << "- " << idioma->getIdioma() << endl; // Asumiendo que Idioma tiene un método getNombre()
-    }
-}*/
 bool Profesor::esProfesor(){
     return true;
 }
-void Profesor :: setCurso(string curso)
+void Profesor :: setCurso(Curso* curso)
 {
     this->cursor.insert(curso);   
+}
+
+set<string> Profesor :: listoIdiomaProfesor()
+{
+    set<string> resu;
+    set<Idioma*> :: iterator it;
+   	for (it = this->idioma.begin(); it != this->idioma.end(); it++) {
+        resu.insert((*it)->getIdioma());
+	}
+    return resu;
+}
+
+string Profesor :: seleccionarIdioma(string idiomaProf)
+{
+    set<Idioma*> :: iterator it;
+   	for (it = this->idioma.begin(); it != this->idioma.end(); it++) 
+    {
+        if ((*it)->getIdioma()==idiomaProf)
+        {
+            return (*it)->getIdioma();
+        }
+	}
+    return "";
+}
+set<Curso*> Profesor :: ObtenerCursos()
+{
+    return cursor;
+}
+
+map<int,Inscripcion*> Profesor :: obtenerCursosInscriptos()
+{
+    return map<int, Inscripcion*>();
+}
+set<Curso*> Profesor :: listarCursoAprobado()
+{
+    return set<Curso*>();
+}
+bool Profesor :: inscribir(Curso* curso)
+{
+    return false;
 }

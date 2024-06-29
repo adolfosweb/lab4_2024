@@ -26,3 +26,8 @@ string Ejercicio::getSolucion(){
 ENUMTipo Ejercicio::getTipo(){
     return this->tipo;
 }
+
+bool Ejercicio :: getAprobado()
+{
+    return aprobado;
+}

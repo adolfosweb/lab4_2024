@@ -36,6 +36,8 @@ void Sistema::inicializarDatos() {
 
 
 	Usuario *usr1 = new Profesor("pp","pass1","nombre1","desc1","Instituto1");
+	dynamic_cast<Profesor*>(usr1)->agregarIdioma(idioma1);
+	dynamic_cast<Profesor*>(usr1)->agregarIdioma(idioma3);
 	this->usuarios.insert(usr1);
 
 	cout << "Fin inicializacion Sistema " << endl;
