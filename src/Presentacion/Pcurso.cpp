@@ -3,6 +3,9 @@
 #include "../Logica/Controller/Controller.h"
 #include "../Logica/Dominio/Usuario.h"
 #include "Pcurso.h"
+
+using namespace std;
+
 PCurso::PCurso(){
     this->SystemInstance=new Controller();
 }
@@ -67,12 +70,9 @@ void PCurso::altaCurso()
     {
         cout << "No se agregó previa" << endl;
     }
-
-    int Adleccion;
-    cout << "¿Desea agregar Lecciones? (1=si, 2=no): " << endl;
-    cin >> Adleccion;
-    getchar();
-    DTOLeccion nuevaLeccion(0, tema, objetivoAprendizaje);
+        this->SystemInstance->altaCurso(nombre,descripcion,idioma,nombreProf,dif,habilitado,previas);
+    
+}
 
     if (Adleccion == 1)
     {
