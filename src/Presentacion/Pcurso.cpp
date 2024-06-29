@@ -103,9 +103,6 @@ void PCurso::altaCurso(){
     }else{
         cout << "No se agregó previa" << endl;
     }
-
-       
-        
         this->SystemInstance->altaCurso(nombre,descripcion,idioma,nombreProf,dif,habilitado,previas);
     
 }

@@ -53,7 +53,7 @@ void Curso::habilitate(){
     this->habilitado=true;
 }
 
-void Curso :: setAllPrevias(set<string> previa)
+void Curso :: setAllPrevias(set<Curso*> previa)
 {
     for (auto ct = previa.begin();ct!=previa.end();ct++)
     {

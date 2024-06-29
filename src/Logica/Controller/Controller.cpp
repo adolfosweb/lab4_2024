@@ -227,8 +227,20 @@ void Controller::altaCurso(string nombre,string descripcion, string idioma,strin
 		Curso *C1 = new Curso(nombre,descripcion,*itr2,dificultad,habilitado);
 		this->sistema->cursos.insert(C1);	
 	
-
-		C1->setAllPrevias(previa);
+		set<Curso*> result;
+		//set<string> aux;
+		set<string>::iterator strC;
+		set<Curso*>::iterator cur;
+		for (cur= this->sistema->cursos.begin(); cur != this->sistema->cursos.end(); cur++) 
+		{
+			for (strC= previa.begin(); strC != previa.end(); strC++) {
+				if((*cur)->getNombre()==*strC){
+					result.insert((*cur));
+				}
+			}
+			
+		}
+		C1->setAllPrevias(result);
 
 		cout<<"Se creo el Curso"<<endl;
 
@@ -242,6 +254,7 @@ void Controller::altaCurso(string nombre,string descripcion, string idioma,strin
 			}
 		}
 		nom->setCurso(C1);
+		
 	}else
 	{
 		cout<<"El Curso ya existia en sistema o Nick de Estudiante"<<endl;
