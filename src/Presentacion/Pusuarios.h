@@ -1,9 +1,9 @@
 #ifndef PUSUARIOS_H_
 #define PUSUARIOS_H_
-#include "../src/Logica/Controller/Interface.h"
-#include "../src/Logica/Dto/DTOProfesor.h"
-#include "../src/Logica/Dto/DTOEstudiante.h"
-#include "../src/Logica/Dto/DTOIdioma.h"
+#include "../Logica/Controller/Interface.h"
+#include "../Logica/Dto/DTOProfesor.h"
+#include "../Logica/Dto/DTOEstudiante.h"
+#include "../Logica/Dto/DTOIdioma.h"
 
 class Pusuarios{
 private:

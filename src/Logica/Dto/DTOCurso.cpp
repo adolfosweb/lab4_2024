@@ -1,5 +1,5 @@
 #include "DTOCurso.h"
-#include "../src/Logica/Dominio/Curso.h" //PARA EL ENUM!
+#include "../Logica/Dominio/Curso.h" //PARA EL ENUM!
 #include <iostream>
 using namespace std;
 

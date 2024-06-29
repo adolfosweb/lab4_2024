@@ -1,7 +1,7 @@
 #ifndef PRESENTACION_PCURSO_H_
 #define PRESENTACION_PCURSO_H_
-#include "../src/Logica/Controller/Interface.h"
-#include "../src/Logica/Dto/DTOCurso.h"
+#include "../Logica/Controller/Interface.h"
+#include "../Logica/Dto/DTOCurso.h"
 #include <map>
 class PCurso
 {

@@ -1,7 +1,7 @@
 #ifndef PIDIOMA_H_
 #define PIDIOMA_H_
-#include "../src/Logica/Controller/Interface.h"
-#include "../src/Logica/Dto/DTOIdioma.h"
+#include "../Logica/Controller/Interface.h"
+#include "../Logica/Dto/DTOIdioma.h"
 
 class Pidioma{
 private:
