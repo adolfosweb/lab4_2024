@@ -12,6 +12,8 @@ public:
     DTOIdioma(string Idioma);
     ~DTOIdioma();
     string getIdioma();
+
+    // friend  bool operator==(const DTOIdioma& lhs, const DTOIdioma& rhs) const;
    
 };
 

@@ -97,3 +97,36 @@ float Curso :: obtenerPromedio()
 
 
 }
+set<DTOLeccion> Curso::listarLecciones(){
+    set<DTOLeccion> listaLecciones;
+  	set<Leccion*>::iterator it;
+    for (it = this->lecciones.begin(); it != this->lecciones.end(); it++) {
+		DTOLeccion leccion((*it)->getNumero(),(*it)->getTema(),(*it)->getObjetivoAprendizaje());
+		listaLecciones.insert(leccion);
+	}
+    return listaLecciones;
+}
+
+bool Curso::ingresarEjercicioPalabra(DTOLeccion l, DTOEjercicio e){
+    set<Leccion*>::iterator it;
+    for (it = this->lecciones.begin(); it != this->lecciones.end(); it++){
+        if(l.getNumero() == (*it)->getNumero() && l.getTema() == (*it)->getTema() && l.getObjetivoAprendizaje() == (*it)->getObjetivoAprendizaje()){
+            return (*it)->ingresarEjercicioPalabra(e);
+            break;
+        }
+	}
+    return false;
+}
+
+bool Curso::ingresarEjercicioTraduccion(DTOLeccion l, DTOEjercicio e){
+    set<Leccion*>::iterator it;
+    for (it = this->lecciones.begin(); it != this->lecciones.end(); it++){
+        if(l.getNumero() == (*it)->getNumero() && l.getTema() == (*it)->getTema() && l.getObjetivoAprendizaje() == (*it)->getObjetivoAprendizaje()){
+            return (*it)->ingresarEjercicioTraduccion(e);
+            break;
+        }
+	}
+    return false;
+}
+
+//FIN CU7

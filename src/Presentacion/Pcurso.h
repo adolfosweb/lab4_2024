@@ -16,9 +16,10 @@ public:
     //CU5 Alta Curso
     void altaCurso();
     set<string> seleccionarCursos();
-    //CU6 Agregar Ejercicio
+    //CU6 Agregar leccion
     void AgregarLeccion();
-
+    //CU7 Agregar Ejercicio
+        
     //CU8 HabilitarCurso
     void habilitarCurso();
 

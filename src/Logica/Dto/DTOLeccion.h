@@ -16,6 +16,9 @@ public:
      string getTema();
      string getObjetivoAprendizaje();
     ~DTOLeccion();
+
+    //Evitar error no match for operator<
+    bool operator<(const DTOLeccion& l) const;
 };
 
 

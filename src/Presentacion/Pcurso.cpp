@@ -199,10 +199,10 @@ void PCurso::AgregarLeccion()
     cout << "\nDesea ingresar También los ejercicios? S/N" << endl;
     sel = getchar();
 
-    if(sel == 'S' || sel == 's')
+   /* if(sel == 'S' || sel == 's')
     {
         //Ingresar Ejercicio, uno del grupo lo está haciendo...
-    }
+    }*/
 
     DTOLeccion NuevaLeccion(0,nombreLeccion,objetivo);
 
@@ -212,6 +212,7 @@ void PCurso::AgregarLeccion()
     }
 
 }
+
 
 //CU 8 HABILITAR CURSO
 void PCurso::habilitarCurso(){

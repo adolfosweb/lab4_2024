@@ -23,3 +23,8 @@ string DTOLeccion::getTema(){
 string DTOLeccion::getObjetivoAprendizaje(){
     return this->objetivoAprendizaje;
 }
+
+//Evitar error no match for operator<
+bool DTOLeccion :: operator<(const DTOLeccion& l) const{
+	return true;
+}
