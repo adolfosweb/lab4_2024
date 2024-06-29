@@ -51,3 +51,4 @@ bool DTOCurso :: estaHabilitado()
 bool DTOCurso :: operator<(const DTOCurso& c) const{
 	return true;
 }
+

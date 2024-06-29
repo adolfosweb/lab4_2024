@@ -9,6 +9,7 @@
 #include "../Dto/DTOIdioma.h"
 #include "../Dto/DTOCurso.h"
 #include "../Dto/DTOLeccion.h"
+#include "../Dto/DTOEjercicio.h"
 #include "Interface.h"
 #include "Sistema.h"
 

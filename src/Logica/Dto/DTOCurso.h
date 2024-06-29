@@ -29,5 +29,7 @@ public:
 
     //Evitar error no match for operator<
     bool operator<(const DTOCurso& c) const;
+
+
 };
 #endif /* LOGICA_DTO_DTOCURSO_H_ */

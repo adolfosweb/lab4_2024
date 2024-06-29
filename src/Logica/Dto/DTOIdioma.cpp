@@ -9,3 +9,8 @@ DTOIdioma::~DTOIdioma()
 string DTOIdioma::getIdioma() {
     return this->idioma;
 }
+
+/*bool operator==(const DTOIdioma& lhs, const DTOIdioma& rhs) {
+        return lhs.idioma == rhs.idioma;
+		
+}*/
