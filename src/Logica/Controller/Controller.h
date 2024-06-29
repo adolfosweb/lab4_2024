@@ -58,6 +58,9 @@ public:
 	//CU 8 Habilitar Curso
 	void habilitarCurso(string nombreCurso);
 
+	//CU 10 ConsultarCurso
+	DTOCurso consultarCurso(string nombreCurso);
+
 	//CU 13 Consultar estadísticas
 	void listarEstudiantes();
 	void consultarStatsEstudiante(string nick);

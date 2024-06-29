@@ -43,6 +43,9 @@ public:
 	//CU 8 Habilitar Curso
 	virtual void habilitarCurso(string nombreCurso)=0;
 
+	//CU 10 ConsultarCurso
+	virtual DTOCurso consultarCurso(string nombreCurso)=0;
+
 	//CU 13 Consultar Estadísticas
 	virtual void listarEstudiantes() = 0;
 	virtual void consultarStatsEstudiante(string nick) = 0;

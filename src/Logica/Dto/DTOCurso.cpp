@@ -9,7 +9,7 @@ DTOCurso :: DTOCurso()
 
 }
 
-DTOCurso :: DTOCurso(string nombre,string descripcion, DTOIdioma idioma, ENUMDificultad dificultad, bool habilitado) : nombre(nombre), descripcion(descripcion), idioma(idioma), habilitado(habilitado)
+DTOCurso :: DTOCurso(string nombre,string descripcion, DTOIdioma idioma, ENUMDificultad dificultad, bool habilitado) : nombre(nombre), descripcion(descripcion), idioma(idioma),dificultad(dificultad), habilitado(habilitado)
 {
     //Constructor por parámetros...
 }
@@ -52,3 +52,10 @@ bool DTOCurso :: operator<(const DTOCurso& c) const{
 	return true;
 }
 
+void DTOCurso::setLecciones(set<DTOLeccion> leccion){
+	this->lecciones=leccion;
+}
+
+set<DTOLeccion> DTOCurso ::getLecciones(){
+	return this->lecciones;
+}

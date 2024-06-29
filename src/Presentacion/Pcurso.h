@@ -23,8 +23,11 @@ public:
     //CU8 HabilitarCurso
     void habilitarCurso();
 
+    //CU10 ConsultarCurso
+    void consultarCurso();
+
     //CU 13 Consultar estadísticas
-    void consultaCurso();
+    void consultaEstaditicaDeCurso();
     
 };
 

@@ -376,6 +376,24 @@ void Controller::habilitarCurso(string nombreCurso){
 	cout<<"El Curso a sido Habilitado"<<endl;
 }
 
+//CU 10 consultarCurso
+DTOCurso Controller::consultarCurso(string nombreCurso){
+	
+	set<Curso*>::iterator it;
+	for (it = this->sistema->cursos.begin(); it != this->sistema->cursos.end(); it++) {
+		if (nombreCurso == (*it)->getNombre()) {		
+			break;
+		}
+	}
+
+	DTOCurso resu((*it)->getNombre(),(*it)->getDescripcion(), (*it)->getIdioma(), (*it)->getDificultad(),(*it)->estaHabilitado());
+
+	resu.setLecciones((*it)->listarLecciones());
+
+	return resu;
+}
+
+
 //CU 13 Consultar estadísticas (estudiante)
 void Controller :: listarEstudiantes()
 {

@@ -12,9 +12,9 @@ private:
 public:
      DTOLeccion();
      DTOLeccion(int numero, string tema, string objetivoAprendizaje);
-     int getNumero();
-     string getTema();
-     string getObjetivoAprendizaje();
+     int getNumero() const;
+     string getTema()const;
+     string getObjetivoAprendizaje() const;
     ~DTOLeccion();
 
     //Evitar error no match for operator<
