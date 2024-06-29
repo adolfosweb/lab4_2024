@@ -3,6 +3,7 @@
 #include <iostream>
 #include "../Dto/DTOIdioma.h"
 #include "../Dto/DTOLeccion.h"
+#include "../Dominio/Idioma.h"
 #include "../Dto/DTOEjercicio.h"
 #include "Leccion.h"
 #include <set>
@@ -19,25 +20,28 @@ class Curso
 private:
     string nombre;
     string descripcion;
-    DTOIdioma *idioma;
+    Idioma *idioma;
     ENUMDificultad dificultad;
     bool habilitado;
     set<Leccion*> lecciones;
-//    set<string> previa;
+    set<Curso*> previa;
 
 public:
     Curso(/* args */);
-    Curso(string nombre,string descripcion, DTOIdioma *idioma, ENUMDificultad dificultad, bool habilitado);
+    Curso(string nombre,string descripcion, Idioma *idioma, ENUMDificultad dificultad, bool habilitado);
     ~Curso();
     string getNombre();
     string getDescripcion();
-    DTOIdioma* getIdioma();
+    DTOIdioma getIdioma();
     ENUMDificultad getDificultad();
     bool estaHabilitado();
     void habilitate();
     void setLeccion(DTOLeccion leccion);
-//    void setPrevia(string curso);
-    //CU 7
+    void setAllPrevias(set<Curso*> previa);
+    float obtenerPromedio();
+    bool cumplePrevia(set<Curso*> ct);
+    void mostrarCurso();
+
     set<DTOLeccion> listarLecciones();
     bool ingresarEjercicioPalabra(DTOLeccion l, DTOEjercicio e);
     bool ingresarEjercicioTraduccion(DTOLeccion l, DTOEjercicio e);

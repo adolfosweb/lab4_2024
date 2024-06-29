@@ -215,3 +215,44 @@ void Pusuarios::infoUsuario() {
     }
 }
 //Fin  - CU2 Consulta de suaruio
+
+//CU13 Consultar estadísticas
+void Pusuarios :: consultaEstudiante()
+{	
+	string INick = "";
+	cout << "Mostrando listado de estudiantes:" << endl;	//Muestra todos los estudiantes del sistema...
+	int pass = iPusuario->listarUsuarios('e');
+
+	if(pass != 0)
+    {    
+        cout << "Ingrese Nick de estudiante a seleccionar" << endl;
+	    cin >> INick;
+
+	    iPusuario->consultarStatsEstudiante(INick);	        //Se muestran las stats del estudiante.
+    }
+    else
+    {
+        cout << "No existen estudiantes registrados." << endl;
+        getchar();getchar();
+    }
+}
+
+void Pusuarios :: consultaProfesor()
+{
+	string INick = "";
+	cout << "Mostrando listado de profesores" << endl;	//Muestra todos los estudiantes del sistema...
+	int pass = iPusuario->listarUsuarios('p');	
+	
+    if(pass != 0)
+	{
+        cout << "Ingrese Nick de profesor a seleccionar" << endl;
+	    cin >> INick;
+
+	    iPusuario->consultarStatsProfesor(INick);	
+    }
+    else
+    {
+        cout << "No existen profesores registrados." << endl;
+        getchar();getchar();
+    }
+}

@@ -22,5 +22,4 @@ public:
 };
 
 
-
 #endif /*LOGICA_DTO_DTOLECCION_H_*/

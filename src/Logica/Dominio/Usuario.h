@@ -2,6 +2,9 @@
 #define LOGICA_USUARIO_H_
 #include <iostream>
 #include "../Dto/DTOCurso.h"
+#include "../Dominio/Inscripcion.h"
+#include <map>
+#include <set>
 using namespace std;
 
 class Usuario {
@@ -20,8 +23,14 @@ public:
      string getNom();
      string getDescrip();
 	 virtual bool esProfesor()= 0;
-	 virtual void setCurso(string curso)=0;
-//	 virtual void listoIdiomaProfesor(string nombreProf)=0;
+	 virtual void setCurso(Curso* curso)=0;
+	 virtual set<string> listoIdiomaProfesor()=0;
+	 virtual string seleccionarIdioma(string idiomaProf)=0;
+	 virtual map<int,Inscripcion*> obtenerCursosInscriptos() = 0;
+	 virtual set<Curso*> ObtenerCursos() = 0;
+	 virtual set<Curso*> listarCursoAprobado()=0;
+	 virtual bool inscribir(Curso* curso)=0;
 };
 
 #endif /* LOGICA_USUARIO_H_ */
+
