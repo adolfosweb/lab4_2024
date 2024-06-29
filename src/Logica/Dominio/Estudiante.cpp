@@ -14,14 +14,24 @@ Estudiante::Estudiante(string nick, string pass, string nom,string descrip, stri
 
 Estudiante::~Estudiante(){
 }
+
+string Estudiante::getPaisResidencia(){
+	return this->paisResidencia;
+}
+DTOFecha Estudiante:: getFecha(){
+    return this->fechaNacimiento;
+}
 bool Estudiante::esProfesor() {
     return false;
 }
-void Estudiante :: setCurso(string curso)
+
+void Estudiante :: setCurso(Curso* curso)
 {  
 }
-void Estudiante ::listoIdiomaProfesor()
+set<string> Estudiante ::listoIdiomaProfesor()
 {
+    set<string> resu;
+    return resu;
 }
 string Estudiante :: seleccionarIdioma(string idiomaProf)
 {

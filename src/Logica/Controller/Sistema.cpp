@@ -52,14 +52,3 @@ Idioma* Sistema::buscarIdioma(string nomIdioma) {
 	}
 	return idioma;
 }
-Curso* Sistema::buscarCurso(string nomCur) {
-	Curso* cursos= nullptr;
-	set<Curso*>::iterator it;
-	for (it = this->cursos.begin(); it != this->cursos.end(); it++) {
-		if ((*it)->getNombre() == nomCur) {
-			cursos = (*it);
-			break;
-		}
-	}
-	return cursos;
-}

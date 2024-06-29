@@ -18,12 +18,15 @@ public:
 
     Profesor();
     Profesor(string nick, string pass, string nom,	string descrip, string instituto);
+
+    string getInstituto();
+    set<string> getIdiomas();
+
 	virtual ~Profesor();
-    void mostrarInfo();
 	void agregarIdioma(Idioma* idioma);
     bool esProfesor();
-    void setCurso(string curso);
-    void listoIdiomaProfesor();
+    void setCurso(Curso* curso);
+    set<string> listoIdiomaProfesor();
     string seleccionarIdioma(string idiomaProf);
     map<int,Inscripcion*> obtenerCursosInscriptos();
     set<Curso*> ObtenerCursos();

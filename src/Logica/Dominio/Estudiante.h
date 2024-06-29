@@ -15,12 +15,16 @@ private:
     map<int,Inscripcion*> cursosInscriptos; //Inscripciones que contienen el curso...
 
 public:
+    
+    
     Estudiante();
     Estudiante(string nick, string pass, string nom,string descrip, string pais, DTOFecha fecha);
     ~Estudiante();
+    string getPaisResidencia();
+    DTOFecha getFecha();
     bool esProfesor();
-    void setCurso(string curso);
-    void listoIdiomaProfesor();
+    void setCurso(Curso* curso);
+    set<string> listoIdiomaProfesor();
     string seleccionarIdioma(string idiomaProf);
     map<int,Inscripcion*> obtenerCursosInscriptos();
     set<Curso*> ObtenerCursos();

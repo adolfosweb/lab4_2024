@@ -6,7 +6,7 @@
 Curso::Curso()
 {
 }
-Curso::Curso(string nombre,string descripcion, DTOIdioma *idioma, ENUMDificultad dificultad, bool habilitado)
+Curso::Curso(string nombre,string descripcion,Idioma *idioma, ENUMDificultad dificultad, bool habilitado)
 {
     this->nombre = nombre;
     this->descripcion = descripcion;
@@ -30,10 +30,10 @@ string Curso :: getDescripcion()
     return descripcion;
 }
 
-DTOIdioma* Curso :: getIdioma()
+DTOIdioma Curso :: getIdioma()
 {
-
-    return idioma;
+ 
+    return DTOIdioma(idioma->getIdioma());
 
 }
 ENUMDificultad Curso :: getDificultad()
@@ -49,6 +49,10 @@ void Curso :: setLeccion(DTOLeccion leccion)
 
 
 }
+void Curso::habilitate(){
+    this->habilitado=true;
+}
+
 void Curso :: setAllPrevias(set<string> previa)
 {
     for (auto ct = previa.begin();ct!=previa.end();ct++)

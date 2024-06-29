@@ -20,8 +20,8 @@ public:
      string getNom();
      string getDescrip();
 	 virtual bool esProfesor()= 0;
-	 virtual void setCurso(string curso)=0;
-	 virtual void listoIdiomaProfesor()=0;
+	 virtual void setCurso(Curso* curso)=0;
+	 virtual set<string> listoIdiomaProfesor()=0;
 	 virtual string seleccionarIdioma(string idiomaProf)=0;
 	 virtual map<int,Inscripcion*> obtenerCursosInscriptos() = 0;
 	 virtual set<Curso*> ObtenerCursos() = 0;

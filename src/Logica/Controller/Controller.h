@@ -4,6 +4,8 @@
 #include <set>
 #include <map>
 #include "../Dto/DTOUsuario.h"
+#include "../Dto/DTOEstudiante.h"
+#include "../Dto/DTOProfesor.h"
 #include "../Dto/DTOIdioma.h"
 #include "../Dto/DTOCurso.h"
 #include "../Dto/DTOLeccion.h"
@@ -26,28 +28,27 @@ public:
 
 	//CU2 - Consulta de Usuario
 	set<string> listadoUsuarios();
+	bool esEstudiante(string nick);
+	DTOEstudiante infoEstudiante(string nick);
+	DTOProfesor infoProfesor(string nick);
 
 	//Caso de uso Alta idioma
-	void altaIdioma(string idioma);
+	 void altaIdioma(string idioma);
 
 	//CU 4 Consultar Curso
-	set<string> consultarIdioma();
+	 set<string> consultarIdioma();
 	//CU 5 Alta Curso
-	void altaCurso(string nombre,string descripcion, DTOIdioma *idioma, ENUMDificultad dificultad, bool habilitado,string nombreProf,set<string> previa,DTOLeccion nuevaLeccion);
-	void listoProfesor();
-
+	void altaCurso(string nombre,string descripcion, string idioma,string nombreProf, ENUMDificultad dificultad, bool habilitado,set<string> previa);
+	set<string> listoProfesor();
 	set<string> listaCursos();
+	set<string> idiomasProfesor(string nick);
 
 	//CU 6 Agregar Leccion
 	map<int,DTOCurso> ConsultaCursosNoHabilitados();
 	bool IngresoLeccion(DTOCurso curso,DTOLeccion leccion);
-	
-	//CU 13 Consultar estadísticas
-	void listarEstudiantes();
-	void consultarStatsEstudiante(string nick);
-	void consultarStatsProfesor(string nick);
-	map<int,DTOCurso> ConsultaCursosHabilitados();
-	float obtenerPromedioCurso(DTOCurso curso);
+
+	//CU 8 Habilitar Curso
+	void habilitarCurso(string nombreCurso);
 };
 
 #endif /* NEGOCIO_CONTROLLER_IUSUARIOCONTROLLER_H_ */
