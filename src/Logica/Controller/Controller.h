@@ -54,6 +54,10 @@ public:
 
 	//CU 8 Habilitar Curso
 	void habilitarCurso(string nombreCurso);
+
+	//CU9 Eliminar Curso
+	set<string> listarNombreCursos();
+	void seleccionarCursoAEliminar(string nombre);
 };
 
 #endif /* NEGOCIO_CONTROLLER_IUSUARIOCONTROLLER_H_ */

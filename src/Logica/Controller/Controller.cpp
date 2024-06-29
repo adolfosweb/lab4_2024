@@ -352,3 +352,26 @@ void Controller::habilitarCurso(string nombreCurso){
 	}
 	cout<<"El Curso a sido Habilitado"<<endl;
 }
+
+// CU 9 Eliminar Curso
+set<string> Controller::listarNombreCursos(){
+	set<string> nombres;
+	set<Curso*>::iterator it;
+	for (it = this->sistema->cursos.begin(); it != this->sistema->cursos.end(); it++) {
+		nombres.insert((*it)->getNombre());
+	}
+	return nombres;
+}
+
+void Controller::seleccionarCursoAEliminar(string nombre){
+	set<Curso*>::iterator it;
+	for (it = this->sistema->cursos.begin(); it != this->sistema->cursos.end(); it++) {
+		if((*it)->getNombre() == nombre){
+			(*it)->borrarLecciones();
+			this->sistema->cursos.erase(it);
+			delete((*it));
+			break;
+		}
+	}
+}
+//FIN CU 9 Eliminar Curso
