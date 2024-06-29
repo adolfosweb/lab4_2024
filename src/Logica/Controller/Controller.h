@@ -9,6 +9,7 @@
 #include "../Dto/DTOIdioma.h"
 #include "../Dto/DTOCurso.h"
 #include "../Dto/DTOLeccion.h"
+#include "../Dto/DTOEjercicio.h"
 #include "Interface.h"
 #include "Sistema.h"
 
@@ -47,6 +48,13 @@ public:
 	//CU 6 Agregar Leccion
 	map<int,DTOCurso> ConsultaCursosNoHabilitados();
 	bool IngresoLeccion(DTOCurso curso,DTOLeccion leccion);
+
+
+	//CU 7 Agregar Ejercicio
+	set<DTOLeccion> listarLecciones(DTOCurso);
+	bool ingresarEjercicioPalabra(DTOCurso c, DTOLeccion l, DTOEjercicio e);
+	bool ingresarEjercicioTraduccion(DTOCurso c, DTOLeccion l, DTOEjercicio e);
+
 
 	//CU 8 Habilitar Curso
 	void habilitarCurso(string nombreCurso);

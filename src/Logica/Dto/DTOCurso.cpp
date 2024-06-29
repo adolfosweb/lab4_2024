@@ -46,3 +46,8 @@ bool DTOCurso :: estaHabilitado()
 {
 	return habilitado;
 }
+
+//Evitar error no match for operator<
+bool DTOCurso :: operator<(const DTOCurso& c) const{
+	return true;
+}

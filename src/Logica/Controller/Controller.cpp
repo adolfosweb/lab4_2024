@@ -371,6 +371,31 @@ bool Controller ::IngresoLeccion(DTOCurso curso, DTOLeccion leccion)
 }
 // FIN CU 6 Agregar Leccion
 
+
+//CU 7 Agregar EJERCICIO
+
+bool Controller::ingresarEjercicioPalabra(DTOCurso c, DTOLeccion l, DTOEjercicio e){
+	set<Curso*>::iterator it;
+	for (it = this->sistema->cursos.begin(); it != this->sistema->cursos.end(); it++) {
+		if(c.getNombreCurso() == (*it)->getNombre() && c.getDescripcion() == (*it)->getDescripcion() && c.getIdioma().getIdioma() == (*it)->getIdioma().getIdioma()){
+			return (*it)->ingresarEjercicioPalabra(l, e);
+		}
+	}
+	return false;
+}
+
+bool Controller::ingresarEjercicioTraduccion(DTOCurso c, DTOLeccion l, DTOEjercicio e){
+	set<Curso*>::iterator it;
+	for (it = this->sistema->cursos.begin(); it != this->sistema->cursos.end(); it++) {
+		if(c.getNombreCurso() == (*it)->getNombre() && c.getDescripcion() == (*it)->getDescripcion() && c.getIdioma().getIdioma() == (*it)->getIdioma().getIdioma()){
+			return (*it)->ingresarEjercicioTraduccion(l, e);
+		}
+	}
+	return false;
+}
+//FIN CU 7 Agregar Ejercicio
+
+
 // CU 8 Habilitar Curso
 void Controller::habilitarCurso(string nombreCurso)
 {

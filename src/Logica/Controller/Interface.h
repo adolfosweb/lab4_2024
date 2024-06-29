@@ -9,6 +9,7 @@
 #include "../Dto/DTOIdioma.h"
 #include "../Dto/DTOCurso.h"
 #include "../Dto/DTOLeccion.h"
+#include "../Dto/DTOEjercicio.h"
 
 // Esta es una iterface del Sistema.
 
@@ -39,6 +40,11 @@ public:
 	//CU 6 Agregar Leccion
 	virtual map<int,DTOCurso> ConsultaCursosNoHabilitados() = 0;
 	virtual bool IngresoLeccion(DTOCurso curso,DTOLeccion leccion) = 0;
+
+	//CU 7 Agregar Ejercicio
+	//virtual set<DTOLeccion> listarLecciones(DTOCurso)=0;
+	virtual bool ingresarEjercicioPalabra(DTOCurso c, DTOLeccion l, DTOEjercicio e)=0;
+	virtual bool ingresarEjercicioTraduccion(DTOCurso c, DTOLeccion l, DTOEjercicio e)=0;
 
 	//CU 8 Habilitar Curso
 	virtual void habilitarCurso(string nombreCurso)=0;

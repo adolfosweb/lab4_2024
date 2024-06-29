@@ -5,7 +5,7 @@
 #include "Ejercicio.h"
 using namespace std;
 
-class EjTraduccion:public Ejercicio{
+class EjTraduccion{
 private:
     string frase;
     string tradduccion;
