@@ -163,20 +163,26 @@ void PCurso::AgregarLeccion()
         ct->second.MostrarDatos();
     }
 
-    int in = 0;
-
-    while (in < 1 && in > Temp.size())  //Mientras sea menor a 1 o mayor al max del map...
-    {   cout << "\nIngrese el número del curso a seleccionar..." << endl;
+    int in = 1;
+    bool cursoAceptado=false;
+    while (!cursoAceptado){   
+        cout << "\nIngrese el número del curso a seleccionar..." << endl;
         cin >> in;
+        if(in >= 1 && in <= Temp.size() ){
+            cursoAceptado=true; 
+        }else{
+            cout << "Número fuera de rango. Por favor, ingrese un número entre 1 y " << Temp.size() << "." << endl;
+        }
     }
 
-    auto Cur = Temp.find(in);   //Se obtiene DTOCurso
-
+      
+    auto Cur = Temp.find(in); //Se obtiene DTOCurso
     string nombreLeccion = "", objetivo = "";
     char sel = ' ';
 
     cout << "\nIngrese nombre de la nueva lección:" << endl;
     cin >> nombreLeccion;
+
     cout << "\nIngrese objetivo de la lección:" << endl;
     cin >> objetivo;
 
