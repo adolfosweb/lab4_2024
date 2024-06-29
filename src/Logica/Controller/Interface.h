@@ -42,7 +42,7 @@ public:
 	virtual bool IngresoLeccion(DTOCurso curso,DTOLeccion leccion) = 0;
 
 	//CU 7 Agregar Ejercicio
-	//virtual set<DTOLeccion> listarLecciones(DTOCurso)=0;
+	virtual set<DTOLeccion> listarLecciones(string nombreCurso)=0;
 	virtual bool ingresarEjercicioPalabra(DTOCurso c, DTOLeccion l, DTOEjercicio e)=0;
 	virtual bool ingresarEjercicioTraduccion(DTOCurso c, DTOLeccion l, DTOEjercicio e)=0;
 

@@ -51,7 +51,7 @@ public:
 
 
 	//CU 7 Agregar Ejercicio
-	set<DTOLeccion> listarLecciones(DTOCurso);
+	set<DTOLeccion> listarLecciones(string nombreCurso);
 	bool ingresarEjercicioPalabra(DTOCurso c, DTOLeccion l, DTOEjercicio e);
 	bool ingresarEjercicioTraduccion(DTOCurso c, DTOLeccion l, DTOEjercicio e);
 

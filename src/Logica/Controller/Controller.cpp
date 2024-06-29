@@ -373,6 +373,18 @@ bool Controller ::IngresoLeccion(DTOCurso curso, DTOLeccion leccion)
 
 
 //CU 7 Agregar EJERCICIO
+set<DTOLeccion> Controller::listarLecciones(string nombreCurso){
+	set<DTOLeccion> result;
+	set<Curso*>::iterator it;
+	for (it = this->sistema->cursos.begin(); it != this->sistema->cursos.end(); it++) {
+			if((*it)->getNombre()==nombreCurso){
+				result=(*it)->listarLecciones();
+				break;
+			}
+		}
+	
+	return result;
+}
 
 bool Controller::ingresarEjercicioPalabra(DTOCurso c, DTOLeccion l, DTOEjercicio e){
 	set<Curso*>::iterator it;
