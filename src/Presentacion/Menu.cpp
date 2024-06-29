@@ -200,7 +200,9 @@ void Menu::mostrarMenuCursos()
 		case 5:
 			{
 				std::system("clear");
-            	
+				cout << "Eliminar Curso" << endl;
+				PCurso datocurso;
+            	datocurso.eliminarCurso();
 			}
 			break;
 		case 6:
