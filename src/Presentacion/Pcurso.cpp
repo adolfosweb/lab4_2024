@@ -293,18 +293,20 @@ void PCurso :: consultaCurso()
             cout << "Promedio total de este Curso: " << promedio << "%"<< endl;
             else
             cout << "No hay estudiantes que hayan cursado/aprobado este curso." << endl;
+            getchar();getchar();
         }
         else
         {
             cout << "\nNo existen cursos habilitados actualmente." << endl; //Mensaje error.
+            getchar();getchar();
         }
 
     }
     else
     {
         cout << "\nNo existen cursos registrados." << endl; //Mensaje error.
-        getchar();
-        getchar();
+        getchar();getchar();
+        
     }
 
 }
