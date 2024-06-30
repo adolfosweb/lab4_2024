@@ -31,22 +31,26 @@ void DTOCurso :: MostrarDatos()
 	cout << "Descripcion: " << descripcion<<endl;
 	cout << "Idioma del Curso: " <<idioma.getIdioma()<<endl;
 	cout << "Dificultad: " << dificultad<<endl;
-	set<DTOLeccion>::iterator it;
-	cout << "Las Lecciones del Curso Son: " << endl;
-	for( it=this->lecciones.begin(); it!=this->lecciones.end();it++){
-		cout << "________________________________________________" << endl;
-		cout << "Leccion numero: " << it->getNumero()<<" Descripcion: "<<it->getTema()<<" Objetivo Aprendizaje: "<<it->getObjetivoAprendizaje() <<endl;
-		it->mostrarEjercicios();
-		cout << "________________________________________________" << endl;
-	}
-	set<string>::iterator it2;
-	cout << "Las Previas Son: " << endl;
-	for( it2=this->previas.begin(); it2!=this->previas.end();it2++){
-		cout << "________________________________________________" << endl;
-		cout << "Nombre: "<<*it2<<endl;
-		cout << "________________________________________________" << endl;
-	}
 	
+	if(!this->lecciones.empty()){
+		cout << "Las Lecciones del Curso Son: " << endl;
+		set<DTOLeccion>::iterator it;
+		for( it=this->lecciones.begin(); it!=this->lecciones.end();it++){
+			cout << "________________________________________________" << endl;
+			cout << "Leccion numero: " << it->getNumero()<<" Descripcion: "<<it->getTema()<<" Objetivo Aprendizaje: "<<it->getObjetivoAprendizaje() <<endl;
+			it->mostrarEjercicios();
+			cout << "________________________________________________" << endl;
+		}
+	}
+	if(!this->previas.empty()){
+		set<string>::iterator it2;
+		cout << "Las Previas Son: " << endl;
+		for( it2=this->previas.begin(); it2!=this->previas.end();it2++){
+			cout << "________________________________________________" << endl;
+			cout << "Nombre: "<<*it2<<endl;
+			cout << "________________________________________________" << endl;
+		}
+	}	
 }
 
 string DTOCurso :: getDescripcion()

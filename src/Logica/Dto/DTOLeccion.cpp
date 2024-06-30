@@ -39,13 +39,15 @@ set<DTOEjercicio> DTOLeccion::getEjercicio(){
 
 
 void DTOLeccion::mostrarEjercicios() const{
-    set<DTOEjercicio>::iterator it;
-    cout << "lOS Ejercicios de la leccion son: " <<endl;
-    for( it=this->ejercicios.begin(); it!=this->ejercicios.end();it++){
-        cout << "Descripcion: " << it->getDescripcion() <<endl;
-        cout << "Tipo: " << it->tipoToString(it->getTipo()) <<endl;
-    }
-
+    
+    if(!this->ejercicios.empty()){
+        cout << "lOS Ejercicios de la leccion son: " <<endl;
+        set<DTOEjercicio>::iterator it;
+        for( it=this->ejercicios.begin(); it!=this->ejercicios.end();it++){
+            cout << "Descripcion: " << it->getDescripcion() <<endl;
+            cout << "Tipo: " << it->tipoToString(it->getTipo()) <<endl;
+        }
+    }   
 }
 
 void DTOLeccion::setNumero(int num){
