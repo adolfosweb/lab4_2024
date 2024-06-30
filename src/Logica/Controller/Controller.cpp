@@ -501,7 +501,7 @@ bool Controller ::Inscribir(string nombreCurs, string nombreEst)
 			actual = (*itr);
 		}
 	}
-	if(nuevEst->inscribir(actual))
+	if(dynamic_cast<Estudiante*>(nuevEst)->inscribir(actual))
 	{
 		return true;
 	}
@@ -510,8 +510,9 @@ bool Controller ::Inscribir(string nombreCurs, string nombreEst)
 		return false;
 	}
 }
-void Controller ::listoCursosPendientes(string nombreEst)
+set<string> Controller ::listoCursosPendientes(string nombreEst)
 {
+	set<string> resu;
 	set<Usuario *>::iterator it;
 	set<Curso *> save;
 	set<Curso *>::iterator itr;
@@ -524,11 +525,12 @@ void Controller ::listoCursosPendientes(string nombreEst)
 	}
 	for (auto itr = this->sistema->cursos.begin(); itr != this->sistema->cursos.end(); itr++)
 	{
-		if ((*itr)->cumplePrevia(save))
+		if ((*itr)->cumplePrevia(save) && (*itr)->estaHabilitado())
 		{
-			(*itr)->mostrarCurso();
+			resu.insert((*itr)->getNombre());
 		}
 	}
+	return resu;
 }
 // CU 13 Consultar estadísticas (estudiante)
 int Controller ::listarUsuarios(int sel)

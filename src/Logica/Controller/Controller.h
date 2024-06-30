@@ -65,7 +65,7 @@ public:
 	DTOCurso consultarCurso(string nombreCurso);
 	//CU 11 Inscribirse a curso
 	bool Inscribir(string nombreCurs,string nombreEst);
-	void listoCursosPendientes(string nombreEst);
+	set<string> listoCursosPendientes(string nombreEst);
 
 	//CU 13 Consultar estadísticas
 	int listarUsuarios(int sel);

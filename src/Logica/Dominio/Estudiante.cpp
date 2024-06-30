@@ -49,6 +49,7 @@ set<Curso*> Estudiante :: ObtenerCursos()
 }
 bool Estudiante :: inscribir(Curso* curso)
 {
+    int c=0;
     bool FALSO=false;
     time_t ahora = time(0);
     tm* tiempoLocal = localtime(&ahora);
@@ -56,7 +57,10 @@ bool Estudiante :: inscribir(Curso* curso)
     int mes = tiempoLocal->tm_mon + 1;  
    int ano = 2024; 
    //tiempoLocal->tm_year + 1900;
-    int c = cursosInscriptos.rbegin()->first;
+   if(!cursosInscriptos.empty()){
+     c = cursosInscriptos.rbegin()->first;
+   }
+    
     Inscripcion *I1 = new Inscripcion(dia,mes,ano,FALSO,curso);
     this->cursosInscriptos.insert({c+1,I1});
     return true;

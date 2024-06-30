@@ -278,14 +278,14 @@ void PCurso::agregarEjercicio(){
         cout << "\nIngrese el nombre de la lección a seleccionar..." << endl;
         cin >> nombreLeccion;
 
-    // Verificar si existe una lección con el nombre ingresado
-    for (it = lecciones.begin(); it != lecciones.end(); it++) {
-        if (it->getTema() == nombreLeccion) {
-            leccionAceptada = true;
-            aux=*it;
-            break;
-        }
-    }
+        // Verificar si existe una lección con el nombre ingresado
+        for (it = lecciones.begin(); it != lecciones.end(); it++) {
+            if (it->getTema() == nombreLeccion) {
+                leccionAceptada = true;
+                aux=*it;
+                break;
+            }
+         }
 
         if (!leccionAceptada) {
                 cout << "Lección no encontrada. Por favor, ingrese un nombre de lección válido." << endl;
@@ -441,37 +441,60 @@ void PCurso :: consultarCurso(){
     
     infoCurso.MostrarDatos();
     cin.ignore();
-    std::cout << "\nPresiona cualquier tecla para continuar..." << std::endl;
-    std::cin.get(); // Espera a que el usuario presione una tecla
-    std::system("clear");
+    cout << "\nPresiona cualquier tecla para continuar..." <<endl;
+    cin.get(); // Espera a que el usuario presione una tecla
+    system("clear");
 }
 
 // CU11 inscripcion
 void PCurso ::Inscripcion()
 {
     string nombreEst = "", nombreCurs = "";
-    if (this->SystemInstance->listarUsuarios('e') != 0)
+    set<string> cursosPendientes=this->SystemInstance->listoCursosPendientes(nombreEst);
+
+    if (this->SystemInstance->listarUsuarios('e') != 0 && !cursosPendientes.empty())
     {
+        cin.ignore();
         cout << "Ingrese Nombre del Estudiante:" << endl;
         getline(cin, nombreEst);
 
-        this->SystemInstance->listoCursosPendientes(nombreEst);
-        cout << "Ingrese Nombre del curso:" << endl;
-        getline(cin, nombreCurs);
+        set<string>::iterator it;
+	    for (it = cursosPendientes.begin(); it != cursosPendientes.end(); it++) {
+		cout << "Curso: " << *it << endl;
+	    }
+        bool cursoAceptado=false;
+        set<string>::iterator it2;
+        while (!cursoAceptado) {
+            cout << "\nIngrese el nombre de un curso a seleccionar..." << endl;
+            getline(cin, nombreCurs);
+            for (it2 = cursosPendientes.begin(); it2 != cursosPendientes.end(); it2++) {
+                if (*it2 == nombreCurs) {
+                    cursoAceptado = true;
+                    break;
+                }
+            }
 
-        if (this->SystemInstance->Inscribir(nombreCurs, nombreEst))
-        {
-            cout << "Se realizo la inscripcion" << endl;
+            if (!cursoAceptado) {
+                    cout << "Curso no encontrado. Por favor, ingrese un nombre de curso válido." << endl;
+            }
         }
-        else
-        {
+
+        if (this->SystemInstance->Inscribir(nombreCurs, nombreEst)){
+            cout << "Se realizo la inscripcion" << endl;
+        }else{
             cout << "Error de inscripcion" << endl;
         }
+        
+    }else if(!cursosPendientes.empty()){
+         cout << "No hay usuarios" << endl;
+    }else{
+        cout << "No hay Cursos" << endl;
     }
-    else
-    {
-    cout << "No hay usuarios" << endl;
-    }
+
+    cin.ignore();
+    cout << "\nPresiona cualquier tecla para continuar..." <<endl;
+    cin.get(); // Espera a que el usuario presione una tecla
+    system("clear");
 }
 
 
