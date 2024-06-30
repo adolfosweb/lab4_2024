@@ -156,6 +156,7 @@ set<string> PCurso::seleccionarCursos()
     return CursosSeleccionados;
 }
 
+//CU 6 AgregarLeccion
 void PCurso::AgregarLeccion()
 {
     map<int, DTOCurso> Temp;
@@ -214,6 +215,7 @@ void PCurso::AgregarLeccion()
         cout << "\nIngreso Completado..." << endl;
     }
 }
+
 //CU7
 void PCurso::agregarEjercicio(){
 
@@ -407,11 +409,6 @@ void PCurso :: consultarCurso(){
     DTOCurso infoCurso=this->SystemInstance->consultarCurso(nomCurso);
     
     infoCurso.MostrarDatos();
-    //set<DTOLeccion> leccionesCurso=infoCurso.getLecciones();
-
-   
-
-
 }
 
 // CU11 inscripcion

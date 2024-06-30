@@ -31,7 +31,7 @@ public:
     void setLecciones(set<DTOLeccion> leccion);
     set<DTOLeccion> getLecciones();
 
-   void setPrevias(set<string> previa);
+    void setPrevias(set<string> previa);
     set<string> getPrevias();
 
     //Evitar error no match for operator<

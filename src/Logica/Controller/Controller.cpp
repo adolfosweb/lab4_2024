@@ -363,6 +363,8 @@ bool Controller ::IngresoLeccion(DTOCurso curso, DTOLeccion leccion)
 
 		if ((*ct)->getNombre() == curso.getNombreCurso() && (*ct)->getDescripcion() == curso.getDescripcion()) // Busca curso...
 		{
+			int numLeciones = (*ct)->getNumLecciones();
+			leccion.setNumero(numLeciones+1);
 			(*ct)->setLeccion(leccion);
 			return true;
 		}

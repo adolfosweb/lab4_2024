@@ -25,8 +25,8 @@ string DTOLeccion::getObjetivoAprendizaje() const{
 }
 
 //Evitar error no match for operator<
-bool DTOLeccion :: operator<(const DTOLeccion& l) const{
-	return true;
+bool DTOLeccion::operator<(const DTOLeccion& l) const {
+    return this->numero < l.numero; // Ordenar basado en el número de la lección
 }
 
 void DTOLeccion::setEjercicio(set<DTOEjercicio> ejercicio){
@@ -48,3 +48,6 @@ void DTOLeccion::mostrarEjercicios() const{
 
 }
 
+void DTOLeccion::setNumero(int num){
+    this->numero=num;
+}

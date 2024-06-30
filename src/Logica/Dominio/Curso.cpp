@@ -42,7 +42,7 @@ ENUMDificultad Curso ::getDificultad()
 void Curso ::setLeccion(DTOLeccion leccion)
 {
 
-    Leccion *L = new Leccion(0, leccion.getTema(), leccion.getObjetivoAprendizaje());
+    Leccion *L = new Leccion(leccion.getNumero(), leccion.getTema(), leccion.getObjetivoAprendizaje());
 
     lecciones.insert(L); // Se ingresa un puntero a Lección.
 }
@@ -170,4 +170,8 @@ set<string> Curso::getPrevia(){
 		listaNombrePrevia.insert((*it)->getNombre());
 	}
     return listaNombrePrevia;
+}
+
+int Curso::getNumLecciones() {
+    return lecciones.size();
 }

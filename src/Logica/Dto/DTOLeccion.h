@@ -21,6 +21,7 @@ public:
      string getObjetivoAprendizaje() const;
      void setEjercicio(set<DTOEjercicio> ejercicio);
      set<DTOEjercicio> getEjercicio();
+     void setNumero(int num);
     ~DTOLeccion();
      
     void mostrarEjercicios() const;
