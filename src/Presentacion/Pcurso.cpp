@@ -242,15 +242,14 @@ void PCurso::agregarEjercicio(){
     map<int,DTOCurso> cursos= this->SystemInstance->ConsultaCursosNoHabilitados();
 
     for (auto ct = cursos.begin(); ct != cursos.end(); ct++){
-        cout << "Código Curso: C" << ct->first <<" "<< ct->second.getNombreCurso()<< endl;    
+        cout << "Curso Nro " << ct->first <<": "<< ct->second.getNombreCurso() << "." << endl;    
     }
 
     int in = 0;
     bool cursoAceptado = false;
 
-    while (!cursoAceptado)
-    {
-        cout << "\nIngrese el curso a seleccionar..." << endl;
+    while (!cursoAceptado){
+        cout << "\nIngrese número del curso a seleccionar..." << endl;
         cin >> in;
         if (in >= 1 && in <= cursos.size()){
             cursoAceptado = true;
@@ -268,7 +267,7 @@ void PCurso::agregarEjercicio(){
     set<DTOLeccion>::iterator it;
 
     for (it = lecciones.begin(); it != lecciones.end(); it++) {
-        cout<<"Leccion "<<it->getNumero() <<" "<< it->getTema()<<endl;	
+        cout<<"Leccion "<<it->getNumero() <<": "<< it->getTema()<<endl;	
     }
 
     string nombreLeccion;
@@ -292,7 +291,7 @@ void PCurso::agregarEjercicio(){
         }
     }
 
-    cout<<"Elija que tipo de Ejercicio quere ingresar (1=Ejercicio de Completar Palabra, 2=Ejercicio de traduccion):"<<endl;
+    cout<<"Elija que tipo de Ejercicio quiera ingresar (1: Ejercicio de Completar Palabra, 2: Ejercicio de Traduccion):"<<endl;
     int num;
     cin>>num;
     cin.ignore();
@@ -300,12 +299,10 @@ void PCurso::agregarEjercicio(){
     DTOEjercicio eje=crearDTOejercicio(num);
     
     if(num==1){
-        this->SystemInstance->ingresarEjercicioTraduccion(Cur->second,aux,eje);
-
+        this->SystemInstance->ingresarEjercicioPalabra(Cur->second,aux,eje);
     }else if(num==2){
         this->SystemInstance->ingresarEjercicioTraduccion(Cur->second,aux,eje);
     }
-
 }
 
 DTOEjercicio PCurso::crearDTOejercicio(int num){
@@ -398,15 +395,15 @@ void PCurso::eliminarCurso(){
     if(!nombres.empty()){
         cout << "Cursos creados:" << endl; 
         for(auto it = nombres.begin(); it != nombres.end(); it++){
-            cout << "Curso " << pos << ": " << *it << endl;
+            cout << "Curso " << pos << ": " << *it << "." << endl;
             pos++;
         }
-        cout << "Seleccione curso a eliminar:" << endl;
+        cout << "Indique nombre del curso a eliminar:" << endl;
         getline(cin,opcion);
         if(this->SystemInstance->seleccionarCursoAEliminar(opcion)){
-            cout << "Se ha eliminado el curso: " << opcion << endl;
+            cout << "Se ha eliminado el curso: " << opcion << " correctamente." << endl;
         }else{
-            cout << "El curso: " << opcion << "no existe" << endl;
+            cout << "El curso: " << opcion << "no existe." << endl;
         }
     }else{
         cout << "No hay cursos creados" << endl;
@@ -419,15 +416,14 @@ void PCurso :: consultarCurso(){
     cin.ignore();
     set<string> nombreCursos=this->SystemInstance->listaCursos();
     set<string>::iterator it;
-	for (it = nombreCursos.begin(); it != nombreCursos.end(); it++) {
+	for (it = nombreCursos.begin(); it != nombreCursos.end(); it++){
 		cout << "Curso: " << *it << endl;
 	}
-
     string nomCurso;
 	bool existeIdioma = false;
     while (!existeIdioma)
     {
-        cout << "Ingresa un Idioma de la lista:" << endl;
+        cout << "Ingresa un Curso de la lista:" << endl;
         getline(cin,nomCurso);
        
        if (nombreCursos.find(nomCurso) != nombreCursos.end()) {
