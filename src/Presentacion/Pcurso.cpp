@@ -170,37 +170,6 @@ set<string> PCurso::seleccionarCursos()
 
 //CU 6 AgregarLeccion
 void PCurso::AgregarLeccion(){
-   /* map<int, DTOCurso> Temp;
-    cout << "\nAgregando Lección.\nListando no Habilitados:\n"
-         << endl;
-    Temp = SystemInstance->ConsultaCursosNoHabilitados();
-
-    for (auto ct = Temp.begin(); ct != Temp.end(); ct++)
-    {
-        cout << "Código Curso: C " << ct->first << endl;
-        ct->second.MostrarDatos();
-    }
-
-    int in = 0;
-    bool cursoAceptado = false;
-    // string ingreso = "";
-
-    while (!cursoAceptado)
-    {
-        cout << "\nIngrese el curso a seleccionar..." << endl;
-        cin >> in;
-
-        if (in >= 1 && in <= Temp.size())
-        {
-            cursoAceptado = true;
-        }
-        else
-        {
-            cout << "Número fuera de rango. Por favor, ingrese un número entre 1 y " << Temp.size() << "." << endl;
-        }
-    }*/
-
-    //auto Cur = Temp.find(in); // Se obtiene DTOCurso
     DTOCurso curso=ObtenerCurso();
 
     string nombreLeccion = "", 
@@ -230,8 +199,7 @@ void PCurso::AgregarLeccion(){
 
     DTOLeccion NuevaLeccion(0, nombreLeccion, objetivo);
 
-    if (SystemInstance->IngresoLeccion(curso, NuevaLeccion,agregarEjercicio,eje)) // Se pasa el DTOCurso y DTOLeccion.
-    {
+    if (SystemInstance->IngresoLeccion(curso, NuevaLeccion,agregarEjercicio,eje)){ // Se pasa el DTOCurso y DTOLeccion.
         cout << "\nIngreso Completado..." << endl;
     }
 }
