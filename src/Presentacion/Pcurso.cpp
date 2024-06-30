@@ -440,6 +440,10 @@ void PCurso :: consultarCurso(){
     DTOCurso infoCurso=this->SystemInstance->consultarCurso(nomCurso);
     
     infoCurso.MostrarDatos();
+    cin.ignore();
+    std::cout << "\nPresiona cualquier tecla para continuar..." << std::endl;
+    std::cin.get(); // Espera a que el usuario presione una tecla
+    std::system("clear");
 }
 
 // CU11 inscripcion
