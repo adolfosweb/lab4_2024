@@ -416,7 +416,7 @@ void PCurso::eliminarCurso(){
 
 //CU 10 ConsultarCurso
 void PCurso :: consultarCurso(){
-
+    cin.ignore();
     set<string> nombreCursos=this->SystemInstance->listaCursos();
     set<string>::iterator it;
 	for (it = nombreCursos.begin(); it != nombreCursos.end(); it++) {
@@ -428,7 +428,7 @@ void PCurso :: consultarCurso(){
     while (!existeIdioma)
     {
         cout << "Ingresa un Idioma de la lista:" << endl;
-        cin >> nomCurso;
+        getline(cin,nomCurso);
        
        if (nombreCursos.find(nomCurso) != nombreCursos.end()) {
         existeIdioma = true;
