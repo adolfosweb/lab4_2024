@@ -39,7 +39,7 @@ public:
 
 	//CU 6 Agregar Leccion
 	virtual map<int,DTOCurso> ConsultaCursosNoHabilitados() = 0;
-	virtual bool IngresoLeccion(DTOCurso curso,DTOLeccion leccion) = 0;
+	virtual bool IngresoLeccion(DTOCurso curso,DTOLeccion leccion,bool bandera,DTOEjercicio eje) = 0;
 
 	//CU 7 Agregar Ejercicio
 	virtual set<DTOLeccion> listarLecciones(string nombreCurso)=0;

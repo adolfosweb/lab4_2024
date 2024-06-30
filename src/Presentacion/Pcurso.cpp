@@ -202,15 +202,22 @@ void PCurso::AgregarLeccion()
 
     cout << "\nDesea ingresar También los ejercicios? S/N" << endl;
     sel = getchar();
-
+    DTOEjercicio eje;
+    bool agregarEjercicio = false;
     if (sel == 'S' || sel == 's')
     {
-        // Ingresar Ejercicio, uno del grupo lo está haciendo...
+        cout<<"Elija que tipo de Ejercicio quere ingresar (1=Ejercicio de Completar Palabra, 2=Ejercicio de traduccion):"<<endl;
+        int num;
+        cin>>num;
+        cin.ignore();
+       
+         eje=crearDTOejercicio(num);
+        agregarEjercicio = true;
     }
 
     DTOLeccion NuevaLeccion(0, nombreLeccion, objetivo);
 
-    if (SystemInstance->IngresoLeccion(Cur->second, NuevaLeccion)) // Se pasa el DTOCurso y DTOLeccion.
+    if (SystemInstance->IngresoLeccion(Cur->second, NuevaLeccion,agregarEjercicio,eje)) // Se pasa el DTOCurso y DTOLeccion.
     {
         cout << "\nIngreso Completado..." << endl;
     }
@@ -276,43 +283,54 @@ void PCurso::agregarEjercicio(){
         int num;
         cin>>num;
         cin.ignore();
-        string descripcion="";
-        string frase="";
-        string solucion="";
-        ENUMTipo tipo;
-
+       
+        DTOEjercicio eje=crearDTOejercicio(num);
         
         if(num==1){
-            cout<<"Ingrese Descripcion del Ejercicio"<<endl;  
-            getline(cin,descripcion);
-
-            cout<<"Ingrese La Frase incompleta"<<endl;  
-            getline(cin,frase);
-
-            cout<<"Ingrese La Frase completa"<<endl;  
-            getline(cin,solucion);
-
-
-            tipo=ENUMTipo::COMPLETAR;
-            DTOEjercicio eje(descripcion,frase,tipo,solucion);
             this->SystemInstance->ingresarEjercicioTraduccion(Cur->second,aux,eje);
 
         }else if(num==2){
-
-            cout<<"Ingrese Descripcion del Ejercicio"<<endl;  
-            getline(cin,descripcion);
-
-            cout<<"Ingrese La Frase a Traduccir"<<endl;  
-            getline(cin,frase);
-
-            cout<<"Ingrese La Frase Traducida "<<endl;  
-            getline(cin,solucion);
-            tipo=ENUMTipo::TRADUCCION;
-            DTOEjercicio eje(descripcion,frase,tipo,solucion);
             this->SystemInstance->ingresarEjercicioTraduccion(Cur->second,aux,eje);
         }
 
 }
+
+DTOEjercicio PCurso::crearDTOejercicio(int num){
+    string descripcion="";
+    string frase="";
+    string solucion="";
+    ENUMTipo tipo;
+
+    if(num==1){
+        cout<<"Ingrese Descripcion del Ejercicio"<<endl;  
+        getline(cin,descripcion);
+
+        cout<<"Ingrese La Frase incompleta"<<endl;  
+        getline(cin,frase);
+
+        cout<<"Ingrese La Frase completa"<<endl;  
+        getline(cin,solucion);
+
+        tipo=ENUMTipo::COMPLETAR;
+    }else if(num==2){
+
+        cout<<"Ingrese Descripcion del Ejercicio"<<endl;  
+        getline(cin,descripcion);
+
+        cout<<"Ingrese La Frase a Traduccir"<<endl;  
+        getline(cin,frase);
+
+        cout<<"Ingrese La Frase Traducida "<<endl;  
+        getline(cin,solucion);
+        tipo=ENUMTipo::TRADUCCION;
+        
+
+    }
+    DTOEjercicio resu(descripcion, frase, tipo, solucion);
+    return resu;
+}
+//FIN CU 7
+
 // CU 8 HABILITAR CURSO
 void PCurso::habilitarCurso()
 {

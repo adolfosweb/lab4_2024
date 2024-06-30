@@ -47,7 +47,7 @@ public:
 
 	//CU 6 Agregar Leccion
 	map<int,DTOCurso> ConsultaCursosNoHabilitados();
-	bool IngresoLeccion(DTOCurso curso,DTOLeccion leccion);
+	bool IngresoLeccion(DTOCurso curso,DTOLeccion leccion,bool bandera,DTOEjercicio eje);
 
 
 	//CU 7 Agregar Ejercicio

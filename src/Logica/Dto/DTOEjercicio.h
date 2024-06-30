@@ -12,6 +12,7 @@ private:
     string solucion;
     ENUMTipo tipo;
 public:	
+    DTOEjercicio();
 	DTOEjercicio(string descripcion, string frase,ENUMTipo tipo, string solucion);
 	virtual ~DTOEjercicio();
     string getDescripcion() const;

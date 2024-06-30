@@ -24,6 +24,7 @@ public:
     void habilitarCurso();
     //CU9 Eliminar Curso
     void eliminarCurso();
+    DTOEjercicio crearDTOejercicio(int num);
     //CU 10 ConsultarCurso();
     void consultarCurso();
     //CU11 Inscribir curso

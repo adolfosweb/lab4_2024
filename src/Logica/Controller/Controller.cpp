@@ -355,7 +355,7 @@ map<int, DTOCurso> Controller ::ConsultaCursosNoHabilitados()
 	return CursosNoHab;
 }
 
-bool Controller ::IngresoLeccion(DTOCurso curso, DTOLeccion leccion)
+bool Controller ::IngresoLeccion(DTOCurso curso, DTOLeccion leccion,bool bandera,DTOEjercicio eje)
 {
 
 	for (auto ct = sistema->cursos.begin(); ct != sistema->cursos.end(); ct++)
@@ -366,6 +366,19 @@ bool Controller ::IngresoLeccion(DTOCurso curso, DTOLeccion leccion)
 			int numLeciones = (*ct)->getNumLecciones();
 			leccion.setNumero(numLeciones+1);
 			(*ct)->setLeccion(leccion);
+
+			if (bandera)
+            {
+                // Dependiendo del tipo de ejercicio, llama a la función correspondiente
+                if (eje.getTipo() == ENUMTipo::COMPLETAR)
+                {
+                    (*ct)->ingresarEjercicioPalabra(leccion, eje);
+                }
+                else if (eje.getTipo() == ENUMTipo::TRADUCCION)
+                {
+                    (*ct)->ingresarEjercicioTraduccion(leccion, eje);
+                }
+            }
 			return true;
 		}
 	}
