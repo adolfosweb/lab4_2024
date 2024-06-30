@@ -456,9 +456,10 @@ DTOCurso Controller::consultarCurso(string nombreCurso){
 			break;
 		}
 	}
-
+	
 	DTOCurso resu((*it)->getNombre(),(*it)->getDescripcion(), (*it)->getIdioma(), (*it)->getDificultad(),(*it)->estaHabilitado());
-
+	resu.setPrevias((*it)->getPrevia());
+	
 	resu.setLecciones((*it)->listarLecciones());
 
 	return resu;

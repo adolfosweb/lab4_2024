@@ -407,12 +407,9 @@ void PCurso :: consultarCurso(){
     DTOCurso infoCurso=this->SystemInstance->consultarCurso(nomCurso);
     
     infoCurso.MostrarDatos();
-    set<DTOLeccion> leccionesCurso=infoCurso.getLecciones();
+    //set<DTOLeccion> leccionesCurso=infoCurso.getLecciones();
 
-    set<DTOLeccion>::iterator it2;
-	for (it2 = leccionesCurso.begin(); it2 != leccionesCurso.end(); it2++) {
-		cout << "Leccion: " <<it2->getNumero()<<" "<<it2->getTema()<<" "<<it2->getObjetivoAprendizaje()<< endl;
-	}
+   
 
 
 }

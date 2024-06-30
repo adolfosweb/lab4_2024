@@ -5,6 +5,7 @@
 #include "../Dto/DTOLeccion.h"
 #include "../Dominio/Idioma.h"
 #include "../Dto/DTOEjercicio.h"
+//#include "../Dto/DTOCurso.h"
 #include "Leccion.h"
 #include <set>
 using namespace std;
@@ -41,7 +42,7 @@ public:
     float obtenerPromedio();
     bool cumplePrevia(set<Curso*> ct);
     void mostrarCurso();
-
+    set<string> getPrevia();
     set<DTOLeccion> listarLecciones();
     bool ingresarEjercicioPalabra(DTOLeccion l, DTOEjercicio e);
     bool ingresarEjercicioTraduccion(DTOLeccion l, DTOEjercicio e);

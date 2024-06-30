@@ -1,13 +1,14 @@
 #ifndef LOGICA_DTO_DTOCURSO_H_
 #define LOGICA_DTO_DTOCURSO_H_
-#include "../Dominio/Curso.h"
+#include <set>
 #include "DTOIdioma.h"
+#include "../Dominio/Curso.h"
 #include <iostream>
+
 
 using namespace std;
 
-class DTOCurso
-{
+class DTOCurso{
 private:
     string nombre;
     string descripcion;
@@ -15,7 +16,7 @@ private:
     ENUMDificultad dificultad;
     bool habilitado;
     set<DTOLeccion> lecciones;
-    set<DTOEjercicio> ejercicio;
+    set<string> previas;
 public:
 	
 	DTOCurso();
@@ -29,6 +30,9 @@ public:
     void MostrarDatos();
     void setLecciones(set<DTOLeccion> leccion);
     set<DTOLeccion> getLecciones();
+
+   void setPrevias(set<string> previa);
+    set<string> getPrevias();
 
     //Evitar error no match for operator<
     bool operator<(const DTOCurso& c) const;

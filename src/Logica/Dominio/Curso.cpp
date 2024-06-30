@@ -124,6 +124,7 @@ set<DTOLeccion> Curso::listarLecciones(){
   	set<Leccion*>::iterator it;
     for (it = this->lecciones.begin(); it != this->lecciones.end(); it++) {
 		DTOLeccion leccion((*it)->getNumero(),(*it)->getTema(),(*it)->getObjetivoAprendizaje());
+        leccion.setEjercicio((*it)->ObtenerDTOEjercicios());
 		listaLecciones.insert(leccion);
 	}
     return listaLecciones;
@@ -161,3 +162,12 @@ void Curso::borrarLecciones(){
     this->lecciones.clear();
 }
 //FIN CU9
+
+set<string> Curso::getPrevia(){
+    set<string> listaNombrePrevia;
+  	set<Curso*>::iterator it;
+    for (it = this->previa.begin(); it != this->previa.end(); it++) {
+		listaNombrePrevia.insert((*it)->getNombre());
+	}
+    return listaNombrePrevia;
+}

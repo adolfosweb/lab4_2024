@@ -28,3 +28,23 @@ string DTOLeccion::getObjetivoAprendizaje() const{
 bool DTOLeccion :: operator<(const DTOLeccion& l) const{
 	return true;
 }
+
+void DTOLeccion::setEjercicio(set<DTOEjercicio> ejercicio){
+    this->ejercicios=ejercicio;
+}
+set<DTOEjercicio> DTOLeccion::getEjercicio(){
+    return this->ejercicios;
+}
+
+
+
+void DTOLeccion::mostrarEjercicios() const{
+    set<DTOEjercicio>::iterator it;
+    cout << "lOS Ejercicios de la leccion son: " <<endl;
+    for( it=this->ejercicios.begin(); it!=this->ejercicios.end();it++){
+        cout << "Descripcion: " << it->getDescripcion() <<endl;
+        cout << "Tipo: " << it->tipoToString(it->getTipo()) <<endl;
+    }
+
+}
+

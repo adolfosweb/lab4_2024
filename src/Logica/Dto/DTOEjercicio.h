@@ -14,10 +14,12 @@ private:
 public:	
 	DTOEjercicio(string descripcion, string frase,ENUMTipo tipo, string solucion);
 	virtual ~DTOEjercicio();
-    string getDescripcion();
-    string getFrase();
-    string getSolucion();
-    ENUMTipo getTipo();
+    string getDescripcion() const;
+    string getFrase() const;
+    string getSolucion() const;
+    ENUMTipo getTipo() const;
+    string tipoToString(ENUMTipo tipo) const;
+    bool operator<(const DTOEjercicio& l) const;
 };
 
 #endif /* LOGICA_DTO_EJERCICIO_H_ */

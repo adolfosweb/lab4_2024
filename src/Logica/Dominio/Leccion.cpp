@@ -65,3 +65,14 @@ void Leccion::borrarEjercicios(){
     }
     this->ejercicios.clear();
 }
+
+set<DTOEjercicio> Leccion::ObtenerDTOEjercicios(){
+    set<DTOEjercicio> resu;
+    set<Ejercicio*>::iterator it;
+    for (it = this->ejercicios.begin(); it != this->ejercicios.end(); it++){
+           DTOEjercicio eje((*it)->getDescripcion(),(*it)->getFrase(),(*it)->getTipo(),(*it)->getSolucion()) ;
+           resu.insert(eje);
+    
+    }
+    return resu;
+}

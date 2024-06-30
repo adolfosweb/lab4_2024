@@ -23,7 +23,7 @@ public:
      string getObjetivoAprendizaje();
     ~Leccion(); 
     set<Ejercicio*> ObtenerEjercicios();
-
+    set<DTOEjercicio> ObtenerDTOEjercicios();
      //CU7
     bool ingresarEjercicioPalabra(DTOEjercicio e);
     bool ingresarEjercicioTraduccion(DTOEjercicio e);

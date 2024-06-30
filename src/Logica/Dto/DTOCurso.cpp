@@ -26,8 +26,27 @@ string DTOCurso :: getNombreCurso()
 
 void DTOCurso :: MostrarDatos()
 {
-	cout << "Nombre: " << nombre << "\nDescripcion: " << descripcion <<  "\nIdioma del curso: " << idioma.getIdioma() << "\nDificultad: " << dificultad << endl;
 	cout << "\n________________________________________________" << endl;
+	cout << "Nombre: " << nombre <<endl;
+	cout << "Descripcion: " << descripcion<<endl;
+	cout << "Idioma del Curso: " <<idioma.getIdioma()<<endl;
+	cout << "Dificultad: " << dificultad<<endl;
+	set<DTOLeccion>::iterator it;
+	cout << "Las Lecciones del Curso Son: " << endl;
+	for( it=this->lecciones.begin(); it!=this->lecciones.end();it++){
+		cout << "________________________________________________" << endl;
+		cout << "Leccion numero: " << it->getNumero()<<" Descripcion: "<<it->getTema()<<" Objetivo Aprendizaje: "<<it->getObjetivoAprendizaje() <<endl;
+		it->mostrarEjercicios();
+		cout << "________________________________________________" << endl;
+	}
+	set<string>::iterator it2;
+	cout << "Las Previas Son: " << endl;
+	for( it2=this->previas.begin(); it2!=this->previas.end();it2++){
+		cout << "________________________________________________" << endl;
+		cout << "Nombre: "<<*it2<<endl;
+		cout << "________________________________________________" << endl;
+	}
+	
 }
 
 string DTOCurso :: getDescripcion()
@@ -58,4 +77,10 @@ void DTOCurso::setLecciones(set<DTOLeccion> leccion){
 
 set<DTOLeccion> DTOCurso ::getLecciones(){
 	return this->lecciones;
+}
+void DTOCurso::setPrevias(set<string> previa){
+	this->previas=previa;
+}
+set<string> DTOCurso::getPrevias(){
+	return this->previas;
 }
