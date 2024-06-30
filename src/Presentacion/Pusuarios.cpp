@@ -256,3 +256,29 @@ void Pusuarios :: consultaProfesor()
         getchar();getchar();
     }
 }
+
+void Pusuarios::cargarDatos(){
+    /*DTOEstudiante * U1 = new DTOEstudiante("jpidiom",pass,nom,descrip,pais,fecha);
+    DTOEstudiante * U2 = new DTOEstudiante("marsilva",pass,nom,descrip,pais,fecha);
+    DTOEstudiante * U3 = new DTOEstudiante("pero12" ,pass,nom,descrip,pais,fecha);
+    DTOEstudiante * U4 = new DTOEstudiante("laugu" ,pass,nom,descrip,pais,fecha);
+    DTOEstudiante * U5 = new DTOEstudiante("carlo22",pass,nom,descrip,pais,fecha);
+    DTOEstudiante * U6 = new DTOEstudiante("anator" ,pass,nom,descrip,pais,fecha);
+    DTOEstudiante * U7 = new DTOEstudiante("luher24",pass,nom,descrip,pais,fecha);
+    DTOEstudiante * U8 = new DTOEstudiante("dagon" ,pass,nom,descrip,pais,fecha);
+    DTOEstudiante * U9 = new DTOEstudiante("carmor" ,pass,nom,descrip,pais,fecha);
+    DTOEstudiante * U10 = new DTOEstudiante("jose24", pass,nom,descrip,pais,fecha);*/
+
+    set<string> LI1;
+    LI1.insert("Ingles");
+    LI1.insert("Portugues");
+    DTOProfesor * U11= new DTOProfesor("langMaster","P4s512","Marta Grecia","Soy una profesora apasionada por los idiomas","Instituto de Idiomas Moderno",LI1);
+    this->iPusuario->agregarUsuario(U11);
+
+   /* DTOProfesor * U12 = new DTOProfesor("linguaPro" ,pass,nom,descrip,"Centro Global",idiomas);
+    DTOProfesor * U13 = new DTOProfesor("talkExpert" ,pass,nom,descrip,"Instituto de Idiomas Vanguardia",idiomas);
+    DTOProfesor * U14 = new DTOProfesor("lingoSensei" ,pass,nom,descrip,"Centro de Idiomas",idiomas);
+    DTOProfesor * U15= new DTOProfesor("wordMaestro",pass,nom,descrip,"Instituto de Idiomas Progreso",idiomas);*/
+
+
+}

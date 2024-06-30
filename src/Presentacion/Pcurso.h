@@ -15,9 +15,13 @@ public:
     ~PCurso(); 
     //CU5 Alta Curso
     void altaCurso();
+    ENUMDificultad obtenerDificultad(int num);
+    string obtenerNombreDelProfesor();
+    string obtenerIdiomasDeProfesor(string nombrProfe);
     set<string> seleccionarCursos();
-    //CU6 Agregar Ejercicio
+    //CU6 Agregar Leccion
     void AgregarLeccion();
+    DTOCurso ObtenerCurso();
     //CU7 Agregar Ejercicio
     void agregarEjercicio();
     //CU8 HabilitarCurso

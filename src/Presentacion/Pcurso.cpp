@@ -14,13 +14,17 @@ PCurso::~PCurso()
     delete this->SystemInstance;
 }
 
-void PCurso::altaCurso()
-{
-
+//CU 5 AltaCurso
+void PCurso::altaCurso(){
     std::system("clear");
-    string nombre = "", objetivoAprendizaje = "", tema = "", descripcion = "";
+
+    string nombre = "", 
+    objetivoAprendizaje = "", 
+    tema = "", 
+    descripcion = "";
+
     ENUMDificultad dif;
-    int difInt = 0, select = 0;
+    int difInt = 0;
 
     bool habilitado = false;
 
@@ -35,47 +39,74 @@ void PCurso::altaCurso()
     cout << "Ingrese la dificultad (0: Fácil, 1: Intermedio, 2: Avanzado):" << endl;
     cin >> difInt;
     cin.ignore();
-    switch (difInt)
-    {
-    case 0:
-        dif = ENUMDificultad::FACIL;
-        break;
-    case 1:
-        dif = ENUMDificultad::MEDIO;
-        break;
-    case 2:
-        dif = ENUMDificultad::DIFICIL;
-        break;
-    default:
-        cout << "Valor de dificultad no válido." << endl;
+    
+    dif=obtenerDificultad(difInt); 
+    string nombreProf=obtenerNombreDelProfesor(); //
+    string idioma=obtenerIdiomasDeProfesor(nombreProf);
+  
+    set<string> previas;
+    int agregarCurso;
+
+    cout << "¿Desea agregar Previas? (1=si, 2=no): " << endl;
+    cin >> agregarCurso;
+    cin.ignore();
+
+    if (agregarCurso == 1){
+        previas = seleccionarCursos();
+    }else{
+        cout << "No se agregó previa" << endl;
     }
 
+    this->SystemInstance->altaCurso(nombre, descripcion, idioma, nombreProf, dif, habilitado, previas);
+}
+ENUMDificultad PCurso::obtenerDificultad(int num){
+    ENUMDificultad dif;
+    switch (num) {
+        case 0:
+            dif = ENUMDificultad::FACIL;
+            break;
+        case 1:
+            dif = ENUMDificultad::MEDIO;
+            break;
+        case 2:
+            dif = ENUMDificultad::DIFICIL;
+            break;
+        default:
+            cout << "Valor de dificultad no válido." << endl;
+    }
+    return dif;
+}
+string PCurso::obtenerNombreDelProfesor(){
+
     cout << "Lista de Profesores:" << endl;
-    set<string> listaProf = this->SystemInstance->listoProfesor();
+    set<string> listaProf = this->SystemInstance->listoProfesor();//Me traigo los nombres de los profesores
 
     set<string>::iterator it;
-    for (it = listaProf.begin(); it != listaProf.end(); it++)
+    for (it = listaProf.begin(); it != listaProf.end(); it++) //Recorro
     {
         cout << "Profesor: " << *it << endl;
     }
     string nombreProf;
     bool existeUsuario = false;
-    while (existeUsuario == false)
-    {
+    while (existeUsuario == false){ //while para controlar si el nombre introducido coincide con lo listado
+
         cout << "Ingresa un usuario de la lista:" << endl;
         cin >> nombreProf;
         existeUsuario = this->SystemInstance->verificarNick(nombreProf);
+
         if (existeUsuario == false)
         {
             cout << "el nick ingresado no es correcto" << endl;
         }
     }
-
-    set<string> idiomasProfesor = this->SystemInstance->idiomasProfesor(nombreProf);
+    return nombreProf;
+}
+string PCurso::obtenerIdiomasDeProfesor(string nombreProfe){
+    set<string> idiomasProfesor = this->SystemInstance->idiomasProfesor(nombreProfe);
     cout << "Lista de Idioma del Profesor:" << endl;
     set<string>::iterator it2;
-    for (it2 = idiomasProfesor.begin(); it2 != idiomasProfesor.end(); it2++)
-    {
+
+    for (it2 = idiomasProfesor.begin(); it2 != idiomasProfesor.end(); it2++){
         cout << "Idioma: " << *it2 << endl;
     }
 
@@ -86,34 +117,14 @@ void PCurso::altaCurso()
         cout << "Ingresa un Idioma de la lista:" << endl;
         cin >> idioma;
 
-        if (idiomasProfesor.find(idioma) != idiomasProfesor.end())
-        {
+        if (idiomasProfesor.find(idioma) != idiomasProfesor.end()){
             existeIdioma = true;
-        }
-        else
-        {
+        }else{
             cout << "El idioma ingresado no es correcto. Por favor, intenta nuevamente." << endl;
         }
     }
-
-    set<string> previas;
-    int agregarCurso;
-
-    cout << "¿Desea agregar Previas? (1=si, 2=no): " << endl;
-    cin >> agregarCurso;
-    cin.ignore();
-
-    if (agregarCurso == 1)
-    {
-        previas = seleccionarCursos();
-    }
-    else
-    {
-        cout << "No se agregó previa" << endl;
-    }
-    this->SystemInstance->altaCurso(nombre, descripcion, idioma, nombreProf, dif, habilitado, previas);
+    return idioma;
 }
-
 set<string> PCurso::seleccionarCursos()
 {
 
@@ -155,10 +166,76 @@ set<string> PCurso::seleccionarCursos()
 
     return CursosSeleccionados;
 }
+//FIN CU5 Alta Curso
 
 //CU 6 AgregarLeccion
-void PCurso::AgregarLeccion()
-{
+void PCurso::AgregarLeccion(){
+   /* map<int, DTOCurso> Temp;
+    cout << "\nAgregando Lección.\nListando no Habilitados:\n"
+         << endl;
+    Temp = SystemInstance->ConsultaCursosNoHabilitados();
+
+    for (auto ct = Temp.begin(); ct != Temp.end(); ct++)
+    {
+        cout << "Código Curso: C " << ct->first << endl;
+        ct->second.MostrarDatos();
+    }
+
+    int in = 0;
+    bool cursoAceptado = false;
+    // string ingreso = "";
+
+    while (!cursoAceptado)
+    {
+        cout << "\nIngrese el curso a seleccionar..." << endl;
+        cin >> in;
+
+        if (in >= 1 && in <= Temp.size())
+        {
+            cursoAceptado = true;
+        }
+        else
+        {
+            cout << "Número fuera de rango. Por favor, ingrese un número entre 1 y " << Temp.size() << "." << endl;
+        }
+    }*/
+
+    //auto Cur = Temp.find(in); // Se obtiene DTOCurso
+    DTOCurso curso=ObtenerCurso();
+
+    string nombreLeccion = "", 
+    objetivo = "";
+    char sel = ' ';
+
+    cin.ignore();
+    cout << "\nIngrese nombre de la nueva lección:" << endl;
+    getline(cin, nombreLeccion, '\n');
+
+    cout << "\nIngrese objetivo de la lección:" << endl;
+    getline(cin, objetivo, '\n');
+
+    cout << "\nDesea ingresar También los ejercicios? S/N" << endl;
+    sel = getchar();
+    DTOEjercicio eje;
+    bool agregarEjercicio = false;
+    if (sel == 'S' || sel == 's')
+    {
+        cout<<"Elija que tipo de Ejercicio quere ingresar (1=Ejercicio de Completar Palabra, 2=Ejercicio de traduccion):"<<endl;
+        int num;
+        cin>>num;
+        cin.ignore();
+        eje=crearDTOejercicio(num);
+        agregarEjercicio = true;
+    }
+
+    DTOLeccion NuevaLeccion(0, nombreLeccion, objetivo);
+
+    if (SystemInstance->IngresoLeccion(curso, NuevaLeccion,agregarEjercicio,eje)) // Se pasa el DTOCurso y DTOLeccion.
+    {
+        cout << "\nIngreso Completado..." << endl;
+    }
+}
+DTOCurso PCurso::ObtenerCurso(){
     map<int, DTOCurso> Temp;
     cout << "\nAgregando Lección.\nListando no Habilitados:\n"
          << endl;
@@ -166,7 +243,7 @@ void PCurso::AgregarLeccion()
 
     for (auto ct = Temp.begin(); ct != Temp.end(); ct++)
     {
-        cout << "Código Curso: C" << ct->first << endl;
+        cout << "Código Curso: C " << ct->first << endl;
         ct->second.MostrarDatos();
     }
 
@@ -188,110 +265,78 @@ void PCurso::AgregarLeccion()
             cout << "Número fuera de rango. Por favor, ingrese un número entre 1 y " << Temp.size() << "." << endl;
         }
     }
-
-    auto Cur = Temp.find(in); // Se obtiene DTOCurso
-    string nombreLeccion = "", objetivo = "";
-    char sel = ' ';
-
-    cin.ignore();
-    cout << "\nIngrese nombre de la nueva lección:" << endl;
-    getline(cin, nombreLeccion, '\n');
-
-    cout << "\nIngrese objetivo de la lección:" << endl;
-    getline(cin, objetivo, '\n');
-
-    cout << "\nDesea ingresar También los ejercicios? S/N" << endl;
-    sel = getchar();
-    DTOEjercicio eje;
-    bool agregarEjercicio = false;
-    if (sel == 'S' || sel == 's')
-    {
-        cout<<"Elija que tipo de Ejercicio quere ingresar (1=Ejercicio de Completar Palabra, 2=Ejercicio de traduccion):"<<endl;
-        int num;
-        cin>>num;
-        cin.ignore();
-       
-         eje=crearDTOejercicio(num);
-        agregarEjercicio = true;
-    }
-
-    DTOLeccion NuevaLeccion(0, nombreLeccion, objetivo);
-
-    if (SystemInstance->IngresoLeccion(Cur->second, NuevaLeccion,agregarEjercicio,eje)) // Se pasa el DTOCurso y DTOLeccion.
-    {
-        cout << "\nIngreso Completado..." << endl;
-    }
+    auto Cur = Temp.find(in);
+    return Cur->second;
 }
 
 //CU7
 void PCurso::agregarEjercicio(){
+    map<int,DTOCurso> cursos= this->SystemInstance->ConsultaCursosNoHabilitados();
 
-        map<int,DTOCurso> cursos= this->SystemInstance->ConsultaCursosNoHabilitados();
+    for (auto ct = cursos.begin(); ct != cursos.end(); ct++){
+        cout << "Código Curso: C" << ct->first <<" "<< ct->second.getNombreCurso()<< endl;    
+    }
 
-        for (auto ct = cursos.begin(); ct != cursos.end(); ct++){
-            cout << "Código Curso: C" << ct->first <<" "<< ct->second.getNombreCurso()<< endl;    
+    int in = 0;
+    bool cursoAceptado = false;
+
+    while (!cursoAceptado)
+    {
+        cout << "\nIngrese el curso a seleccionar..." << endl;
+        cin >> in;
+        if (in >= 1 && in <= cursos.size()){
+            cursoAceptado = true;
+        }else{
+            cout << "Número fuera de rango. Por favor, ingrese un número entre 1 y " << cursos.size() << "." << endl;
         }
+    }
 
-        int in = 0;
-        bool cursoAceptado = false;
+    auto Cur = cursos.find(in);
 
-        while (!cursoAceptado)
-        {
-            cout << "\nIngrese el curso a seleccionar..." << endl;
-            cin >> in;
-            if (in >= 1 && in <= cursos.size()){
-                cursoAceptado = true;
-            }else{
-                cout << "Número fuera de rango. Por favor, ingrese un número entre 1 y " << cursos.size() << "." << endl;
-            }
+    set<DTOLeccion> lecciones=this->SystemInstance->listarLecciones(Cur->second.getNombreCurso());
+
+    cout<<"Las Lecciones del curso llamado "<<Cur->second.getNombreCurso()<<" son :"<<endl;
+
+    set<DTOLeccion>::iterator it;
+
+    for (it = lecciones.begin(); it != lecciones.end(); it++) {
+        cout<<"Leccion "<<it->getNumero() <<" "<< it->getTema()<<endl;	
+    }
+
+    string nombreLeccion;
+    bool leccionAceptada = false;
+    DTOLeccion aux;
+    while (!leccionAceptada) {
+        cout << "\nIngrese el nombre de la lección a seleccionar..." << endl;
+        cin >> nombreLeccion;
+
+    // Verificar si existe una lección con el nombre ingresado
+    for (it = lecciones.begin(); it != lecciones.end(); it++) {
+        if (it->getTema() == nombreLeccion) {
+            leccionAceptada = true;
+            aux=*it;
+            break;
         }
+    }
 
-        auto Cur = cursos.find(in);
-
-        set<DTOLeccion> lecciones=this->SystemInstance->listarLecciones(Cur->second.getNombreCurso());
-
-        cout<<"Las Lecciones del curso llamado "<<Cur->second.getNombreCurso()<<" son :"<<endl;
-
-        set<DTOLeccion>::iterator it;
-
-        for (it = lecciones.begin(); it != lecciones.end(); it++) {
-            cout<<"Leccion "<<it->getNumero() <<" "<< it->getTema()<<endl;	
+        if (!leccionAceptada) {
+                cout << "Lección no encontrada. Por favor, ingrese un nombre de lección válido." << endl;
         }
+    }
 
-        string nombreLeccion;
-        bool leccionAceptada = false;
-        DTOLeccion aux;
-        while (!leccionAceptada) {
-            cout << "\nIngrese el nombre de la lección a seleccionar..." << endl;
-         cin >> nombreLeccion;
+    cout<<"Elija que tipo de Ejercicio quere ingresar (1=Ejercicio de Completar Palabra, 2=Ejercicio de traduccion):"<<endl;
+    int num;
+    cin>>num;
+    cin.ignore();
+    
+    DTOEjercicio eje=crearDTOejercicio(num);
+    
+    if(num==1){
+        this->SystemInstance->ingresarEjercicioTraduccion(Cur->second,aux,eje);
 
-            // Verificar si existe una lección con el nombre ingresado
-            for (it = lecciones.begin(); it != lecciones.end(); it++) {
-                if (it->getTema() == nombreLeccion) {
-                    leccionAceptada = true;
-                    aux=*it;
-                    break;
-                }
-            }
-
-            if (!leccionAceptada) {
-                 cout << "Lección no encontrada. Por favor, ingrese un nombre de lección válido." << endl;
-            }
-        }
-
-        cout<<"Elija que tipo de Ejercicio quere ingresar (1=Ejercicio de Completar Palabra, 2=Ejercicio de traduccion):"<<endl;
-        int num;
-        cin>>num;
-        cin.ignore();
-       
-        DTOEjercicio eje=crearDTOejercicio(num);
-        
-        if(num==1){
-            this->SystemInstance->ingresarEjercicioTraduccion(Cur->second,aux,eje);
-
-        }else if(num==2){
-            this->SystemInstance->ingresarEjercicioTraduccion(Cur->second,aux,eje);
-        }
+    }else if(num==2){
+        this->SystemInstance->ingresarEjercicioTraduccion(Cur->second,aux,eje);
+    }
 
 }
 

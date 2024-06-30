@@ -14,7 +14,7 @@ public:
     ~Pusuarios();
 
     void altaUsuario();
-
+    void cargarDatos();
 	DTOEstudiante* ingresarEstudiante(string nick);
 
 	DTOProfesor* ingresarProfesor(string nick);
@@ -29,6 +29,9 @@ public:
 
     //CU2 - Consulta de Usuario
 	void infoUsuario();
+
+
+    
 
 };
 

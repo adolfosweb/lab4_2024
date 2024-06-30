@@ -27,8 +27,8 @@ void Sistema::inicializarDatos() {
 	cout << "Comienza inicializacion Sistema " << endl;
 
 	Idioma *idioma1 = new Idioma("Ingles");
-	Idioma *idioma2 = new Idioma("Espaniol");
-	Idioma *idioma3 = new Idioma("Aleman");
+	Idioma *idioma2 = new Idioma("Aleman");
+	Idioma *idioma3 = new Idioma("Portugues");
 
 	this->idiomas.insert(idioma1);
 	this->idiomas.insert(idioma2);

@@ -73,7 +73,8 @@ void Menu::mostrarMenuUsarios() {
 		cout << "*** Menu Usuarios ***" << endl;
 		cout <<"1) Alta Usuario" << endl;
 		cout <<"2) Consulta de Usuario " << endl;
-        cout <<"3) Volver A Menu Pricipal " << endl;
+		cout <<"3) Cargar Datos " << endl;
+        cout <<"4) Volver A Menu Pricipal " << endl;
 		cout <<"Ingrese una opcion: " << endl;
 
 		cin >> op;
@@ -93,6 +94,13 @@ void Menu::mostrarMenuUsarios() {
 			}
 			break;
         case 3:
+			{
+				
+				Pusuarios consultaUsuario;
+				consultaUsuario.cargarDatos();
+			}
+			break;
+		case 4:
 			{
 				std::system("clear");
            		return ;
