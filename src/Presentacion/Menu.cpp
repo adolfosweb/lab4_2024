@@ -253,7 +253,7 @@ void Menu :: MenuConsultarEstadísticas()
 	do
 	{
 
-		std::system("clear");
+		//std::system("clear");
 		sel = 0;
 		cout << "* Menu de consulta de estadísticas***"		 << endl;
 		cout <<	"1) Consulta estadísticas de Estudiante"	 << endl;
