@@ -404,6 +404,14 @@ this->iPusuario->ingresarEjercicioTraduccion(curso4,leccion6,ejercicio7);
 this->iPusuario->IngresoLeccion(curso5, leccion7, false, ejercicio8);
 this->iPusuario->ingresarEjercicioTraduccion(curso5,leccion7,ejercicio8);
 
+this->iPusuario->Inscribir("Ingles para principiantes","jpidiom");
+this->iPusuario->Inscribir("Ingles intermedio: mejora tu nivel","jpidiom");
+this->iPusuario->Inscribir("Curso avanzado de ingles","jpidiom");
+this->iPusuario->Inscribir("Ingles para principiantes","marsilva");
+this->iPusuario->Inscribir("Ingles para principiantes","pero12");
+this->iPusuario->Inscribir("Ingles para principiantes","laugu");
 
+this->iPusuario->Inscribir("Portugues intermedio","laugu");
+this->iPusuario->Inscribir("Portugues intermedio","carlo22");
 
 }
