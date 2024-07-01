@@ -16,6 +16,7 @@ private:
    int aaaa;
    bool aprobado;
    Curso *curso;
+   set<Ejercicio*> ejAprobados; 
    
 public:
     Inscripcion();
@@ -30,6 +31,11 @@ public:
     void ObtenerPromedio();
     float ObtenerDatoPromedio();
     Curso* getCurso();
+
+    //CU12
+    void setEjAprobado(Ejercicio* ejercicio);
+    set<Ejercicio*> getEjAprobados();
+
 };
 
 

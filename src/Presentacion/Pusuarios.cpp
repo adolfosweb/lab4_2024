@@ -256,3 +256,5 @@ void Pusuarios :: consultaProfesor()
         getchar();getchar();
     }
 }
+
+// CONSULTA DATOS

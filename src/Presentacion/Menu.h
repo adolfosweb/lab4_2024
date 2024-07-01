@@ -13,6 +13,7 @@ public:
 	void mostrarMenuUsarios();
 	void mostrarMenuIdioma();
 	void mostrarMenuCursos();
+	void mostrarMenuEjercicios();
 	void MenuConsultarEstadísticas();
 };
 

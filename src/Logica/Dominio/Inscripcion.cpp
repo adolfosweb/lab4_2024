@@ -52,3 +52,11 @@ Curso* Inscripcion :: getCurso()
 {
    return curso;
 }
+
+void Inscripcion :: setEjAprobado(Ejercicio* ejercicio){
+   this->ejAprobados.insert(ejercicio);
+}
+
+set<Ejercicio*> Inscripcion :: getEjAprobados(){
+   return this->ejAprobados;
+}

@@ -67,6 +67,10 @@ public:
 	bool Inscribir(string nombreCurs,string nombreEst);
 	void listoCursosPendientes(string nombreEst);
 
+	//CU 12
+	//set<DTOEjercicio>listarEjercicios(string nick);
+	void listarEjercicios(string nick);
+
 	//CU 13 Consultar estadísticas
 	int listarUsuarios(int sel);
 	void consultarStatsEstudiante(string nick);

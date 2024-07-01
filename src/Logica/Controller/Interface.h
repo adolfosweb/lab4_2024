@@ -58,6 +58,11 @@ public:
 	//CU 11 Inscribirse a curso
 	virtual bool Inscribir(string nombreCurs,string nombreEst)=0;
 	virtual void listoCursosPendientes(string nombreEst)=0;
+
+	//CU 12 Listar ejercicios
+	//virtual set<DTOEjercicio>listarEjercicios(string nick) = 0;
+	virtual void listarEjercicios(string nick) = 0;
+
 	//CU 13 Consultar Estadísticas
 	virtual int listarUsuarios(int sel) = 0;
 	virtual void consultarStatsEstudiante(string nick) = 0;

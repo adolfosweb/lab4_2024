@@ -530,6 +530,41 @@ void Controller ::listoCursosPendientes(string nombreEst)
 		}
 	}
 }
+
+// CU 12 Realizar ejercicio
+//set<DTOEjercicio>listarEjercicios(string nick)
+void Controller::listarEjercicios(string nick){
+	// busco el estudiante
+	set<Usuario *>::iterator it;
+	for (it = this->sistema->usuarios.begin(); it != this->sistema->usuarios.end(); it++)
+	{
+		if (nick == (*it)->getNick())
+		{
+			Estudiante *est = dynamic_cast<Estudiante *>(*it);
+			if (est != nullptr)
+			{ // Asegurarse de que la conversión es exitosa
+				cout << "El estudiante es: " << est->getNick();
+				set<Curso*>::iterator it;
+				set<Leccion*>::iterator itl;
+				set<Ejercicio*>::iterator ite;
+				for (it = est->ObtenerCursos().begin(); it != est->ObtenerCursos().end(); it++) {
+					cout << (*it)->getDescripcion();
+
+					// for (itl = (*it)->listarLecciones().begin(); itl != (*it)->listarLecciones().end(); itl++) {
+					// 	cout << (*itl)->getDescripcion();
+					// 	set<DTOLeccion> Ejercicio = (*itl)->ObtenerDTOEjercicios();
+					// 	for (ite = Ejercicio.begin(); ite != Ejercicio.end(); ite++) {
+					// 		cout << (*ite)->getDescripcion();
+					// 		cout << (*ite)->getFrase();
+					// 	}
+					// }
+				}
+			}
+		}
+	}
+}	
+	
+
 // CU 13 Consultar estadísticas (estudiante)
 int Controller ::listarUsuarios(int sel)
 {

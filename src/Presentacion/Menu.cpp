@@ -13,6 +13,7 @@
 #include "Pusuarios.h"
 #include "Pidioma.h"
 #include "Pcurso.h"
+#include "Pejercicio.h"
 #include <iostream>
 
 using namespace std;
@@ -33,6 +34,7 @@ void Menu::mostrarMenu() {
 		cout <<"2) Menu de Opciones de idiomas" << endl;
 		cout <<"3) Menu de Opciones de Curso" << endl;
 		cout <<"4) Consultar estadísticas" << endl;
+		cout <<"5) Realizar ejercicio" << endl;
 		cout <<"0) Salir " << endl;
 		cout <<"Ingrese una opcion: " << endl;
 		cin >> op;
@@ -55,6 +57,12 @@ void Menu::mostrarMenu() {
 				mostrarMenuCursos();
 			}break;
 		case 4:	{std::system("clear");	 MenuConsultarEstadísticas();	} 	break;	
+		case 5:
+			{
+				std::system("clear");
+				mostrarMenuEjercicios();
+			}break;
+
 		case 0:
 			break;
 		default:
@@ -222,7 +230,7 @@ void Menu::mostrarMenuCursos()
 				datocurso.Inscripcion();     	
 			}
 			break;
-			case 8:
+		case 8:
 			{
 				std::system("clear");
             	return;
@@ -267,3 +275,40 @@ void Menu :: MenuConsultarEstadísticas()
 	while(sel != 1 || sel != 2 || sel != 3);
 
 }
+
+/*MENU DE EJERCCIOS*/
+void Menu::mostrarMenuEjercicios()
+{
+
+    int op = 0;
+	do {
+		cout << "*** Menu Ejercicios ***" << endl;
+		cout <<"1) Realizar ejercicio" << endl;
+        cout <<"3) Volver A Menu Pricipal " << endl;
+		cout <<"Ingrese una opcion: " << endl;
+
+		cin >> op;
+		switch (op) {
+		case 1: {
+				std::system("clear");
+				cout << "Realizar ejercicio" << endl;
+				PEjercicio opejercicio;
+				opejercicio.realizarEjercicio();
+				//Pidioma opidioma;
+                //opidioma.altaIidoma();
+			}
+			break;
+        case 3:
+			{
+				std::system("clear");
+            	return ;
+			}
+			break;
+		case 0:
+			break;
+		default:
+			cout << "Opcion desconocida" << endl;
+		}
+
+	} while (op != 0);
+   }
